@@ -2,7 +2,7 @@ body
 {
     padding: 0px;
     margin: 0px;
-    background-color: black;
+    background-color: #2d2d2d;
 }
 html, body, #wrapper
 { 
@@ -23,7 +23,7 @@ html, body, #wrapper
 }
 
 
-@media (min-width: 1600px)
+@media (min-width: 800px)
 {
     body{
         display: grid;
@@ -32,9 +32,10 @@ html, body, #wrapper
     }
     #side-bar
     {
+        padding: 1%;
         position: relative;
         height: 100%;
-        background-color: burlywood;
+        background-color: #2d2d2d;
         display: grid;
         grid-template-areas: 
         "search"
@@ -50,27 +51,30 @@ html, body, #wrapper
     #search-bar
     {
         grid-area: search;
-        background-color: blue;
         width: 100%;
         height: 70%;
         display: grid;
         grid-template-areas: 
         "bar bar bar events"
         "filter filter sort sort";
+        grid-gap: 5px;
     }
 
     #search-bar input[type=text]
     {
         grid-area: bar;
-        padding: 3%;
         border-radius: 20px;
-        border: 5px;
+        border-style: none;
         font-size: large;
+        background-color:lightgray;
+    }
+
+    .search
+    {
         background-image: url(https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000);
         background-position: right 4% top 50%;
         background-repeat: no-repeat;
         background-size: 12%;
-        background-color:lightgray;
     }
     
     #events-dropdown
@@ -102,34 +106,44 @@ html, body, #wrapper
         font-size: large;
         border-radius: 20px;
         cursor: pointer;
+        border-style: solid;
     }
 
     .dropbutton:hover, .dropbutton:focus {
         background-color: #ea6d29;
     }
 
-    #occupied-rooms, #available-rooms
+    .scroll-containter
     {       
         overflow-y: scroll;
-        height: 95%;
-        width: 95%;
         margin: 2%;
-        background-color: darkgray;
+        height: 100%;
+        width: 100%;
         border: 2px solid black;
-        display: block;
+    }
+
+    #available-rooms, #occupied-rooms
+    {
+        text-align: center;
+        color: white;
     }
 
     #available-rooms
     {
         grid-area: available;
         position: absolute;
+        height: 85%;
+        width: 95%;
+        bottom: 25%;
     }
 
     #occupied-rooms
     {
         grid-area: occupied;
         position: absolute;
-        bottom: 2%;
+        height: 95%;
+        width: 95%;
+        bottom: 20%;
     }
 
     /* Temp widget, fill with actual data and change styling later*/
