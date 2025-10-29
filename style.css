@@ -2,9 +2,9 @@ body
 {
     padding: 0px;
     margin: 0px;
-    background-color: #2d2d2d;
+    background-color: #8DA399;
 }
-html, body, #wrapper
+html, body
 { 
     height: 100%;
     width: 100%;
@@ -35,7 +35,6 @@ html, body, #wrapper
         padding: 1%;
         position: relative;
         height: 100%;
-        background-color: #2d2d2d;
         display: grid;
         grid-template-areas: 
         "search"
@@ -58,6 +57,7 @@ html, body, #wrapper
         "bar bar bar events"
         "filter filter sort sort";
         grid-gap: 5px;
+        border-bottom: 2px solid black;
     }
 
     #search-bar input[type=text]
@@ -116,10 +116,13 @@ html, body, #wrapper
     .scroll-containter
     {       
         overflow-y: scroll;
+        scrollbar-width: thin;
+        scrollbar-color: none;
         margin: 2%;
         height: 100%;
         width: 100%;
-        border: 2px solid black;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
     }
 
     #available-rooms, #occupied-rooms
@@ -134,7 +137,7 @@ html, body, #wrapper
         position: absolute;
         height: 85%;
         width: 95%;
-        bottom: 25%;
+        bottom: 26%;
     }
 
     #occupied-rooms
@@ -143,7 +146,7 @@ html, body, #wrapper
         position: absolute;
         height: 95%;
         width: 95%;
-        bottom: 20%;
+        bottom: 24%;
     }
 
     /* Temp widget, fill with actual data and change styling later*/
@@ -156,6 +159,13 @@ html, body, #wrapper
         margin-left: auto;
         margin-right: auto;
         display: block;
+        background-color: aliceblue;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    .test-widget:hover
+    {
         background-color: aqua;
     }
 
