@@ -13,7 +13,13 @@
         <title>Map Test</title>
     </head>
     <body>
-        <div id="map"></div>    
+            <div id="search">
+                <h1>Search</h1>
+            </div>
+            <div id="map" [leafletOptions]= "options"></div>    
+
+
+        <!--Keep scripts at the bottom they need to be loaded after all the page elements-->
         <script src="Uni-Map.1.0.js"></script>
     </body>
 </html>

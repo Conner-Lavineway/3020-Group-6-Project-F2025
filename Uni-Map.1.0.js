@@ -1,24 +1,18 @@
 
-const key = 'Redacted';
-const map = L.map('map').setView([49.808773, -97.13208],17);
+options = {
+    maxBounds: [[0.1, 0.2],[0, 0]],
+    maxBoundsViscosity: 1.0,
+}
+const map = L.map('map', options).setView([0,0],10);
 
 
-map.setMaxBounds([
-    [49.80725, -97.15431],
-    [49.808108, -97.124505],
-    [49.814727, -97.129269],
-    [49.802597, -97.148924]
-]);
 
-
-map.setMinZoom(15);
-map.setMaxZoom(19);
-
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
-
+var image = 'UniMap.png',
+    imagebounds = [[0.1, 0.2],
+    [0, 0]];
+L.imageOverlay(image, imagebounds).addTo(map);
+map.setMinZoom(14.25);
+map.setMaxZoom(18);
 
 
 function onMapClick(e) {
