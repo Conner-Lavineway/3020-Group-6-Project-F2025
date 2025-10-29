@@ -2,25 +2,18 @@ body
 {
     padding: 0px;
     margin: 0px;
-    display: flexbox;
+
 }
 html, body, #wrapper
 { 
     height: 100%;
     width: 100%;
 }
-#search
-{
-    margin: 2%;
-    height: 5%;
-    width: 35%;
-    border-radius: 25px;
-    border-style: solid;
-    border-color: black;
-    display: inline-block;
-}
+
+
 @media (max-width: 800px)
 {
+    /*TODO: Later*/
     #map
     {
         top: 10%;
@@ -28,8 +21,104 @@ html, body, #wrapper
         height: 50%;
     }
 }
-@media (min-width: 800px) and  (max-width: 1500px)
+@media (min-width: 800px) and  (max-width: 1000px)
 {
+    #side-bar
+    {
+        float: left;
+        position: relative;
+        padding: 0%;
+        margin: 0%;
+        height: 100%;
+        width: 35%;
+        background-color: burlywood;
+    }
+
+
+    #search-bar input[type=text]
+    {
+        padding: 3%;
+        border-radius: 20px;
+        border: 5px;
+        font-size: large;
+        margin: 1%;
+        width: 50%;
+        background-image: url(https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000);
+        background-position: right 4% top 50%;
+        background-repeat: no-repeat;
+        background-size: 12%;
+        background-color:lightgray;
+    }
+    
+    #events-dropdown
+    {
+        float: right;
+        right: 18%;
+        margin: 2%;
+        position: relative;
+    }
+    
+    .dropbutton
+    {
+        background-color: #f55535;
+        color: black;
+        padding-top: 20%;
+        padding-bottom: 20%;
+        padding-left: 45%;
+        padding-right: 55%;
+        font-size: medium;
+        border: none;
+        cursor: pointer;
+        background-image: url(https://img.icons8.com/?size=100&id=60592&format=png&color=000000);
+        background-position: right 15% top 50%;
+        background-repeat: no-repeat;
+        background-size: 20%;
+    }
+
+    .dropbutton:hover, .dropbutton:focus {
+        background-color: orange;
+    }
+    
+
+    #occupied-rooms, #available-rooms
+    {       
+        overflow-y: scroll;
+        height: 40%;
+        width: 95%;
+        margin-left: 2%;
+        margin-right: 2%;
+        background-color: darkgray;
+        border: 2px solid black;
+        display: block;
+    }
+
+    #available-rooms
+    {
+        position: absolute;
+        top: 15%;
+        margin-bottom: 2%;
+    }
+
+    #occupied-rooms
+    {
+        position: absolute;
+        bottom: 2%;
+        margin-top: 2%;
+    }
+
+    /* Temp widget, fill with actual data and change styling later*/
+    .test-widget
+    {
+        height: 40%;
+        width: 90%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        background-color: aqua;
+    }
+
     #map
     {
         float: right;
@@ -40,8 +129,215 @@ html, body, #wrapper
         width: 60%;
     }
 }
-@media (min-width: 1500px)
+
+@media (min-width: 1000px) and  (max-width: 1600px)
 {
+    #side-bar
+    {
+        float: left;
+        position: relative;
+        padding: 0%;
+        margin: 0%;
+        height: 100%;
+        width: 30%;
+        background-color: burlywood;
+    }
+
+
+    #search-bar input[type=text]
+    {
+        padding: 3%;
+        border-radius: 20px;
+        border: 5px;
+        font-size: large;
+        margin: 1%;
+        width: 55%;
+        background-image: url(https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000);
+        background-position: right 4% top 50%;
+        background-repeat: no-repeat;
+        background-size: 12%;
+        background-color:lightgray;
+    }
+    
+    #events-dropdown
+    {
+        float: right;
+        right: 18%;
+        margin: 2%;
+        position: relative;
+    }
+    
+    .dropbutton
+    {
+        background-color: #f55535;
+        color: black;
+        padding-top: 20%;
+        padding-bottom: 20%;
+        padding-left: 50%;
+        padding-right: 60%;
+        font-size: medium;
+        border: none;
+        cursor: pointer;
+        background-image: url(https://img.icons8.com/?size=100&id=60592&format=png&color=000000);
+        background-position: right 10% top 50%;
+        background-repeat: no-repeat;
+        background-size: 20%;
+    }
+
+    .dropbutton:hover, .dropbutton:focus {
+        background-color: orange;
+    }
+    
+
+    #occupied-rooms, #available-rooms
+    {       
+        overflow-y: scroll;
+        height: 40%;
+        width: 95%;
+        margin-left: 2%;
+        margin-right: 2%;
+        background-color: darkgray;
+        border: 2px solid black;
+        display: block;
+    }
+
+    #available-rooms
+    {
+        position: absolute;
+        top: 15%;
+        margin-bottom: 2%;
+    }
+
+    #occupied-rooms
+    {
+        position: absolute;
+        bottom: 2%;
+        margin-top: 2%;
+    }
+
+    /* Temp widget, fill with actual data and change styling later*/
+    .test-widget
+    {
+        height: 40%;
+        width: 90%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        background-color: aqua;
+    }
+
+    #map
+    {
+        float: right;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        height: 95%;
+        width: 70%;
+    }
+}
+
+
+@media (min-width: 1600px)
+{
+    #side-bar
+    {
+        float: left;
+        position: relative;
+        padding: 0%;
+        margin: 0%;
+        height: 100%;
+        width: 30%;
+        background-color: burlywood;
+    }
+
+
+    #search-bar input[type=text]
+    {
+        padding: 3%;
+        border-radius: 20px;
+        border: 5px;
+        font-size: large;
+        margin: 1%;
+        width: 60%;
+        background-image: url(https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000);
+        background-position: right 4% top 50%;
+        background-repeat: no-repeat;
+        background-size: 12%;
+        background-color:lightgray;
+    }
+    
+    #events-dropdown
+    {
+        float: right;
+        right: 18%;
+        margin: 10px;
+        position: relative;
+    }
+    
+    .dropbutton
+    {
+        background-color: #f55535;
+        color: black;
+        padding-top: 40%;
+        padding-bottom: 40%;
+        padding-left: 90%;
+        padding-right: 110%;
+        font-size: medium;
+        border: none;
+        cursor: pointer;
+        background-image: url(https://img.icons8.com/?size=100&id=60592&format=png&color=000000);
+        background-position: right 15% top 50%;
+        background-repeat: no-repeat;
+        background-size: 20%;
+    }
+
+    .dropbutton:hover, .dropbutton:focus {
+        background-color: orange;
+    }
+    
+
+    #occupied-rooms, #available-rooms
+    {       
+        overflow-y: scroll;
+        height: 40%;
+        width: 95%;
+        margin-left: 2%;
+        margin-right: 2%;
+        background-color: darkgray;
+        border: 2px solid black;
+        display: block;
+    }
+
+    #available-rooms
+    {
+        position: absolute;
+        top: 15%;
+        margin-bottom: 2%;
+    }
+
+    #occupied-rooms
+    {
+        position: absolute;
+        bottom: 2%;
+        margin-top: 2%;
+    }
+
+    /* Temp widget, fill with actual data and change styling later*/
+    .test-widget
+    {
+        height: 40%;
+        width: 90%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        background-color: aqua;
+    }
+
     #map
     {
         float: right;
