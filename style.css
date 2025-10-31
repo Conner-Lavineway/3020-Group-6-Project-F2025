@@ -1,8 +1,30 @@
+:root
+{
+    --main-font: 'Courier New', Courier, monospace;
+    --main-font-size: 20px;
+    --main-font-colour: black;
+
+    --header-font-size: 30px;
+    --header-font-colour: aliceblue;
+
+    --main-bg-color: #8DA399;
+    --main-border-color: black;
+    --main-border-radius: 20px;
+
+    --dropdown-bg-color: #d45713;
+    --dropdown-hover-color: #ea6d29;
+
+    --widget-bg-color: aliceblue;
+    --widget-hover-color: aqua;
+
+}
+
 body
 {
+    font-family: var(--main-font);
     padding: 0px;
     margin: 0px;
-    background-color: #8DA399;
+    background-color: var(--main-bg-color);
 }
 html, body
 { 
@@ -57,15 +79,17 @@ html, body
         "bar bar bar events"
         "filter filter sort sort";
         grid-gap: 5px;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid var(--main-border-color);
+        padding-bottom: 1%;
     }
-
+    
     #search-bar input[type=text]
     {
         grid-area: bar;
-        border-radius: 20px;
+        font-size: var(--header-font-size); 
+        border-radius: var(--main-border-radius);
         border-style: none;
-        font-size: large;
+        font-size: var(--main-font-size); 
         background-color:lightgray;
     }
 
@@ -99,18 +123,20 @@ html, body
     }
 
     .dropbutton {
-        background-color: #d45713;
+        background-image: url(https://img.icons8.com/?size=100&id=gn7BG2TZ2vtF&format=png&color=000000);
+        background-repeat: no-repeat;
+        background-color: var(--dropdown-bg-color);
         color: black;
         height: 100%;
         width: 100%;
-        font-size: large;
-        border-radius: 20px;
+        font-size: var(--main-font-size); 
+        border-radius: var(--main-border-radius);
         cursor: pointer;
         border-style: solid;
     }
 
     .dropbutton:hover, .dropbutton:focus {
-        background-color: #ea6d29;
+        background-color: var(--dropdown-hover-color);
     }
 
     .scroll-containter
@@ -121,14 +147,16 @@ html, body
         margin: 2%;
         height: 100%;
         width: 100%;
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;
+        border-top: 2px solid var(--main-border-color);
+        border-bottom: 2px solid var(--main-border-color);
     }
 
     #available-rooms, #occupied-rooms
     {
+        margin-top: 1%;
+        font-size: var(--header-font-size);
         text-align: center;
-        color: white;
+        color: var(--header-font-colour);
     }
 
     #available-rooms
@@ -137,7 +165,7 @@ html, body
         position: absolute;
         height: 85%;
         width: 95%;
-        bottom: 26%;
+        bottom: 30%;
     }
 
     #occupied-rooms
@@ -146,7 +174,7 @@ html, body
         position: absolute;
         height: 95%;
         width: 95%;
-        bottom: 24%;
+        bottom: 27%;
     }
 
     /* Temp widget, fill with actual data and change styling later*/
@@ -159,22 +187,20 @@ html, body
         margin-left: auto;
         margin-right: auto;
         display: block;
-        background-color: aliceblue;
-        border-radius: 20px;
+        background-color: var(--widget-bg-color);
+        border-radius: var(--main-border-radius);
         cursor: pointer;
     }
 
     .test-widget:hover
     {
-        background-color: aqua;
+        background-color: var(--widget-hover-color);
     }
 
     #map
     {
         grid-area: map;
-        float: right;
         top: 50%;
-        -ms-transform: translateY(-50%);
         transform: translateY(-50%);
         height: 95%
     }
