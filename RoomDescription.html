@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>                
+		<title>RoomDescription</title>
+		<style>
+			.tableHeader {
+				border: 2px solid black;
+				border-collapse: collapse;
+
+			}
+			.tableBody {
+				text-align: center;
+				height: 50px;
+				
+			}
+			.container {
+				display: grid;
+				grid-template-columns: 25% 40% 35%;
+				padding: 10px;
+			}
+			.container div {
+				/*border: 1px solid black;*/
+				padding-left: 15px;
+				padding-right: 15px;
+				text-align: center;
+			}
+			.roundedBox {
+				border-radius: 25px;
+				border: 2px solid black;
+				padding: 0px;
+				
+			}
+			.button {
+				background-color: #810cc4;
+				border: none;
+				border-radius: 25px;
+				color: white;
+				padding: 30px 65px;
+				text-align: right;
+				font-size: 40px;
+				cursor: pointer;
+				transition-duration: 0.4s;
+			}
+			.dibsButton{box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);}
+			.dibsButton:hover {background-color: #450669}
+		</style>
+	</head>
+	<body>
+		<h1 style="text-align:center">EITC 320</h1>
+		
+		<div class="container">
+			<div>
+				<table style="width: 90%; border-radius: 25px;" class="tableHeader">
+					<tr class="tableHeader">
+						<th>Time</th>
+						<th>Availability</th>
+					</tr>
+					<tr class="tableBody">
+						<td>9</td>
+						<td>Test event</td>
+					</tr>
+					<tr class="tableBody">
+						<td>10</td>
+						<td>Available</td>
+					</tr>
+					<tr class="tableBody">
+						<td>11</td>
+						<td>Available</td>
+					</tr>
+					<tr class="tableBody">
+						<td>12</td>
+						<td>Available</td>
+					</tr>
+					<tr class="tableBody">
+						<td>1</td>
+						<td>Potluck</td>
+					</tr>
+					<tr class="tableBody">
+						<td>2</td>
+						<td>Potluck</td>
+					</tr>
+					<tr class="tableBody">
+						<td>3</td>
+						<td>Available</td>
+					</tr>
+					<tr class="tableBody">
+						<td>4</td>
+						<td>Available</td>
+					</tr>
+					<tr class="tableBody">
+						<td>5</td>
+						<td>Available</td>
+					</tr>
+					<tr class="tableBody">
+						<td>6</td>
+						<td>Available</td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				
+				<img src=".\classroom1.jfif" style="max-width: 100%; border-radius: 25px;">
+				
+				<div style="text-align: left" class="roundedBox">
+					<h3 style="border-bottom: 1px solid #8c8c8c">Description</h3>
+					<p> A small room situated in the left-wing of the EITC building. It has a projector, multiple chairs, and outlets.</p>
+				</div>
+			
+			</div>
+			<div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%">
+				<div class="roundedBox">	
+					<div style="text-align: left; display: flex; border-bottom: 1px solid #8c8c8c">
+						<p><b>Building:&nbsp;</b></p>
+						<p>EITC</p>					
+					</div>
+					<div style="text-align: left; display: flex; border-bottom: 1px solid #8c8c8c">
+						<p><b>Room:&nbsp;</b></p>
+						<p>320</p>					
+					</div>
+					<div style="text-align: left; display: flex; border-bottom: 1px solid #8c8c8c">
+						<p><b>Noise Level:&nbsp;</b></p>
+						<p>Quiet</p>					
+					</div>
+					<div style="text-align: left; border-bottom: 1px solid #8c8c8c">
+						<p><b>Amenities:</b></p>
+						<ul>
+							<li>Projector</li>
+							<li>Chairs</li>
+							<li>Outlets</li>
+						</ul>				
+					</div>	
+				</div>
+				<div style="text-align: right">
+					<button class="button dibsButton">DIBS</button>
+				</div>
+			</div>	
+		</div>
+	</body>
+</html>
