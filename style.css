@@ -131,41 +131,44 @@ html, body
     }
 
     .scroll-containter
-    {       
+    {      
+        padding-top: 2%;
         overflow-y: scroll;
         scrollbar-width: thin;
         scrollbar-color: none;
-        margin: 2%;
         height: 100%;
         width: 100%;
         border-top: 2px solid var(--main-border-color);
-        border-bottom: 2px solid var(--main-border-color);
     }
-
+    
     #available-rooms, #occupied-rooms
     {
         margin-top: 1%;
+        padding: 2%;
         font-size: var(--header-font-size);
         text-align: center;
         color: var(--header-font-colour);
+        display: flex;
+        flex-direction: column;
+        border-bottom: 2px solid var(--main-border-color);
     }
-
+    
     #available-rooms
     {
+        border-top: 2px solid var(--main-border-color);
         grid-area: available;
         position: absolute;
         height: 85%;
         width: 95%;
-        bottom: 30%;
     }
-
+    
     #occupied-rooms
     {
         grid-area: occupied;
         position: absolute;
         height: 95%;
         width: 95%;
-        bottom: 27%;
+        bottom: 10%;
     }
 
     /* Temp widget, fill with actual data and change styling later*/
