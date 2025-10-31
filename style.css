@@ -32,19 +32,6 @@ html, body
     width: 100%;
 }
 
-
-@media (max-width: 800px)
-{
-    /*TODO: Later*/
-    #map
-    {
-        top: 10%;
-        width: 100%;
-        height: 50%;
-    }
-}
-
-
 @media (min-width: 800px)
 {
     body{
@@ -52,14 +39,16 @@ html, body
         grid-template-areas: 
         "search map map map";
     }
+
     #side-bar
     {
+        grid-area: search;
         padding: 1%;
         position: relative;
         height: 100%;
         display: grid;
         grid-template-areas: 
-        "search"
+        "searchbar"
         "available"
         "available"
         "available"
@@ -71,13 +60,13 @@ html, body
 
     #search-bar
     {
-        grid-area: search;
+        grid-area: searchbar;
         width: 100%;
         height: 70%;
         display: grid;
         grid-template-areas: 
-        "bar bar bar events"
-        "filter filter sort sort";
+        "bar bar bar sort"
+        "filter filter events events";
         grid-gap: 5px;
         border-bottom: 2px solid var(--main-border-color);
         padding-bottom: 1%;
