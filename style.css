@@ -7,7 +7,7 @@
     --header-font-size: 30px;
     --header-font-colour: aliceblue;
 
-    --main-bg-color: #8DA399;
+    --main-bg-color: grey;
     --main-border-color: black;
     --main-border-radius: 20px;
 
@@ -36,16 +36,21 @@ html, body
 {
     body{
         display: grid;
-        grid-template-areas: 
-        "search map map map";
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        gap: 16px;
+        grid-auto-flow: row;
+        justify-items: stretch;
+        align-items: stretch;
     }
 
     #side-bar
     {
-        grid-area: search;
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
         padding: 1%;
         position: relative;
-        height: 100%;
         display: grid;
         grid-template-areas: 
         "searchbar"
@@ -61,7 +66,6 @@ html, body
     #search-bar
     {
         grid-area: searchbar;
-        width: 100%;
         height: 70%;
         display: grid;
         grid-template-areas: 
@@ -193,7 +197,8 @@ html, body
 
     #map
     {
-        grid-area: map;
+        grid-column: 2 / 5;
+        grid-row: 1 / 2;
         top: 50%;
         transform: translateY(-50%);
         height: 95%
