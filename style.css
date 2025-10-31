@@ -37,8 +37,8 @@ html, body
     body{
         display: grid;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(1, 1fr);
+        grid-template-columns: repeat(4, 1fr) min-content;
+        grid-template-rows: repeat(1, 1fr) min-content;
         gap: 16px;
         grid-auto-flow: row;
         justify-items: stretch;
@@ -52,6 +52,7 @@ html, body
         padding: 1%;
         position: relative;
         display: grid;
+        grid-column: 1fr min-content;
         grid-template-areas: 
         "searchbar"
         "available"
@@ -97,22 +98,16 @@ html, body
     #events-dropdown
     {
         grid-area: events;
-        height: 100%;
-        width: 100%;
     }
     
     #filter-dropdown
     {
         grid-area: filter;
-        height: 100%;
-        width: 100%;
     }
     
     #sort-dropdown
     {
         grid-area: sort;
-        height: 100%;
-        width: 100%;
     }
 
     .dropbutton {
@@ -140,8 +135,6 @@ html, body
         overflow-y: scroll;
         scrollbar-width: thin;
         scrollbar-color: none;
-        height: 100%;
-        width: 100%;
         border-top: 2px solid var(--main-border-color);
     }
     
