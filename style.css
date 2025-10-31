@@ -82,10 +82,10 @@ html, body
     #search-bar input[type=text]
     {
         grid-area: bar;
-        font-size: var(--header-font-size); 
+        font-size: var(--main-font-size); 
         border-radius: var(--main-border-radius);
         border-style: var(--main-border-size) solid var(--main-border-color);
-        font-size: var(--header-font-size); 
+        font-size: var(--main-font-size); 
         background-color:lightgray;
 
     }
