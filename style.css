@@ -9,6 +9,7 @@
 
     --main-bg-color: grey;
     --main-border-color: black;
+    --main-border-size: 2px;
     --main-border-radius: 20px;
 
     --dropdown-bg-color: #d45713;
@@ -37,8 +38,8 @@ html, body
     body{
         display: grid;
         display: grid;
-        grid-template-columns: repeat(4, 1fr) min-content;
-        grid-template-rows: repeat(1, 1fr) min-content;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(1, 1fr);
         gap: 16px;
         grid-auto-flow: row;
         justify-items: stretch;
@@ -52,7 +53,6 @@ html, body
         padding: 1%;
         position: relative;
         display: grid;
-        grid-column: 1fr min-content;
         grid-template-areas: 
         "searchbar"
         "available"
@@ -70,11 +70,13 @@ html, body
         height: 70%;
         display: grid;
         grid-template-areas: 
-        "bar bar bar sort"
-        "filter filter events events";
+        "bar sort"
+        "filter events";
         grid-gap: 5px;
-        border-bottom: 2px solid var(--main-border-color);
+        border-bottom: var(--main-border-size) solid var(--main-border-color);
         padding-bottom: 1%;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        overflow: hidden;
     }
     
     #search-bar input[type=text]
@@ -82,9 +84,15 @@ html, body
         grid-area: bar;
         font-size: var(--header-font-size); 
         border-radius: var(--main-border-radius);
-        border-style: none;
+        border-style: var(--main-border-size) solid var(--main-border-color);
         font-size: var(--header-font-size); 
         background-color:lightgray;
+
+    }
+
+    #search-bar input[type=text]:focus
+    {
+        outline: none;
     }
 
     .search
@@ -98,23 +106,26 @@ html, body
     #events-dropdown
     {
         grid-area: events;
+        
     }
     
     #filter-dropdown
     {
         grid-area: filter;
+        
     }
     
     #sort-dropdown
     {
         grid-area: sort;
+        
     }
 
     .dropbutton {
         background-image: url(https://img.icons8.com/?size=100&id=gn7BG2TZ2vtF&format=png&color=000000);
         background-repeat: no-repeat;
         background-position: right 4% top 50%;
-        background-size: var(--main-font-size);
+        background-size: var(--header-font-size);
         background-color: var(--dropdown-bg-color);
         color: black;
         height: 100%;
@@ -123,6 +134,7 @@ html, body
         border-radius: var(--main-border-radius);
         cursor: pointer;
         border-style: solid;
+        border-width: var(--main-border-size);
     }
 
     .dropbutton:hover, .dropbutton:focus {
@@ -135,7 +147,7 @@ html, body
         overflow-y: scroll;
         scrollbar-width: thin;
         scrollbar-color: none;
-        border-top: 2px solid var(--main-border-color);
+        border-top: var(--main-border-size) solid var(--main-border-color);
     }
     
     #available-rooms, #occupied-rooms
@@ -147,12 +159,12 @@ html, body
         color: var(--header-font-colour);
         display: flex;
         flex-direction: column;
-        border-bottom: 2px solid var(--main-border-color);
+        border-bottom: var(--main-border-size) solid var(--main-border-color);
     }
     
     #available-rooms
     {
-        border-top: 2px solid var(--main-border-color);
+        border-top: var(--main-border-size) solid var(--main-border-color);
         grid-area: available;
         position: absolute;
         height: 85%;
@@ -190,7 +202,7 @@ html, body
 
     #map
     {
-        grid-column: 2 / 5;
+        grid-column: 2 / span 4;
         grid-row: 1 / 2;
         top: 50%;
         transform: translateY(-50%);
