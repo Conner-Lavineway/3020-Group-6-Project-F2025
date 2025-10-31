@@ -78,7 +78,7 @@ html, body
         font-size: var(--header-font-size); 
         border-radius: var(--main-border-radius);
         border-style: none;
-        font-size: var(--main-font-size); 
+        font-size: var(--header-font-size); 
         background-color:lightgray;
     }
 
@@ -87,7 +87,7 @@ html, body
         background-image: url(https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000);
         background-position: right 4% top 50%;
         background-repeat: no-repeat;
-        background-size: 12%;
+        background-size: var(--header-font-size);
     }
     
     #events-dropdown
@@ -114,6 +114,8 @@ html, body
     .dropbutton {
         background-image: url(https://img.icons8.com/?size=100&id=gn7BG2TZ2vtF&format=png&color=000000);
         background-repeat: no-repeat;
+        background-position: right 4% top 50%;
+        background-size: var(--main-font-size);
         background-color: var(--dropdown-bg-color);
         color: black;
         height: 100%;
