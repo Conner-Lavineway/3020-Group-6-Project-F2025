@@ -18,6 +18,7 @@
     --widget-bg-color: aliceblue;
     --widget-hover-color: aqua;
 
+    --grid-gap: 2px;
 }
 
 body
@@ -27,6 +28,7 @@ body
     margin: 0px;
     background-color: var(--main-bg-color);
 }
+
 html, body
 { 
     height: 100%;
@@ -37,48 +39,32 @@ html, body
 {
     body{
         display: grid;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(1, 1fr);
-        gap: 16px;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 1fr 8fr;
+        grid-template-areas: 
+        "header header header"
+        "sidebar map map";
+        gap: var(--grid-gap);
         grid-auto-flow: row;
         justify-items: stretch;
         align-items: stretch;
     }
 
-    #side-bar
-    {
-        grid-column: 1 / 2;
-        grid-row: 1 / 2;
-        padding: 1%;
-        position: relative;
-        display: grid;
-        grid-template-areas: 
-        "searchbar"
-        "available"
-        "available"
-        "available"
-        "available"
-        "occupied"
-        "occupied"
-        "occupied";
-    }
-
+    
     #search-bar
     {
-        grid-area: searchbar;
-        height: 70%;
+        grid-area: header;
         display: grid;
+        grid-template-columns: 0.5fr 2fr 2fr 2fr 1fr;
+        grid-template-rows: 1fr 1fr;
         grid-template-areas: 
-        "bar sort"
-        "filter events";
-        grid-gap: 5px;
-        border-bottom: var(--main-border-size) solid var(--main-border-color);
+        "logo bar bar space events"
+        "logo filter sort space events";
+        gap: var(--grid-gap);
         padding-bottom: 1%;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        overflow: hidden;
+        padding-top: 1%;
     }
-    
+
     #search-bar input[type=text]
     {
         grid-area: bar;
@@ -87,7 +73,6 @@ html, body
         border-style: var(--main-border-size) solid var(--main-border-color);
         font-size: var(--header-font-size); 
         background-color:lightgray;
-
     }
 
     #search-bar input[type=text]:focus
@@ -141,6 +126,21 @@ html, body
         background-color: var(--dropdown-hover-color);
     }
 
+
+    #side-bar
+    {
+        grid-area: sidebar;
+        padding: 1%;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 3fr 2fr;
+        grid-template-areas: 
+        "available"
+        "occupied";
+        border-top: var(--main-border-size) solid var(--main-border-color);
+    }
+    
     .scroll-containter
     {      
         padding-top: 2%;
@@ -152,7 +152,6 @@ html, body
     
     #available-rooms, #occupied-rooms
     {
-        margin-top: 1%;
         padding: 2%;
         font-size: var(--header-font-size);
         text-align: center;
@@ -164,7 +163,6 @@ html, body
     
     #available-rooms
     {
-        border-top: var(--main-border-size) solid var(--main-border-color);
         grid-area: available;
         position: absolute;
         height: 85%;
@@ -202,10 +200,8 @@ html, body
 
     #map
     {
-        grid-column: 2 / span 4;
-        grid-row: 1 / 2;
+        grid-area: map;
         top: 50%;
         transform: translateY(-50%);
-        height: 95%
     }
 }
