@@ -5,18 +5,18 @@
     --main-font-colour: black;
 
     --header-font-size: 30px;
-    --header-font-colour: aliceblue;
+    --header-font-colour: rgb(0, 0, 0);
 
-    --main-bg-color: grey;
+    --main-bg-color: rgb(219, 219, 219);
     --main-border-color: black;
     --main-border-size: 2px;
     --main-border-radius: 20px;
 
-    --dropdown-bg-color: #d45713;
+    --dropdown-bg-color: rgb(234, 156, 87);
     --dropdown-hover-color: #ea6d29;
 
-    --widget-bg-color: aliceblue;
-    --widget-hover-color: aqua;
+    --widget-bg-color: rgb(234, 156, 87);
+    --widget-hover-color: #ea6d29;
 
     --grid-gap: 2px;
 }
@@ -72,7 +72,7 @@ html, body
         border-radius: var(--main-border-radius);
         border-style: var(--main-border-size) solid var(--main-border-color);
         font-size: var(--header-font-size); 
-        background-color:lightgray;
+        background-color: rgb(226, 179, 137);
     }
 
     #search-bar input[type=text]:focus
