@@ -1,54 +1,142 @@
-body
-{
+:root {
+    --main-font: 'Courier New', Courier, monospace;
+    --main-font-size: 20px;
+    --main-font-colour: black;
+    --header-font-size: 30px;
+    --header-font-colour: rgb(0, 0, 0);
+    --main-bg-color: rgb(219, 219, 219);
+    --main-border-color: black;
+    --main-border-size: 2px;
+    --main-border-radius: 20px;
+    --dropdown-bg-color: rgb(234, 156, 87);
+    --dropdown-hover-color: #ea6d29;
+    --widget-bg-color: rgb(234, 156, 87);
+    --widget-hover-color: #ea6d29;
+    --grid-gap: 2px;
+}
+
+body {
+    font-family: var(--main-font);
     padding: 0px;
     margin: 0px;
-    display: flexbox;
+    background-color: var(--main-bg-color);
 }
-html, body, #wrapper
-{ 
+
+html, body {
     height: 100%;
     width: 100%;
 }
-#search
-{
-    margin: 2%;
-    height: 5%;
-    width: 35%;
-    border-radius: 25px;
-    border-style: solid;
-    border-color: black;
-    display: inline-block;
-}
-@media (max-width: 800px)
-{
-    #map
-    {
-        top: 10%;
+
+@media (min-width: 800px) {
+    #search-bar {
+        grid-area: header;
+        display: grid;
+        grid-template-columns: 0.5fr 2fr 2fr 2fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+            "logo bar bar space empty"
+            "logo filter sort space events";
+        gap: var(--grid-gap);
+        padding-bottom: 1%;
+        padding-top: 1%;
+    }
+
+    #search-bar input[type=text] {
+        grid-area: bar;
+        font-size: var(--header-font-size);
+        border-radius: var(--main-border-radius);
+        border-style: var(--main-border-size) solid var(--main-border-color);
+        font-size: var(--header-font-size);
+        background-color: rgb(226, 179, 137);
+    }
+
+        #search-bar input[type=text]:focus {
+            outline: none;
+        }
+
+    .search {
+        background-image: url(https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000);
+        background-position: right 4% top 50%;
+        background-repeat: no-repeat;
+        background-size: var(--header-font-size);
+    }
+
+    #events-dropdown {
+        grid-area: events;
+    }
+
+    #filter-dropdown {
+        grid-area: filter;
+    }
+
+    #sort-dropdown {
+        grid-area: sort;
+    }
+
+    .dropbutton {
+        background-image: url(https://img.icons8.com/?size=100&id=gn7BG2TZ2vtF&format=png&color=000000);
+        background-repeat: no-repeat;
+        background-position: right 4% top 50%;
+        background-size: var(--header-font-size);
+        background-color: var(--dropdown-bg-color);
+        color: black;
+        height: 100%;
         width: 100%;
-        height: 50%;
+        font-size: var(--main-font-size);
+        border-radius: var(--main-border-radius);
+        cursor: pointer;
+        border-style: solid;
+        border-width: var(--main-border-size);
     }
-}
-@media (min-width: 800px) and  (max-width: 1500px)
-{
-    #map
-    {
-        float: right;
-        top: 50%;
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        height: 95%;
-        width: 60%;
+
+        .dropbutton:hover, .dropbutton:focus {
+            background-color: var(--dropdown-hover-color);
+        }
+    .tableHeader {
+        border: 2px solid black;
+        border-collapse: collapse;
     }
-}
-@media (min-width: 1500px)
-{
-    #map
-    {
-        float: right;
-        top: 50%;
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        height: 95%;
-        width: 70%;
+
+    .tableBody {
+        text-align: center;
+        height: 100%;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 25% 40% 35%;
+        height: 100%;
+    }
+
+    .container div {
+        /*border: 1px solid black;*/
+        padding-left: 15px;
+        padding-right: 15px;
+        text-align: center;
+    }
+
+    .roundedBox {
+        border-radius: 25px;
+        border: 2px solid black;
+    }
+
+    .button {
+        background-color: rgb(234, 156, 87);
+        border: none;
+        border-radius: 25px;
+        color: #ffffff;
+        padding: 30px 65px;
+        text-align: right;
+        font-size: 40px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+    }
+
+    .dibsButton {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+    }
+
+    .dibsButton:hover {
+        background-color: #ea6d29;
     }
 }
