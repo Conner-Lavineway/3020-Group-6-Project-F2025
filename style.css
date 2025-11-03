@@ -31,7 +31,7 @@ html, body {
     #search-bar {
         grid-area: header;
         display: grid;
-        grid-template-columns: 0.5fr 2fr 2fr 2fr 1fr;
+        grid-template-columns: 0.05fr 1fr 1fr 3fr 1fr 0.05fr;
         grid-template-rows: 1fr 1fr;
         grid-template-areas:
             "logo bar bar space empty"
@@ -50,9 +50,9 @@ html, body {
         background-color: rgb(226, 179, 137);
     }
 
-        #search-bar input[type=text]:focus {
-            outline: none;
-        }
+    #search-bar input[type=text]:focus {
+        outline: none;
+    }
 
     .search {
         background-image: url(https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000);
@@ -85,8 +85,9 @@ html, body {
         font-size: var(--main-font-size);
         border-radius: var(--main-border-radius);
         cursor: pointer;
-        border-style: solid;
+        border-style: hidden;
         border-width: var(--main-border-size);
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
     }
 
         .dropbutton:hover, .dropbutton:focus {
@@ -121,10 +122,10 @@ html, body {
     }
 
     .button {
-        background-color: rgb(234, 156, 87);
+        background-color: var(--dropdown-bg-color);
         border: none;
         border-radius: 25px;
-        color: #ffffff;
+        color: black;
         padding: 30px 65px;
         text-align: right;
         font-size: 40px;
@@ -137,6 +138,6 @@ html, body {
     }
 
     .dibsButton:hover {
-        background-color: #ea6d29;
+        background-color: var(--dropdown-hover-color);
     }
 }
