@@ -58,7 +58,7 @@ html, body
         grid-template-columns: 0.5fr 2fr 2fr 2fr 1fr;
         grid-template-rows: 1fr 1fr;
         grid-template-areas: 
-        "logo bar bar space events"
+        "logo bar bar space empty"
         "logo filter sort space events";
         gap: var(--grid-gap);
         padding-bottom: 1%;
@@ -91,7 +91,6 @@ html, body
     #events-dropdown
     {
         grid-area: events;
-        
     }
     
     #filter-dropdown
