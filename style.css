@@ -2,10 +2,10 @@
 {
     --main-font: 'Courier New', Courier, monospace;
     --main-font-size: 20px;
-    --main-font-colour: black;
+    --main-font-color: black;
 
     --header-font-size: 30px;
-    --header-font-colour: rgb(0, 0, 0);
+    --header-font-color: rgb(0, 0, 0);
 
     --main-bg-color: rgb(219, 219, 219);
     --main-border-color: black;
@@ -19,6 +19,8 @@
     --widget-hover-color: #ea6d29;
 
     --grid-gap: 2px;
+
+    --dropcontent-hover-color: rgb(200, 200, 200);
 }
 
 body
@@ -55,14 +57,13 @@ html, body
     {
         grid-area: header;
         display: grid;
-        grid-template-columns: 0.5fr 2fr 2fr 2fr 1fr;
+        grid-template-columns: 2fr 2fr 3fr 1fr;
         grid-template-rows: 1fr 1fr;
         grid-template-areas: 
-        "logo bar bar space empty"
-        "logo filter sort space events";
+        "bar bar space empty"
+        "filter sort space events";
         gap: var(--grid-gap);
-        padding-bottom: 1%;
-        padding-top: 1%;
+        padding: 1%;
     }
 
     #search-bar input[type=text]
@@ -88,6 +89,87 @@ html, body
         background-size: var(--header-font-size);
     }
     
+    .dropbutton 
+    {
+        background-image: url(https://img.icons8.com/?size=100&id=gn7BG2TZ2vtF&format=png&color=000000);
+        background-repeat: no-repeat;
+        background-position: right 4% top 50%;
+        background-size: var(--header-font-size);
+        background-color: var(--dropdown-bg-color);
+        color: black;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        font-size: var(--main-font-size); 
+        border-radius: var(--main-border-radius);
+        border-style: solid;
+        border-width: var(--main-border-size);
+    }
+    
+    .dropbutton:hover, .dropbutton:focus 
+    {
+        background-color: var(--dropdown-hover-color);
+    }
+
+    .dropdown-content 
+    {
+        display: none;
+        position: absolute;
+        z-index: 100;
+        background-color: var(--main-bg-color);
+        border-radius: var(--main-border-radius);
+        border-color: var(--dropdown-hover-color);
+        border-width: var(--main-border-size);
+        border-style: solid;
+        box-shadow:0 0 10px var(--dropdown-hover-color);
+        width: 25%;
+    }
+    
+    .dropdown-content .event-header 
+    {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown-content div:hover 
+    {
+        border-radius: var(--main-border-radius);
+        background-color: var(--dropcontent-hover-color);
+    }
+
+    .dropbutton:hover, .dropbutton:focus 
+    {
+        background-color: var(--dropdown-hover-color);
+    }
+    
+    #events-dropdown:hover .dropdown-content 
+    {
+        display: block;
+    }
+
+    #events
+    {
+        max-height: 60%;
+        overflow-y: auto;
+        right: 1%;
+    }
+
+    .event-header
+    {
+        text-align: left;
+        font-size: var(--header-font-size);
+        padding: 5%;
+    }
+
+    .event-details
+    {
+        text-align: left;
+        padding-left: 15%;
+        font-size: var(--main-font-size);
+    }
+
     #events-dropdown
     {
         grid-area: events;
@@ -105,28 +187,6 @@ html, body
         grid-area: sort;
         
     }
-
-    .dropbutton {
-        background-image: url(https://img.icons8.com/?size=100&id=gn7BG2TZ2vtF&format=png&color=000000);
-        background-repeat: no-repeat;
-        background-position: right 4% top 50%;
-        background-size: var(--header-font-size);
-        background-color: var(--dropdown-bg-color);
-        color: black;
-        height: 100%;
-        width: 100%;
-        font-size: var(--main-font-size); 
-        border-radius: var(--main-border-radius);
-        cursor: pointer;
-        border-style: solid;
-        border-width: var(--main-border-size);
-    }
-
-    .dropbutton:hover, .dropbutton:focus {
-        background-color: var(--dropdown-hover-color);
-    }
-
-
     #side-bar
     {
         grid-area: sidebar;
@@ -144,7 +204,7 @@ html, body
     .scroll-containter
     {      
         padding-top: 2%;
-        overflow-y: scroll;
+        overflow-y: auto;
         scrollbar-width: thin;
         scrollbar-color: none;
         border-top: var(--main-border-size) solid var(--main-border-color);
@@ -155,7 +215,7 @@ html, body
         padding: 2%;
         font-size: var(--header-font-size);
         text-align: center;
-        color: var(--header-font-colour);
+        color: var(--header-font-color);
         display: flex;
         flex-direction: column;
         border-bottom: var(--main-border-size) solid var(--main-border-color);
@@ -204,4 +264,10 @@ html, body
         top: 50%;
         transform: translateY(-50%);
     }
+}
+
+/*Needs to be at bottom to overwrite other styles*/
+.show
+{
+    display: block;
 }
