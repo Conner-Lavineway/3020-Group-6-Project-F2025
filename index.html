@@ -21,21 +21,27 @@
                 <button onclick="eventButton()" class="dropbutton">Events</button>
                 <div id="events" class="dropdown-content">
                     <div class="event">
-                        <div class="event-header">Test Event</div>
-                        <div class="event-details">Test details</div>
+                        <div class="event-header">EITC 320: DnD Game</div>
+                        <div class="event-details">1:30pm - 4:30pm</div>
                     </div>
                 </div>
             </div>
             
             <div id="filter-dropdown">
-                <button class="dropbutton">Filter</button>
-                <div id="filter" class="dropdown-content">
+                <button onclick="filterButton()" class="dropbutton">Filter</button>
+                <div id="filters" class="dropdown-content">
+                    <div class="filter">
+                        <div class="filter-header">EITC 320: DnD Game</div>
+                        <div class="filter-details">1:30pm - 4:30pm</div>
+                    </div>
                 </div>
             </div>
             
             <div id="sort-dropdown">
-                <button class="dropbutton">Sort</button>
-                <div id="sort" class="dropdown-content">
+                <button onclick="sortButton()" class="dropbutton">Sort</button>
+                <div id="sorting" class="dropdown-content">
+                    <div id="relevance">Relevance</div>
+                    <div id="distance">Distance</div>
                 </div>
             </div>
             
