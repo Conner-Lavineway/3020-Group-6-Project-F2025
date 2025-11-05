@@ -2,7 +2,7 @@
 <html>
 	<head>                
 		<title>RoomDescription</title>
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="roomDescriptionStyle.css">
 	</head>
 	<body>
 
@@ -30,58 +30,20 @@
 				</div>
 
 			</div>
+			<div class="headerContainer">
+				<div>
+					<button class="backButton" style="text-align:left; padding-left: 10%"><<</button>
+				</div>
+				<div>
+					<h1 style="text-align:center">EITC 320</h1>
+				</div>
+				<div></div>
 
-			<h1 style="text-align:center">EITC 320</h1>
+			</div>
+
 
 			<div class="container">
-				<div>
-					<table style="width: 90%" class="tableHeader">
-						<tr class="tableHeader">
-							<th>Time</th>
-							<th>Availability</th>
-						</tr>
-						<tr class="tableBody">
-							<td>9</td>
-							<td>Test event</td>
-						</tr>
-						<tr class="tableBody">
-							<td>10</td>
-							<td>Available</td>
-						</tr>
-						<tr class="tableBody">
-							<td>11</td>
-							<td>Available</td>
-						</tr>
-						<tr class="tableBody">
-							<td>12</td>
-							<td>Available</td>
-						</tr>
-						<tr class="tableBody">
-							<td>1</td>
-							<td>Potluck</td>
-						</tr>
-						<tr class="tableBody">
-							<td>2</td>
-							<td>Potluck</td>
-						</tr>
-						<tr class="tableBody">
-							<td>3</td>
-							<td>Available</td>
-						</tr>
-						<tr class="tableBody">
-							<td>4</td>
-							<td>Available</td>
-						</tr>
-						<tr class="tableBody">
-							<td>5</td>
-							<td>Available</td>
-						</tr>
-						<tr class="tableBody">
-							<td>6</td>
-							<td>Available</td>
-						</tr>
-					</table>
-				</div>
+				<div style="margin-left: 5%" class="schedule" id="schedule"></div>
 				<div>
 
 					<img src=".\classroom1.jfif" style="max-width: 100%; border-radius: 25px;">
@@ -116,12 +78,14 @@
 						</div>
 					</div>
 					<div style="text-align: right">
-						<button class="button dibsButton">DIBS</button>
+						<button class="dibsButton">DIBS</button>
 					</div>
 				</div>
 			</div>
 
 		</div>
-		
+
+		<script src="Schedule.js"></script>
+
 	</body>
 </html>
