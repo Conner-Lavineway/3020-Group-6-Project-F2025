@@ -42,18 +42,18 @@ html, body {
         padding-top: 1%;
     }
 
-        #search-bar input[type=text] {
-            grid-area: bar;
-            font-size: var(--header-font-size);
-            border-radius: var(--main-border-radius);
-            border-style: var(--main-border-size) solid var(--main-border-color);
-            font-size: var(--header-font-size);
-            background-color: rgb(226, 179, 137);
-        }
+    #search-bar input[type=text] {
+        grid-area: bar;
+        font-size: var(--header-font-size);
+        border-radius: var(--main-border-radius);
+        border-style: var(--main-border-size) solid var(--main-border-color);
+        font-size: var(--header-font-size);
+        background-color: rgb(226, 179, 137);
+    }
 
-            #search-bar input[type=text]:focus {
-                outline: none;
-            }
+    #search-bar input[type=text]:focus {
+        outline: none;
+    }
 
     .search {
         background-image: url(https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000);
@@ -139,9 +139,16 @@ html, body {
 
     .roundedBox {
         border-radius: 25px;
-        border: 2px solid black;
+        /*border: 2px solid black;*/
         background-color: var(--container-bg-color);
         overflow: hidden;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+        cursor: pointer;
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .roundedBox:hover {
+        box-shadow: 0 0 8px var(--widget-bg-color);
     }
 
     .dibsButton {
@@ -164,7 +171,7 @@ html, body {
     .schedule {
         display: grid;
         grid-template-columns: 20% 1fr;
-        border: 2px solid black;
+        /*border: 2px solid black;*/
         font-family: monospace;
         overflow: hidden;
         background-color: var(--container-bg-color);
@@ -173,8 +180,9 @@ html, body {
 
     .time {
         display: flex;
-        border-right: 2px solid black;
+        border-right: 2px solid var(--main-bg-color);
         align-items: center;
+        justify-content: center;
        
     }
 
