@@ -18,8 +18,15 @@ map.setMaxBounds([
 map.setMinZoom(15);
 map.setMaxZoom(17);
 
+var pin = L.icon({
+    iconUrl: 'Images/pin.png',
+
+    iconSize:     [100, 100], // size of the icon
+    iconAnchor:   [49, 95], // point of the icon which will correspond to marker's location
+});
+
 function onMapClick(e) {
-    alert("You clicked the map at " + e.latlng);
+    L.marker(e.latlng, {icon:pin}).addTo(map);
 }
 
 function highlightLayer(layerID) {
