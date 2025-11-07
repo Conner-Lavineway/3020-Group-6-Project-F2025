@@ -1,10 +1,10 @@
 {
     "rooms": [
         {
-        "buildingName": "EITC (Engineering & Information Technology Complex)",
+        "buildingName": "EITC",
         "roomNumber": "105",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Projector/TV_Whiteboard_Food Allowed",
         "occupied": true,
         "scheduleData": [
             { "time": 9, "status": "Available" },
@@ -20,10 +20,10 @@
             ]
         },
         {
-        "buildingName": "EITC (Engineering & Information Technology Complex)",
+        "buildingName": "EITC",
         "roomNumber": "215",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Projector/TV_Food Allowed",
         "occupied": true,
         "scheduleData": [
             { "time": 9, "status": "Lecture" },
@@ -39,10 +39,10 @@
             ]
         },
         {
-        "buildingName": "EITC (Engineering & Information Technology Complex)",
+        "buildingName": "EITC",
         "roomNumber": "220",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Projector/TV_Whiteboard_Ritual Circle",
         "occupied": false,
         "scheduleData": [
             { "time": 9, "status": "Lecture" },
@@ -58,10 +58,10 @@
             ]
         },
         {
-        "buildingName": "EITC (Engineering & Information Technology Complex)",
+        "buildingName": "EITC",
         "roomNumber": "320",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Whiteboard_Moveable Tables_Food Allowed",
         "occupied": true,
         "scheduleData": [
             { "time": 9, "status": "Lecture" },
@@ -80,7 +80,7 @@
         "buildingName": "Drake Centre",
         "roomNumber": "104",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Projector/TV",
         "occupied": false,
         "scheduleData": [
             { "time": 9, "status": "Available" },
@@ -99,7 +99,7 @@
         "buildingName": "Drake Centre",
         "roomNumber": "112",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Projector/TV_Whiteboard_Moveable Tables_Food Allowed_Ritual Circle",
         "occupied": false,
         "scheduleData": [
             { "time": 9, "status": "Lecture" },
@@ -118,7 +118,7 @@
         "buildingName": "Drake Centre",
         "roomNumber": "128",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Projector/TV_Whiteboard_Food Allowed",
         "occupied": true,
         "scheduleData": [
             { "time": 9, "status": "Lecture" },
@@ -137,7 +137,7 @@
         "buildingName": "Drake Centre",
         "roomNumber": "310",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Whiteboard_Food Allowed",
         "occupied": true,
         "scheduleData": [
             { "time": 9, "status": "Lecture" },
@@ -156,7 +156,7 @@
         "buildingName": "Isbister Building",
         "roomNumber": "103",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Whiteboard_Moveable Tables_Food Allowed",
         "occupied": false,
         "scheduleData": [
             { "time": 9, "status": "Meeting" },
@@ -175,7 +175,7 @@
         "buildingName": "Isbister Building",
         "roomNumber": "107",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Whiteboard_Moveable Tables",
         "occupied": false,
         "scheduleData": [
             { "time": 9, "status": "Study Group" },
@@ -194,7 +194,7 @@
         "buildingName": "Isbister Building",
         "roomNumber": "207",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Projector/TV_Moveable Tables_Food Allowed",
         "occupied": false,
         "scheduleData": [
             { "time": 9, "status": "Lecture" },
@@ -213,7 +213,7 @@
         "buildingName": "Isbister Building",
         "roomNumber": "307",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Whiteboard_Food Allowed_Ritual Circle",
         "occupied": true,
         "scheduleData": [
             { "time": 9, "status": "Available" },
@@ -232,7 +232,7 @@
         "buildingName": "University College",
         "roomNumber": "302",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Projector/TV_Whiteboard_Moveable Tables_Food Allowed",
         "occupied": true,
         "scheduleData": [
             { "time": 9, "status": "Lecture" },
@@ -251,7 +251,7 @@
         "buildingName": "University College",
         "roomNumber": "305",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Whiteboard_Moveable Tables_Food Allowed",
         "occupied": false,
         "scheduleData": [
             { "time": 9, "status": "Available" },
@@ -270,7 +270,7 @@
         "buildingName": "University College",
         "roomNumber": "306",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Whiteboard_Food Allowed",
         "occupied": false,
         "scheduleData": [
             { "time": 9, "status": "Lecture" },
@@ -289,7 +289,7 @@
         "buildingName": "University College",
         "roomNumber": "310",
         "roomImage": "",
-        "roomDescription": "Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text.",
+        "roomDescription": "Ritual Circle",
         "occupied": true,
         "scheduleData": [
             { "time": 9, "status": "Available" },
