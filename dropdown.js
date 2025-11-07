@@ -5,17 +5,21 @@ function eventButton()
     for (i = 0; i < dropdowns.length; i++) 
     {
         var openDropdown = dropdowns[i];
-        if(openDropdown.classList.contains('show')) 
+        if(openDropdown.classList.contains('showEvents')) 
         {
-            openDropdown.classList.remove('show');
+            openDropdown.classList.remove('showEvents');
         }
-        else
+        else if(openDropdown.classList.contains('showSort')) 
         {
             openDropdown.classList.remove('showSort');
         }
+        else if(openDropdown.classList.contains('showFilters'))
+        {
+            openDropdown.classList.remove('showFilters');            
+        } 
     }  
 
-    document.getElementById("events").classList.toggle("show");
+    document.getElementById("events").classList.toggle("showEvents");
 }
 
 function sortButton()
@@ -25,14 +29,18 @@ function sortButton()
     for (i = 0; i < dropdowns.length; i++) 
     {
         var openDropdown = dropdowns[i];
-        if(openDropdown.classList.contains('show')) 
+        if(openDropdown.classList.contains('showEvents')) 
         {
-            openDropdown.classList.remove('show');
+            openDropdown.classList.remove('showEvents');
         }
-        else
+        else if(openDropdown.classList.contains('showSort')) 
         {
             openDropdown.classList.remove('showSort');
         }
+        else if(openDropdown.classList.contains('showFilters'))
+        {
+            openDropdown.classList.remove('showFilters');            
+        } 
     }  
 
     document.getElementById("sorting").classList.toggle("showSort");
@@ -45,17 +53,21 @@ function filterButton()
     for (i = 0; i < dropdowns.length; i++) 
     {
         var openDropdown = dropdowns[i];
-        if(openDropdown.classList.contains('show')) 
+        if(openDropdown.classList.contains('showEvents')) 
         {
-            openDropdown.classList.remove('show');
+            openDropdown.classList.remove('showEvents');
         }
-        else
+        else if(openDropdown.classList.contains('showSort')) 
         {
             openDropdown.classList.remove('showSort');
         }
+        else if(openDropdown.classList.contains('showFilters'))
+        {
+            openDropdown.classList.remove('showFilters'); 
+        } 
     }  
     
-    document.getElementById("filters").classList.toggle("show")
+    document.getElementById("filters").classList.toggle("showFilters")
 }
 
 window.onclick = function(event) 
@@ -67,14 +79,18 @@ window.onclick = function(event)
         for (i = 0; i < dropdowns.length; i++) 
         {
             var openDropdown = dropdowns[i];
-            if(openDropdown.classList.contains('show')) 
+            if(openDropdown.classList.contains('showEvents')) 
             {
-                openDropdown.classList.remove('show');
-            }        
-            else
+                openDropdown.classList.remove('showEvents');
+            }
+            else if(openDropdown.classList.contains('showSort')) 
             {
                 openDropdown.classList.remove('showSort');
             }
+            else if(openDropdown.classList.contains('showFilters'))
+            {
+                openDropdown.classList.remove('showFilters');            
+            } 
         }
     }
 }

@@ -188,6 +188,12 @@ html, body
         grid-area: filter;
         
     }
+
+    #filter-dropdown:hover .dropdown-content
+    {
+        display: block;
+        height: 80%;
+    }
     
     #sort-dropdown
     {
@@ -284,6 +290,7 @@ html, body
 
     #map
     {
+        border-radius: var(--main-border-radius);
         grid-area: map;
         top: 50%;
         transform: translateY(-50%);
@@ -291,7 +298,7 @@ html, body
 }
 
 /*Needs to be at bottom to overwrite other styles*/
-.show
+.showEvents
 {
     display: block;
 }
@@ -301,4 +308,10 @@ html, body
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0px;
+}
+
+.showFilters
+{
+    display: block;
+    height: 80%;
 }
