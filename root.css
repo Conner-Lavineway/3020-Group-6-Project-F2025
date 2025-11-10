@@ -24,5 +24,7 @@
 
     --dropcontent-hover-color: rgb(200, 200, 200);
 
-    --box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6)
+    --box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+
+    --glow: 0 0 10px var(--dropdown-hover-color);
 }

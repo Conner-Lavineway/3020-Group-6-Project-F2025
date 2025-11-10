@@ -1,6 +1,8 @@
+var dropdowns = document.getElementsByClassName("dropdown-content");
+document.getElementById("relevance").classList.toggle("active");
+
 function eventButton()
 {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) 
     {
@@ -24,7 +26,6 @@ function eventButton()
 
 function sortButton()
 {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) 
     {
@@ -48,7 +49,7 @@ function sortButton()
 
 function filterButton()
 {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
+
     var i;
     for (i = 0; i < dropdowns.length; i++) 
     {
@@ -67,14 +68,29 @@ function filterButton()
         } 
     }  
     
-    document.getElementById("filters").classList.toggle("showFilters")
+    document.getElementById("filters").classList.toggle("showFilters");
+}
+
+function sortFilter()
+{
+    var buttons = document.getElementsByClassName("sortButton");
+    var i;
+    for(i = 0; i < buttons.length; i++)
+    {
+        if(buttons[i].classList.contains('active'))
+        {
+            buttons[i].classList.remove('active');
+        }
+    }
+
+    (event.target).classList.toggle("active");
 }
 
 window.onclick = function(event) 
 {
     if (!event.target.matches('.dropbutton')) 
     {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
+
         var i;
         for (i = 0; i < dropdowns.length; i++) 
         {
