@@ -1,0 +1,28 @@
+@import "homepage.css";
+
+:root
+{
+    --main-font: 'Courier New', Courier, monospace;
+    --main-font-size: 20px;
+    --main-font-color: black;
+
+    --header-font-size: 30px;
+    --header-font-color: rgb(0, 0, 0);
+
+    --main-bg-color: rgb(219, 219, 219);
+    --main-border-color: black;
+    --main-border-size: 2px;
+    --main-border-radius: 20px;
+
+    --dropdown-bg-color: rgb(234, 156, 87);
+    --dropdown-hover-color: #ea6d29;
+
+    --widget-bg-color: rgb(234, 156, 87);
+    --widget-hover-color: #ea6d29;
+
+    --grid-gap: 2px;
+
+    --dropcontent-hover-color: rgb(200, 200, 200);
+
+    --box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6)
+}

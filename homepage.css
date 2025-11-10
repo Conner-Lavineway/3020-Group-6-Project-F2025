@@ -1,29 +1,4 @@
-:root
-{
-    --main-font: 'Courier New', Courier, monospace;
-    --main-font-size: 20px;
-    --main-font-color: black;
-
-    --header-font-size: 30px;
-    --header-font-color: rgb(0, 0, 0);
-
-    --main-bg-color: rgb(219, 219, 219);
-    --main-border-color: black;
-    --main-border-size: 2px;
-    --main-border-radius: 20px;
-
-    --dropdown-bg-color: rgb(234, 156, 87);
-    --dropdown-hover-color: #ea6d29;
-
-    --widget-bg-color: rgb(234, 156, 87);
-    --widget-hover-color: #ea6d29;
-
-    --grid-gap: 2px;
-
-    --dropcontent-hover-color: rgb(200, 200, 200);
-
-    --box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6)
-}
+@import "root.css";
 
 body
 {
@@ -59,13 +34,14 @@ html, body
     {
         grid-area: header;
         display: grid;
-        grid-template-columns: 2fr 2fr 3fr 1fr;
+        grid-template-columns: 2fr 2fr 4fr 1fr;
         grid-template-rows: 1fr 1fr;
         grid-template-areas: 
         "bar bar space empty"
         "filter sort space events";
         gap: var(--grid-gap);
         padding: 1%;
+        /*background-color: rgb(150, 150, 150);*/
     }
 
     #search-bar input[type=text]
@@ -194,7 +170,22 @@ html, body
         display: block;
         height: 80%;
     }
+
+    #filters
+    {
+        padding: 1%;
+    }
     
+    .filter-header
+    {
+        font-size: var(--header-font-size);
+    }
+
+    .filter-details
+    {
+        overflow-wrap: break-word;
+    }
+
     #sort-dropdown
     {
         grid-area: sort;
@@ -228,7 +219,6 @@ html, body
         grid-template-areas: 
         "available"
         "occupied";
-        border-top: var(--main-border-size) solid var(--main-border-color);
     }
     
     .scroll-containter
@@ -237,7 +227,6 @@ html, body
         overflow-y: auto;
         scrollbar-width: thin;
         scrollbar-color: none;
-        border-top: var(--main-border-size) solid var(--main-border-color);
     }
     
     #available-rooms, #occupied-rooms

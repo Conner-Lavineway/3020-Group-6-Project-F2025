@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!--Custom styles-->
+        <link rel="stylesheet" href="homepage.css">
+
+
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
             integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
             crossorigin=""/>
-        <link rel="stylesheet" href="style.css">
         <!-- Make sure you put this AFTER Leaflet's CSS -->
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
@@ -35,8 +38,20 @@
                 <button onclick="filterButton()" class="dropbutton">Filter</button>
                 <div id="filters" class="dropdown-content">
                     <div class="filter">
-                        <div class="filter-header">EITC 320: DnD Game</div>
-                        <div class="filter-details">1:30pm - 4:30pm</div>
+                        <div class="filter-header">Amenites</div>
+                        <div class="filter-details">
+                            <input type="checkbox" id ="outlets" name="outlets" value="outlets">
+                            <label for="outlets">Outlets</label>
+                            <input type="checkbox" id ="projectors" name="projectors" value="projectors">
+                            <label for="projectors">Projectors</label>
+                        </div>
+                        <div class="filter-header">Building</div>
+                        <div class="filter-details">
+                            <input type="checkbox" id ="outlets" name="outlets" value="outlets">
+                            <label for="outlets">Outlets</label>
+                            <input type="checkbox" id ="projectors" name="projectors" value="projectors">
+                            <label for="projectors">Projectors</label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,7 +78,7 @@
                     </div>
                 </div>
                 <div id="occupied-rooms">
-                    <p>Occupied Rooms</p>
+                    <p>Dibbed Rooms</p>
                     <div class="scroll-containter">
                         <div class="test-widget"></div>
                         <div class="test-widget"></div>
