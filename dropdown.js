@@ -1,7 +1,7 @@
-var dropdowns = document.getElementsByClassName("dropdown-content");
-document.getElementById("relevance").classList.toggle("active");
+var dropdowns = document.getElementsByClassName("dropdown-box");
+document.getElementById("relevance").classList.toggle("activeSort");
 
-function eventButton()
+function showEvent()
 {
     var i;
     for (i = 0; i < dropdowns.length; i++) 
@@ -24,7 +24,7 @@ function eventButton()
     document.getElementById("events").classList.toggle("showEvents");
 }
 
-function sortButton()
+function showSort()
 {
     var i;
     for (i = 0; i < dropdowns.length; i++) 
@@ -47,9 +47,8 @@ function sortButton()
     document.getElementById("sorting").classList.toggle("showSort");
 }
 
-function filterButton()
+function showFilter()
 {
-
     var i;
     for (i = 0; i < dropdowns.length; i++) 
     {
@@ -77,18 +76,31 @@ function sortFilter()
     var i;
     for(i = 0; i < buttons.length; i++)
     {
-        if(buttons[i].classList.contains('active'))
+        if(buttons[i].classList.contains('activeSort'))
         {
-            buttons[i].classList.remove('active');
+            buttons[i].classList.remove('activeSort');
         }
     }
 
-    (event.target).classList.toggle("active");
+    (event.target).classList.toggle("activeSort");
+}
+
+function filterButton()
+{
+    if((event.target).classList.contains("activeFilter"))
+    {
+        (event.target).classList.remove("activeFilter");
+    }
+    else
+    {
+        (event.target).classList.toggle("activeFilter");
+    }
+
 }
 
 window.onclick = function(event) 
 {
-    if (!event.target.matches('.dropbutton')) 
+    if (!event.target.matches('.dropbutton') && !event.target.matches('.dropdown-content') && !event.target.matches('select2-selection__rendered')) 
     {
 
         var i;

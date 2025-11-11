@@ -16,8 +16,10 @@
         <script src="https://cdn.maptiler.com/maptiler-sdk-js/v3.8.0/maptiler-sdk.umd.min.js"></script>
         <link href="https://cdn.maptiler.com/maptiler-sdk-js/v3.8.0/maptiler-sdk.css" rel="stylesheet" />
         <script src="https://cdn.maptiler.com/leaflet-maptilersdk/v4.1.0/leaflet-maptilersdk.umd.min.js"></script>
-          
-        <title>Map Test</title>
+
+     
+        
+    <title>Map Test</title>
     </head>
     <body>
         <div id="search-bar">
@@ -25,47 +27,54 @@
             <input type="text" id="search" placeholder="Search...">
             
             <div id="events-dropdown">
-                <button onclick="eventButton()" class="dropbutton">Events</button>
-                <div id="events" class="dropdown-content">
-                    <div class="event">
-                        <div class="event-header">EITC 320: DnD Game</div>
-                        <div class="event-details">1:30pm - 4:30pm</div>
+                <button onclick="showEvent()" class="dropbutton">Events</button>
+                <div id="events" class="dropdown-box">
+                    <div class="event dropdown-content">
+                        <div class="event-header dropdown-content">EITC 320: DnD Game</div>
+                        <div class="event-details dropdown-content">1:30pm - 4:30pm</div>
                     </div>
                 </div>
             </div>
             
             <div id="filter-dropdown">
-                <button onclick="filterButton()" class="dropbutton">Filter</button>
-                <div id="filters" class="dropdown-content">
-                    <div class="filter">
-                        <div class="filter-header">Amenites</div>
-                        <div class="filter-details">
-                            <button onclick="buttonFilter()" class="filterButton" id="outlets">Outlets</button>
-                            <button onclick="buttonFilter()" class="filterButton" id="projectors">Projectors</button>
+                <button onclick="showFilter()" class="dropbutton">Filter</button>
+                <div id="filters" class="dropdown-box">
+                    <div class="filter dropdown-content">
+                        <div class="filter-header dropdown-content">Amenites:</div>
+                        <div class="filter-details dropdown-content">
+                            <button onclick="filterButton()" class="filterButton dropdown-content" id="outlet">Outlets</button>
+                            <button onclick="filterButton()" class="filterButton dropdown-content" id="projector">Projector/TV</button>
+                            <button onclick="filterButton()" class="filterButton dropdown-content" id="food">Food Allowed</button>
+                            <button onclick="filterButton()" class="filterButton dropdown-content" id="whiteboard">Whiteboard</button>
+                            <button onclick="filterButton()" class="filterButton dropdown-content" id="circle">Ritual Circle</button>
                         </div>
                     </div>
-                    <div class="filter">
-                        <div class="filter-header">Building</div>
-                        <div class="filter-details">
-                            <input type="checkbox" id="outlets" name="outlets" value="outlets">
-                            <label for="outlets">Outlets</label>
-                            <input type="checkbox" id="projectors" name="projectors" value="projectors">
-                            <label for="projectors">Projectors</label>
+                    <div class="filter dropdown-content">
+                        <div class="filter-header dropdown-content">Building</div>
+                        <div class="filter-details dropdown-content">
+                            <select class="building dropdown-content">
+                                <option class="dropdown-content" value="1">EITC</option>
+                                <option class="dropdown-content" value="2">Drake Center</option>
+                                <option class="dropdown-content" value="3">Isbister</option>
+                                <option class="dropdown-content" value="4">University College</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="filter">
-                        <div class="filter-header">Available At:</div>
-                        <div class="filter-details">
+                    <div class="filter dropdown-content">
+                        <div class="filter-header dropdown-content">Available At:</div>
+                        <div class="filter-details dropdown-content">
+                            <input type="time" id="time" min="09:00" max="18:00" step="900">
+
                         </div>
                     </div>
                 </div>
             </div>
             
             <div id="sort-dropdown">
-                <button onclick="sortButton()" class="dropbutton">Sort</button>
-                <div id="sorting" class="dropdown-content">
-                    <button onclick="sortFilter()" class="sortButton" id="relevance">Relevance</button>
-                    <button onclick="sortFilter()" class="sortButton" id="distance">Distance</button>
+                <button onclick="showSort()" class="dropbutton">Sort</button>
+                <div id="sorting" class="dropdown-box">
+                    <button onclick="sortFilter()" class="sortButton dropdown-content" id="relevance">Relevance</button>
+                    <button onclick="sortFilter()" class="sortButton dropdown-content" id="distance">Distance</button>
                 </div>
             </div>
             
