@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Search demo</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+    <script src="search.js" defer></script>
+  </head>
+  <body>
+    <div class="search-sidebar">
+      <div id="search-bar">
+        <input type="text" placeholder="Type to search..." />
+        <button>Search</button>
+      </div>
+
+      <h2>Search Results</h2>
+      <div class="search-results">
+        <div class="room-result">
+          <h3>Room 101</h3>
+          <p>Quiet study · 4 seats · Whiteboard</p>
+        </div>
+        <div class="room-result">
+          <h3>Room 202</h3>
+          <p>Group work · 6 seats · Projector</p>
+        </div>
+      </div>
+
+      <h2>Suggested Filters</h2>
+      <div class="suggested-filters">
+        <button>Quiet</button>
+        <button>Group work</button>
+        <button>Near windows</button>
+      </div>
+    </div>
+  </body>
+</html>
