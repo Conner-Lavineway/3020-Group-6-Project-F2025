@@ -1,6 +1,7 @@
 {
     "rooms": [
         {
+        "roomID": 1
         "buildingName": "EITC",
         "roomNumber": "105",
         "roomImage": "",
@@ -20,6 +21,7 @@
             ]
         },
         {
+        "roomID": 2
         "buildingName": "EITC",
         "roomNumber": "215",
         "roomImage": "",
@@ -39,6 +41,7 @@
             ]
         },
         {
+        "roomID": 3
         "buildingName": "EITC",
         "roomNumber": "220",
         "roomImage": "",
@@ -58,6 +61,7 @@
             ]
         },
         {
+        "roomID": 4
         "buildingName": "EITC",
         "roomNumber": "320",
         "roomImage": "",
@@ -77,6 +81,7 @@
             ]
         },
         {
+        "roomID": 5
         "buildingName": "Drake Centre",
         "roomNumber": "104",
         "roomImage": "",
@@ -96,6 +101,7 @@
             ]
         },
         {
+        "roomID": 6
         "buildingName": "Drake Centre",
         "roomNumber": "112",
         "roomImage": "",
@@ -115,6 +121,7 @@
             ]
         },
         {
+        "roomID": 7
         "buildingName": "Drake Centre",
         "roomNumber": "128",
         "roomImage": "",
@@ -134,6 +141,7 @@
             ]
         },
         {
+        "roomID": 8
         "buildingName": "Drake Centre",
         "roomNumber": "310",
         "roomImage": "",
@@ -153,6 +161,7 @@
             ]
         },
         {
+        "roomID": 9
         "buildingName": "Isbister Building",
         "roomNumber": "103",
         "roomImage": "",
@@ -172,6 +181,7 @@
             ]
         },
         {
+        "roomID": 10
         "buildingName": "Isbister Building",
         "roomNumber": "107",
         "roomImage": "",
@@ -191,6 +201,7 @@
             ]
         },
         {
+        "roomID": 11
         "buildingName": "Isbister Building",
         "roomNumber": "207",
         "roomImage": "",
@@ -210,6 +221,7 @@
             ]
         },
         {
+        "roomID": 12
         "buildingName": "Isbister Building",
         "roomNumber": "307",
         "roomImage": "",
@@ -229,6 +241,7 @@
             ]
         },
         {
+        "roomID": 13
         "buildingName": "University College",
         "roomNumber": "302",
         "roomImage": "",
@@ -248,6 +261,7 @@
             ]
         },
         {
+        "roomID": 14
         "buildingName": "University College",
         "roomNumber": "305",
         "roomImage": "",
@@ -267,6 +281,7 @@
             ]
         },
         {
+        "roomID": 15
         "buildingName": "University College",
         "roomNumber": "306",
         "roomImage": "",
@@ -286,6 +301,7 @@
             ]
         },
         {
+        "roomID": 16
         "buildingName": "University College",
         "roomNumber": "310",
         "roomImage": "",
