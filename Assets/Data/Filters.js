@@ -13,5 +13,3 @@ const filters = {
         "University College"
     ]
 }
-
-export {filters};
