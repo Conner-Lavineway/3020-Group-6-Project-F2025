@@ -17,9 +17,13 @@ map.setMaxBounds([
 
 map.setMinZoom(16);
 map.setMaxZoom(19);
+var myTextLabel = L.divIcon({
+        className: 'text-labels',   // Set class for CSS styling
+        html: 'A Text Label'
+    });
 
 var pin = L.icon({
-    iconUrl: 'Images/pin.png',
+    iconUrl: 'Assets/Images/pin.png',
 
     iconSize:     [50, 50], // size of the icon
     iconAnchor:   [25, 47], // point of the icon which will correspond to marker's location
@@ -27,6 +31,7 @@ var pin = L.icon({
 
 function onMapClick(e) {
     L.marker(e.latlng, {icon:pin}).addTo(map);
+    L.marker(e.latlng, {icon:myTextLabel}).addTo(map)
 }
 
 function highlightLayer(layerID) {

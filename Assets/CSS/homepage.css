@@ -310,7 +310,7 @@ body{
 
 #map
 {
-    border-radius: var(--main-border-radius);
+    border-radius: var(--main-border-radius) 0px 0px 0px;
     grid-area: map;
     top: 50%;
     transform: translateY(-50%);
