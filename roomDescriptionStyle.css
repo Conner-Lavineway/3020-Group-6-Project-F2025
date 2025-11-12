@@ -17,7 +17,7 @@
 }
 
 body {
-    font-family: var(--main-font);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     padding: 0px;
     margin: 0px;
     background-color: var(--main-bg-color);
@@ -175,7 +175,6 @@ html, body {
         display: grid;
         grid-template-columns: 20% 1fr;
         /*border: 2px solid black;*/
-        font-family: monospace;
         overflow: hidden;
         background-color: var(--container-bg-color);
         height: 100%;
