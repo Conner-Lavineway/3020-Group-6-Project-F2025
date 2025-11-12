@@ -44,6 +44,12 @@
                 select.className = 'building dropdown-content'
                 detailDiv.appendChild(select);
 
+                defaultOption = document.createElement('option');
+                defaultOption.className = 'dropdown-content';
+                defaultOption.value = 'none';
+                defaultOption.innerHTML = 'Any';
+                select.appendChild(defaultOption);
+
                 for(i = 0; i < filters.building.length; i++)
                 {
                     option = document.createElement('option'); //create a select option
@@ -111,6 +117,35 @@
     var i;
     for(i = 0; i < rooms.length; i++)
     {   
-        //TODO: Later
+        roomWidget = document.createElement('div');
+        roomWidget.className = 'room-widget';
+        
+        roomHeader = document.createElement('div');
+        roomHeader.className = 'room-header';
+        timeFormat = rooms[i].scheduleData[0].time + ':00 - ' + rooms[i].scheduleData[1].time +':00';
+        roomHeader.innerHTML = rooms[i].buildingName + ' ' +  rooms[i].roomNumber + '<br>' + timeFormat;
+
+        roomDetails = document.createElement('div');
+        roomDetails.className = 'room-details';
+        var x;
+        for(x = 0; x < rooms[i].roomDescription.length; x++)
+        {
+            roomTag = document.createElement('div');
+            roomTag.className = 'room-tag';
+            roomTag.innerHTML = rooms[i].roomDescription[x];
+            
+            roomDetails.appendChild(roomTag);
+        }
+        roomWidget.appendChild(roomHeader);
+        roomWidget.appendChild(roomDetails);
+
+        if(rooms[i].occupied)
+        {
+            occupiedDiv.appendChild(roomWidget);
+        }
+        else
+        {
+            availableDiv.appendChild(roomWidget);
+        }
     }    
 }
