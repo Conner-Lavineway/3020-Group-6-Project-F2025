@@ -32,14 +32,13 @@ body{
 {
     grid-area: header;
     display: grid;
-    grid-template-columns: 2fr 2fr 4fr 1fr;
+    grid-template-columns: 2fr 2fr 3fr 0.5fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: 
-    "bar bar space empty"
-    "filter sort space events";
+    "bar bar space empty empty"
+    "filter sort space events events";
     gap: var(--grid-gap);
     padding: 1%;
-    /*background-color: rgb(150, 150, 150);*/
 }
 
 #search-bar input[type=text]
@@ -149,14 +148,17 @@ body{
 {
     text-align: left;
     font-size: var(--header-font-size);
-    padding: 5%;
+    padding: 2% 5% 5% 5%;
 }
 
 .event-details
 {
-    text-align: left;
-    padding-left: 15%;
+    text-align: center;
+    transform: translateX(5%);
     font-size: var(--main-font-size);
+    max-width: 90%;
+    padding-bottom: 5%;
+    border-bottom: solid 2px var(--dropcontent-hover-color);
 }
 
 #filter-dropdown
@@ -199,6 +201,8 @@ body{
     border-radius: var(--main-border-radius);
     border-style: none;
     font-size: var(--main-font-size);
+    margin: 1%;
+    box-shadow: var(--box-shadow);
 }
 
 #sort-dropdown
@@ -210,15 +214,14 @@ body{
 {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 1%;
     width: fit-content;
 }
 
-#sorting div
+#sorting
 {
     font-size: var(--main-font-size);
     text-align: center;
-    padding: 5%;
-    margin: 2%;
     border-radius: var(--main-border-radius);
 }
 
@@ -227,13 +230,16 @@ body{
     font-size: var(--header-font-size);
     background-color: var(--main-bg-color);
     border-style: none;
-    min-width: fit-content;
+    min-width: max-content;
+    padding: 2%;
+    margin:1%;
 }
 
 #relevance
 {
     border-radius: var(--main-border-radius) 0px 0px var(--main-border-radius);
 }
+
 #distance
 {
     border-radius: 0px var(--main-border-radius) var(--main-border-radius) 0px;
@@ -252,7 +258,7 @@ body{
     "occupied";
 }
 
-.scroll-containter
+.scroll-container
 {      
     padding-top: 2%;
     overflow-y: auto;
@@ -289,23 +295,34 @@ body{
 }
 
 /* Temp widget, fill with actual data and change styling later*/
-.test-widget
+.room-widget
 {
-    height: 200px;
     width: 90%;
+    padding: 1%;
+    background-color: var(--dropcontent-hover-color);
     margin-top: 5%;
     margin-bottom: 5%;
     margin-left: auto;
     margin-right: auto;
     display: block;
-    background-color: var(--widget-bg-color);
     border-radius: var(--main-border-radius);
     cursor: pointer;
 }
 
-.test-widget:hover
+.room-widget:hover
 {
-    background-color: var(--widget-hover-color);
+    box-shadow: var(--glow);
+}
+
+.room-tag
+{
+    max-width: fit-content;
+    padding: 1%;
+    border-radius: var(--main-border-radius);
+    border-style: none;
+    font-size: var(--main-font-size);
+    margin: 1%;
+    background-color: var(--dropdown-bg-color);
 }
 
 #map
@@ -315,7 +332,6 @@ body{
     top: 50%;
     transform: translateY(-50%);
 }
-
 
 /*Needs to be at bottom to overwrite other styles*/
 .showEvents
@@ -327,6 +343,7 @@ body{
 {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 1%;
     width: fit-content;
 }
 
@@ -343,4 +360,10 @@ body{
 .activeFilter
 {
     background-color: var(--dropdown-bg-color);
+}
+
+.last
+{
+    border-bottom: none;
+    padding-bottom: 0%;
 }

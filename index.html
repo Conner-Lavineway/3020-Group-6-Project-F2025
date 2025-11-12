@@ -19,7 +19,7 @@
 
      
         
-    <title>Map Test</title>
+    <title>Map room</title>
     </head>
     <body>
         <div id="search-bar">
@@ -27,30 +27,13 @@
             <input type="text" id="search" placeholder="Search...">
             
             <div id="events-dropdown">
-                <button onclick="showEvent()" class="dropbutton">Events</button>
-                <div id="events" class="dropdown-box">
-                    <div class="event dropdown-content">
-                        <div class="event-header dropdown-content">EITC 320: DnD Game</div>
-                        <div class="event-details dropdown-content">1:30pm - 4:30pm</div>
-                    </div>
-                </div>
+                <button onclick="showEvent()" class="dropbutton">Events Today</button>
+                <div id="events" class="dropdown-box"></div>
             </div>
             
             <div id="filter-dropdown">
                 <button onclick="showFilter()" class="dropbutton">Filter</button>
-                <div id="filters" class="dropdown-box">
-                    <div class="filter dropdown-content"></div>
-                    <div class="filter dropdown-content"></div>
-                    
-                    <div class="filter dropdown-content">
-                        <div class="filter-header dropdown-content">Available At:</div>
-                        <div class="filter-details dropdown-content">
-                            <input type="time" id="time" min="09:00" max="18:00" step="900">
-                            
-                        </div>
-                    </div>
-                    </div>
-                </div>
+                <div id="filters" class="dropdown-box">                    </div>
             </div>
             
             <div id="sort-dropdown">
@@ -67,20 +50,22 @@
                 <!--Both filled with widgets to show scrolling, need to autopopulate from data when we get that-->
                 <div id="available-rooms">
                     <p>Available Rooms</p>
-                    <div class="scroll-containter">
-                        <div class="test-widget"></div>
-                        <div class="test-widget"></div>
-                        <div class="test-widget"></div>
-                        <div class="test-widget"></div>
+                    <div class="scroll-container">
+                        <div class="room-widget">
+                            <div class="room-header">EITC 320<br>9:00am - 11:00am</div>
+                            <div class="room-details">
+                                <div class="room-tag">Ritual Circle</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="occupied-rooms">
                     <p>Dibbed Rooms</p>
-                    <div class="scroll-containter">
-                        <div class="test-widget"></div>
-                        <div class="test-widget"></div>
-                        <div class="test-widget"></div>
-                        <div class="test-widget"></div>
+                    <div class="scroll-container">
+                        <div class="room-widget"></div>
+                        <div class="room-widget"></div>
+                        <div class="room-widget"></div>
+                        <div class="room-widget"></div>
                     </div>
                 </div>
             </div>
@@ -92,7 +77,11 @@
         <!--Keep scripts at the bottom they need to be loaded after all the page elements-->
         <script src="./Assets/JS/map.js"></script>
         <script src="./Assets/JS/dropdown.js"></script>
+        <!--Load data-->
         <script src="./Assets/Data/Filters.js"></script>
+        <script src="./Assets/Data/Events.js"></script>
+        <script src="./Assets/Data/Dibs_Prototype_Data.js"></script>
+        <!--Do stuff with it-->
         <script src="./Assets/JS/populate.js"></script>
     </body>
 </html>

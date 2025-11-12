@@ -1,7 +1,9 @@
 const filterNames = 
 [
-    "Amenities",
-    "Buildings"
+    "Amenities:",
+    "Buildings:",
+    "Available At:",
+    "Test:",
 ];
 
 const filters = 
@@ -12,13 +14,13 @@ const filters =
         "Whiteboard",
         "Food Allowed",
         "Ritual Circle",
-        "Moveable Tables"
+        "Moveable Tables",
     ],
     building:
     [
         "EITC",
         "Drake Center",
         "Isbister",
-        "University College"
+        "University College",
     ]
 };
