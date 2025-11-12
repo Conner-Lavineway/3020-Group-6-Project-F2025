@@ -56,16 +56,63 @@ function applyFilters(filters, rooms = DATA.rooms) {
   return result;
 }
 
+/**
+ * Search room data using optional hard filters + fuzzy text search.
+ *
+ * 1. Start from `rooms` (defaults to DATA.rooms).
+ * 2. Apply each filter in `filters` (each filter: (room) => boolean).
+ * 3. Run Fuse.js fuzzy search on building name + room number.
+ *
+ * @param {string} query                - The text to search for.
+ * @param {Array<function>} [filters]   - List of filter functions.
+ * @param {Array} [rooms=DATA.rooms]    - Rooms array to search in.
+ * @returns {Array} Fuse.js search results.
+ */
+function searchData(query, filters = [], rooms = DATA.rooms) {
+  // Apply hard filters first (if any)
+  const filteredRooms =
+    filters.length > 0 ? applyFilters(filters, rooms) : rooms;
+
+  // Configure Fuse options
+
+  const fuseOptions = {
+    isCaseSensitive: false,
+    includeScore: true,
+    includeMatches: false, // set true if you want highlighting
+    shouldSort: true,
+    minMatchCharLength: 2,
+    ignoreLocation: true,
+    keys: [
+      { name: "buildingName", weight: 0.45 },
+      { name: "roomNumber", weight: 0.45 },
+      { name: "roomDescription", weight: 0.1 },
+    ],
+  };
+
+  const fuse = new Fuse(filteredRooms, fuseOptions);
+
+  // Return search results from Fuse.js
+  return fuse.search(query);
+}
+
 // TESTING
 const room1 = DATA.rooms[0];
 const resultblock = document.getElementById("search-results");
 const roomHTML = roomToHTML(room1);
 
-resultblock.innerHTML += roomHTML;
-
-/** Factory: returns a filter function for a specific building name */
-function makeBuildingFilter(buildingName) {
-  return function (room) {
-    return room.buildingName === buildingName;
-  };
+function updateResults(query) {
+  resultblock.innerHTML = "";
+  results = searchData(query);
+  for (const result of results) {
+    resultblock.innerHTML += roomToHTML(result.item);
+  }
 }
+
+searchBtn = document.getElementById("search-btn");
+searchbar = document.getElementById("search-box");
+
+// get content from search bar when button is clicked
+searchBtn.addEventListener("click", () => {
+  query = searchbar.value;
+  updateResults(query);
+});

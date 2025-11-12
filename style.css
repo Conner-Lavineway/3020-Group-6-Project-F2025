@@ -204,3 +204,19 @@ body {
   background: var(--color-filter-bg-hover);
   border-color: var(--color-filter-border-hover);
 }
+
+/* Make the whole card a column so results can grow + scroll */
+.search-sidebar {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh; /* or whatever you like */
+}
+
+/* Make the results area scrollable */
+.search-results {
+  flex: 1; /* take remaining space in the sidebar */
+  min-height: 0; /* important so flex + overflow works */
+  overflow-y: auto;
+  margin-bottom: 1rem; /* keep whatever spacing you want */
+  padding-right: 0.25rem; /* optional: room for scrollbar */
+}
