@@ -35,3 +35,22 @@ scheduleData.forEach(({ time, status }) => {
 
 });
 
+
+
+document.getElementById("roomTitle").textContent = "Title text";
+
+document.getElementById("description").textContent = "Description text";
+
+document.getElementById("building").textContent = "Building text";
+
+document.getElementById("room").textContent = "Room text";
+
+const amenities = ["Projector", "Chairs", "Outlets", "Whiteboard"];
+
+const amenitiesList = document.getElementById("amenities");
+
+amenities.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    amenitiesList.appendChild(li);
+});
