@@ -2,7 +2,7 @@ const filterNames =
 [
     "Amenities:",
     "Buildings:",
-    "Available At:",
+    "Empty Today During:",
 ];
 
 const filters = 
