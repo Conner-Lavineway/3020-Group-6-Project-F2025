@@ -27,27 +27,26 @@ body
 
 /**Homepage**/
 
-#search-bar
-{
+#search-bar {
     grid-area: header;
     display: grid;
     grid-template-columns: 2fr 2fr 3fr 0.5fr 1fr;
     grid-template-rows: 1fr 1fr;
-    grid-template-areas: 
-    "bar bar space empty empty"
-    "filter sort space events events";
+    grid-template-areas:
+        "bar bar space empty empty"
+        "filter sort space events events";
     gap: var(--grid-gap);
     padding: 1%;
+    background-color: var(--main-header-bg-color);
 }
 
-#search-bar input[type=text]
-{
+#search-bar input[type=text] {
     grid-area: bar;
-    font-size: var(--main-font-size); 
+    font-size: var(--main-font-size);
     border-radius: var(--main-border-radius);
     border-style: var(--main-border-size) solid var(--main-border-color);
-    font-size: var(--header-font-size); 
-    background-color: rgb(226, 179, 137);
+    font-size: var(--header-font-size);
+    background-color: #ffbf69;
 }
 
 #search-bar input[type=text]:focus
@@ -61,6 +60,7 @@ body
     background-position: right 4% top 50%;
     background-repeat: no-repeat;
     background-size: var(--header-font-size);
+    
 }
 
 .dropbutton 
@@ -274,6 +274,15 @@ body
     flex-direction: column;
 }
 
+#room-title 
+{
+    font-size: var(--header-font-size);
+    text-align: center;
+    color: var(--header-font-color);
+    display: flex;
+    flex-direction: column;
+}
+
 #available-rooms
 {
     grid-area: available;
@@ -296,7 +305,7 @@ body
 {
     width: 90%;
     padding: 1%;
-    background-color: var(--dropcontent-hover-color);
+    background-color: var(--container-bg-color);
     margin-top: 5%;
     margin-bottom: 5%;
     margin-left: auto;
@@ -304,6 +313,7 @@ body
     display: block;
     border-radius: var(--main-border-radius);
     cursor: pointer;
+    box-shadow: var(--box-shadow);
 }
 
 .room-widget:hover
@@ -383,11 +393,11 @@ body
 }
 
 .roundedBox {
-    border-radius: 25px;
+    border-radius: var(--main-border-radius);
     /*border: 2px solid black;*/
     background-color: var(--container-bg-color);
     overflow: hidden;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+    box-shadow: var(--box-shadow);
     cursor: pointer;
     transition: box-shadow 0.3s ease-in-out;
 }
@@ -436,6 +446,13 @@ body
     display: flex;
     align-items: center;
     /*border-bottom: 1px solid #ccc;*/
+}
+.available {
+    background-color: var(--container-bg-color);
+}
+
+.event {
+    background-color: var(--widget-bg-color);
 }
 
 /*Needs to be at bottom to overwrite other styles*/

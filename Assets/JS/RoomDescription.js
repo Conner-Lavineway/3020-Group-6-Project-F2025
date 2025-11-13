@@ -37,7 +37,7 @@ scheduleData.forEach(({ time, status }) => {
 
 
 
-document.getElementById("roomTitle").textContent = "Title text";
+document.getElementById("room-title").textContent = "Title Text";
 
 document.getElementById("description").textContent = "Description text";
 
