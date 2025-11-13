@@ -1,5 +1,4 @@
 var dropdowns = document.getElementsByClassName("dropdown-box");
-document.getElementById("relevance").classList.toggle("activeSort");
 
 function showEvent()
 {
