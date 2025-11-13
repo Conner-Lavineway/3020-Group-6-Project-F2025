@@ -6,79 +6,68 @@
 	</head>
 	<body class="room-page">
 
-		<div>
-			<div id="search-bar" style="border-bottom: 2px solid black">
-				<div id="logo"></div>
-				<input type="text" class="search" placeholder="Search...">
+		<div id="search-bar" style="border-bottom: 2px solid black">
 
-				<div id="events-dropdown">
-					<button onclick="dropdown()" class="dropbutton">Events</button>
-					<div id="events" class="dropdown-content">
-					</div>
-				</div>
+			<div id="events-dropdown">
+                <button onclick="showEvent()" class="dropbutton">Events Today</button>
+                <div id="events" class="dropdown-box"></div>
+            </div>
 
-				<div id="filter-dropdown">
-					<button onclick="dropdown()" class="dropbutton">Filter</button>
-					<div id="filter" class="dropdown-content">
-					</div>
-				</div>
-
-				<div id="sort-dropdown">
-					<button onclick="dropdown()" class="dropbutton">Sort</button>
-					<div id="sort" class="dropdown-content">
-					</div>
-				</div>
-
+		</div>
+		<div class="headerContainer">
+			<div>
+				<button class="backButton" style="text-align:left; padding-left: 10%"> << </button>
 			</div>
-			<div class="headerContainer">
-				<div>
-					<button class="backButton" style="text-align:left; padding-left: 10%"> << </button>
-				</div>
-				<div>
-					<h1 id="roomTitle" style="text-align:center">EITC 320</h1>
-				</div>
-				<div></div>
-
+			<div>
+				<h1 id="roomTitle" style="text-align:center">EITC 320</h1>
 			</div>
-
-
-			<div class="container">
-				<div style="padding-left: 3%">
-					<div class="schedule roundedBox" id="schedule"></div>
-				</div>
-				
-				<div>
-					<img class="roundedBox" src="Images/classroom1.jfif" style="max-width: 100%;" >
-
-					<div  class="roundedBox" style="text-align: left" >
-						<h3 style="border-bottom: 1px solid #8c8c8c">Description</h3>
-						<p id ="description"></p>
-					</div>
-				</div>
-				<div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding-right: 3%">
-					<div class="roundedBox">
-						<div style="text-align: left; display: flex; border-bottom: 1px solid #8c8c8c;">
-							<p><b>Building:&nbsp;</b></p>
-							<p id="building">EITC</p>
-						</div>
-						<div style="text-align: left; display: flex; border-bottom: 1px solid #8c8c8c">
-							<p><b>Room:&nbsp;</b></p>
-							<p id="room"></p>
-						</div>
-						<div style="text-align: left; border-bottom: 1px solid #8c8c8c">
-							<p><b>Amenities:</b></p>
-							<ul id="amenities"></ul>
-						</div>
-					</div>
-					<div style="text-align: right">
-						<button class="dibsButton">DIBS</button>
-					</div>
-				</div>
-			</div>
+			<div></div>
 
 		</div>
 
-		<script src="JS/RoomDescription.js"></script>
 
+		<div class="container">
+			<div style="padding-left: 3%">
+				<div class="schedule roundedBox" id="schedule"></div>
+			</div>
+			
+			<div>
+				<img class="roundedBox" src="Images/classroom1.jfif" style="max-width: 100%;" >
+
+				<div  class="roundedBox" style="text-align: left" >
+					<h3 style="border-bottom: 1px solid #8c8c8c">Description</h3>
+					<p id ="description"></p>
+				</div>
+			</div>
+			<div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding-right: 3%">
+				<div class="roundedBox">
+					<div style="text-align: left; display: flex; border-bottom: 1px solid #8c8c8c;">
+						<p><b>Building:&nbsp;</b></p>
+						<p id="building">EITC</p>
+					</div>
+					<div style="text-align: left; display: flex; border-bottom: 1px solid #8c8c8c">
+						<p><b>Room:&nbsp;</b></p>
+						<p id="room"></p>
+					</div>
+					<div style="text-align: left; border-bottom: 1px solid #8c8c8c">
+						<p><b>Amenities:</b></p>
+						<ul id="amenities"></ul>
+					</div>
+				</div>
+				<div style="text-align: right">
+					<button class="dibsButton">DIBS</button>
+				</div>
+			</div>
+		</div>
+
+
+		<script src="JS/RoomDescription.js"></script>
+		<script src="/JS/dropdown.js"></script>
+        <!--Load data-->
+        <script src="/Data/Filters.js"></script>
+        <script src="/Data/Events.js"></script>
+        <script src="/Data/Dibs_Prototype_Data.js"></script>
+        <!--Do stuff with it-->
+        <script src="/JS/populate.js"></script>
 	</body>
 </html>
