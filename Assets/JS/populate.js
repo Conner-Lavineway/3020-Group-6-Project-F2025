@@ -42,6 +42,7 @@
                 //create a select element
                 select = document.createElement('select');
                 select.className = 'building dropdown-content'
+                select.id = 'building-select'
                 detailDiv.appendChild(select);
 
                 defaultOption = document.createElement('option');
@@ -54,7 +55,7 @@
                 {
                     option = document.createElement('option'); //create a select option
                     option.className = 'dropdown-content'; //give it a class
-                    option.value = i + 1; //set its value
+                    option.value = filters.building[i]; //set its value
                     option.innerHTML = filters.building[i]; //set its text
                     select.appendChild(option) //add it to the list
                 }

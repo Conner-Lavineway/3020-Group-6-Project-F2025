@@ -26,11 +26,6 @@
             <div id="logo"></div>
             <input type="text" id="search" placeholder="Search...">
             
-            <div id="events-dropdown">
-                <button onclick="showEvent()" class="dropbutton">Events Today</button>
-                <div id="events" class="dropdown-box"></div>
-            </div>
-            
             <div id="filter-dropdown">
                 <button onclick="showFilter()" class="dropbutton">Filter</button>
                 <div id="filters" class="dropdown-box">                    </div>
@@ -44,16 +39,21 @@
                 </div>
             </div>
             
+            <div id="events-dropdown">
+                <button onclick="showEvent()" class="dropbutton">Events Today</button>
+                <div id="events" class="dropdown-box"></div>
+            </div>
+            
         </div>
             <div id="side-bar">
                 
                 <!--Both filled with widgets to show scrolling, need to autopopulate from data when we get that-->
                 <div id="available-rooms">
-                    <p>Available Rooms</p>
+                    Available Rooms
                     <div class="scroll-container"></div>
                 </div>
                 <div id="occupied-rooms">
-                    <p>Dibbed Rooms</p>
+                    Dibbed Rooms
                     <div class="scroll-container"></div>
                 </div>
             </div>

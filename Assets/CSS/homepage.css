@@ -15,7 +15,8 @@ html, body
     width: 100%;
 }
 
-body{
+body
+{
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr 8fr;
@@ -262,8 +263,7 @@ body{
 {      
     padding-top: 2%;
     overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: none;
+    border-radius: var(--main-border-radius);
 }
 
 #available-rooms, #occupied-rooms
@@ -274,7 +274,6 @@ body{
     color: var(--header-font-color);
     display: flex;
     flex-direction: column;
-    border-bottom: var(--main-border-size) solid var(--main-border-color);
 }
 
 #available-rooms
@@ -314,10 +313,18 @@ body{
     box-shadow: var(--glow);
 }
 
+.room-details
+{
+    display: block;
+    width: 95%;
+    overflow-wrap: break-word;
+}
+
 .room-tag
 {
-    max-width: fit-content;
-    padding: 1%;
+    display: inline-block;
+    width: fit-content;
+    padding: 1% 2% 1% 2%;
     border-radius: var(--main-border-radius);
     border-style: none;
     font-size: var(--main-font-size);

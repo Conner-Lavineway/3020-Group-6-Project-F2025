@@ -3,7 +3,6 @@ const filterNames =
     "Amenities:",
     "Buildings:",
     "Available At:",
-    "Test:",
 ];
 
 const filters = 
