@@ -12,6 +12,7 @@ body
     font-size: var(--main-font-size);
     padding: 0px;
     margin: 0px;
+    color: var(--main-font-color);
     background-color: var(--main-bg-color);
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -45,8 +46,8 @@ body
     font-size: var(--main-font-size);
     border-radius: var(--main-border-radius);
     border-style: var(--main-border-size) solid var(--main-border-color);
-    font-size: var(--header-font-size);
-    background-color: #ffbf69;
+    font-size: var(--header-font-size); 
+    background-color: var(--dropdown-bg-color);
 }
 
 #search-bar input[type=text]:focus
@@ -69,15 +70,15 @@ body
     background-repeat: no-repeat;
     background-position: right 4% top 50%;
     background-size: var(--header-font-size);
-    background-color: var(--dropdown-bg-color);
-    color: black;
     height: 100%;
     width: 100%;
     cursor: pointer;
+    background-color: var(--dropdown-bg-color);
     font-size: var(--main-font-size); 
     border-radius: var(--main-border-radius);
     border-style: none;
     box-shadow: var(--box-shadow);
+    color: var(--main-font-color);
 }
 
 @media (max-width: 1180px)
@@ -109,7 +110,7 @@ body
 
 .dropdown-box .event-header 
 {
-    color: black;
+    color: var(--main-font-color);
     text-decoration: none;
     display: block;
 }
@@ -157,7 +158,7 @@ body
     font-size: var(--main-font-size);
     max-width: 90%;
     padding-bottom: 5%;
-    border-bottom: solid 2px var(--dropcontent-hover-color);
+    border-bottom: solid 2px var(--container-bg-color);
 }
 
 #filter-dropdown
@@ -192,14 +193,17 @@ body
     overflow-wrap: break-word;
     margin-bottom: 5%;
     padding: 2%;
-    border-bottom: solid 2px var(--dropcontent-hover-color);
+    border-bottom: solid 2px var(--container-bg-color);
 }
 
 .filterButton
 {
+    background-color: var(--dropdown-bg-color);
+    font-size: var(--main-font-size); 
     border-radius: var(--main-border-radius);
     border-style: none;
-    font-size: var(--main-font-size);
+    box-shadow: var(--box-shadow);
+    color: var(--main-font-color);
     margin: 1%;
     box-shadow: var(--box-shadow);
 }
@@ -246,6 +250,7 @@ body
 
 #side-bar
 {
+    background-color: var(--sidebar-color);
     grid-area: sidebar;
     padding: 1%;
     position: relative;
@@ -300,7 +305,6 @@ body
     bottom: 10%;
 }
 
-/* Temp widget, fill with actual data and change styling later*/
 .room-widget
 {
     width: 90%;
@@ -351,7 +355,7 @@ body
 /**Room Page**/
 
 .backButton {
-    color: black;
+    color: var(--main-font-color);
     border: none;
     cursor: pointer;
     transition-duration: 0.4s;
@@ -361,7 +365,7 @@ body
 }
 
 .backButton:hover {
-    color: dimgray;
+    color: var(--dropdown-hover-color);
 }
 
 .tableHeader {
@@ -375,11 +379,23 @@ body
 }
 
 .headerContainer {
+    grid-area: title;
     display: grid;
     grid-template-columns: 10% 80% 10%;
 }
 
+.spacer
+{
+    height: 80%;
+}
+
+#roomTitle
+{
+    font-size: var(--header-font-size);
+}
+
 .container {
+    grid-area: content;
     display: grid;
     grid-template-columns: 25% 40% 35%;
     height: 100%;       
@@ -410,7 +426,7 @@ body
     background-color: var(--dropdown-bg-color);
     border: none;
     border-radius: 25px;
-    color: black;
+    color: var(--main-font-color);
     padding: 30px 65px;
     text-align: right;
     font-size: 40px;
@@ -476,12 +492,12 @@ body
 
 .activeSort
 {
-    background-color: var(--dropcontent-hover-color);
+    background-color: var(--container-bg-color);
 }
 
 .activeFilter
 {
-    background-color: var(--dropdown-bg-color);
+    background-color: var(--dropdown-hover-color);
 }
 
 .last
@@ -492,6 +508,15 @@ body
 
 .room-page
 {
-    display: block;
-    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 7fr;
+    grid-template-areas: 
+    "header"
+    "title"
+    "content";
+}
+
+.text-labels
+{
+    color: var(--text-label-color);
 }

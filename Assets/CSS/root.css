@@ -4,30 +4,43 @@
 {
     --main-font: 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif';
     --main-font-size: 20px;
-    --main-font-color: black;
+    --main-font-color: #DCE0D9;
 
     --header-font-size: 30px;
-    --header-font-color: rgb(0, 0, 0);
+    --header-font-color: #DCE0D9;
 
-    --main-bg-color: rgb(240,240,240); /*rgb(219, 219, 219)*/
-    --main-border-color: black;
+    --main-bg-color: #31081F; /*rgb(219, 219, 219)*/
+    --main-border-color: #DCE0D9;
     --main-border-size: 2px;
     --main-border-radius: 20px;
-    --main-header-bg-color: rgb(220,220,220);
+    --main-header-bg-color: #31081F;
+    --sidebar-color: #31081F;
 
-    --dropdown-bg-color: #ff9f1c; /*rgb(234, 156, 87)*/
-    --dropdown-hover-color: #ea6d29;
+    --dropdown-bg-color: #6B0F1A; /*rgb(234, 156, 87)*/
+    --dropdown-hover-color: #8d1423;
 
-    --widget-bg-color: #ff9f1c;
-    --widget-hover-color: #ea6d29;
+    --widget-bg-color: #6B0F1A;
+    --widget-hover-color: #8d1423;
 
     --grid-gap: 2px;
-
-    --dropcontent-hover-color: rgb(200, 200, 200);
 
     --box-shadow: 0 3px 6px 0 rgba(0,0,0,0.6);
 
     --glow: 0 0 10px var(--dropdown-bg-color);
 
-    --container-bg-color: rgb(250, 250, 250);
+    --container-bg-color: #6B0F1A;
+
+    --text-label-color: black;
 }
+
+/*
+Other Colour Palletes:
+Midnight Tones:
+    bg: #31081F
+    text: #DCE0D9
+    header: #31081F
+    container: #6B0F1A
+    widget: #6B0F1A
+    widget hover: #8d1423
+
+*/
