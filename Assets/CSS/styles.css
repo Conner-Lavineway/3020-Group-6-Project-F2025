@@ -40,7 +40,13 @@ body
     background-color: var(--main-header-bg-color);
 }
 
-#search-bar input[type=text] {
+#search-box:focus
+{
+    outline: none;
+}
+
+#search-box
+{
     grid-area: bar;
     font-size: var(--main-font-size);
     border-radius: var(--main-border-radius);
@@ -49,18 +55,29 @@ body
     background-color: var(--dropdown-bg-color);
 }
 
-#search-bar input[type=text]:focus
+#search-btn
 {
-    outline: none;
+    justify-self: end;
+    grid-area: bar;
+    border-radius: 50%;
+    margin-right: 1%;
+    top: 50%;
+    transform: translateY(2.5%);
+    height: 95%;
+    background-color: var(--dropdown-bg-color);
 }
 
-#search
+#search-btn:hover
 {
-    background-image: url(https://img.icons8.com/?size=100&id=e4NkZ7kWAD7f&format=png&color=000000);
-    background-position: right 4% top 50%;
-    background-repeat: no-repeat;
-    background-size: var(--header-font-size);
-    
+    background-color: var(--container-bg-color);
+}
+
+#search-btn input[type=image]
+{
+    float: right;
+    margin-right: 5%;
+    height: 95%;
+    width: 95%;
 }
 
 .dropbutton 

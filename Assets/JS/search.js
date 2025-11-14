@@ -3,6 +3,7 @@
  * @param {Object} room - The room dictionary
  * @returns {string} - The HTML string representing the room
  */
+/*
 function roomToHTML(room) {
   const occupancyText = room.occupied
     ? "Currently occupied"
@@ -34,7 +35,7 @@ function roomToHTML(room) {
     </div>
   `;
 }
-
+*/
 /**
  * Apply a list of filter functions to an array of rooms.
  *
@@ -96,9 +97,6 @@ function searchData(query, filters = [], rooms = DATA.rooms) {
 }
 
 // TESTING
-const room1 = DATA.rooms[0];
-const resultblock = document.getElementById("search-results");
-const roomHTML = roomToHTML(room1);
 
 function updateResults(query) {
   resultblock.innerHTML = "";
@@ -113,6 +111,7 @@ searchbar = document.getElementById("search-box");
 
 // get content from search bar when button is clicked
 searchBtn.addEventListener("click", () => {
-  query = searchbar.value;
-  updateResults(query);
+  console.log("Click")
+  //query = searchbar.value;
+  //updateResults(query);
 });

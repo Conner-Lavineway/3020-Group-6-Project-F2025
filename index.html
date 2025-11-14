@@ -24,8 +24,10 @@
     <body>
         <div id="search-bar">
             <div id="logo"></div>
-            <input type="text" id="search" placeholder="Search...">
-            
+            <input type="text" id="search-box" placeholder="Search...">
+            <div id="search-btn">
+                <input type="image" src="Assets/Images/icons8-search.svg">
+            </div>
             <div id="filter-dropdown">
                 <button onclick="showFilter()" class="dropbutton">Filter</button>
                 <div id="filters" class="dropdown-box">                    </div>
@@ -72,5 +74,6 @@
         <script src="./Assets/Data/Dibs_Prototype_Data.js"></script>
         <!--Do stuff with it-->
         <script src="./Assets/JS/populate.js"></script>
+        <script src="./Assets/JS/search.js"></script>
     </body>
 </html>
