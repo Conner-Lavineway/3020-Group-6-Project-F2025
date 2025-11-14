@@ -5,41 +5,41 @@
 		<link rel="stylesheet" href="CSS/styles.css">
 	</head>
 	<body class="room-page">
-		<div>
-			<div id="search-bar">
-				<div id="logo"></div>
-				<input type="text" id="search" placeholder="Search..." style="visibility: hidden">
+        <div id="search-bar">
+            <div id="logo"></div>
+            <input type="text" id="search-box" placeholder="Search..." style="visibility: hidden;">
+            <div id="search-btn" style="visibility: hidden;">
+                <input type="image" src="./Images/icons8-search.svg">
+            </div>
+            <div id="filter-dropdown" style="visibility: hidden;">
+                <button onclick="showFilter()" class="dropbutton">Filter</button>
+                <div id="filters" class="dropdown-box">                    </div>
+            </div>
+            
+            <div id="sort-dropdown" style="visibility: hidden;">
+                <button onclick="showSort()" class="dropbutton">Sort</button>
+                <div id="sorting" class="dropdown-box">
+                    <button onclick="sortFilter()" class="sortButton dropdown-content" id="relevance">Relevance</button>
+                    <button onclick="sortFilter()" class="sortButton dropdown-content" id="distance">Distance</button>
+                </div>
+            </div>
+            
+            <div id="events-dropdown">
+                <button onclick="showEvent()" class="dropbutton">Events Today</button>
+                <div id="events" class="dropdown-box"></div>
+            </div>
+            
+        </div>
 
-				<div hidden  id="filter-dropdown">
-					<button onclick="showFilter()" class="dropbutton">Filter</button>
-					<div id="filters" class="dropdown-box">                    </div>
-				</div>
-
-				<div hidden id="sort-dropdown">
-					<button onclick="showSort()" class="dropbutton">Sort</button>
-					<div id="sorting" class="dropdown-box">
-						<button onclick="sortFilter()" class="sortButton dropdown-content" id="relevance">Relevance</button>
-						<button onclick="sortFilter()" class="sortButton dropdown-content" id="distance">Distance</button>
-					</div>
-				</div>
-
-				<div id="events-dropdown">
-					<button onclick="showEvent()" class="dropbutton">Events Today</button>
-					<div id="events" class="dropdown-box"></div>
-				</div>
-
+		</div>
+		<div class="headerContainer">
+			<div>
+				<button class="backButton" style="text-align:left; padding-left: 10%"> << </button>
 			</div>
-			<div class="headerContainer">
-				<div>
-					<button class="backButton" style="text-align:left; padding-left: 10%"> << </button>
-				</div>
-				<div>
-					<p id="room-title">EITC 320</p>
-				</div>
-				<div></div>
-
+			<div style="text-align: center;">
+				<p id="room-title">EITC 320</p>
 			</div>
-			<div class="spacer"></div>
+			<div></div>
 
 		</div>
 		<div class="container">
