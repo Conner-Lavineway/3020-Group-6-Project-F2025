@@ -58,6 +58,7 @@ body
 
 #search-btn
 {
+    cursor: pointer;
     justify-self: end;
     grid-area: bar;
     border-radius: 50%;
@@ -70,7 +71,7 @@ body
 
 #search-btn:hover
 {
-    background-color: var(--container-bg-color);
+    background-color: var(--dropdown-hover-color);
 }
 
 #search-btn input[type=image]
