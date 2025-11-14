@@ -145,8 +145,8 @@ function createRoomResultElement(room) {
   const meta = document.createElement("span");
   meta.className = "room-result-meta";
   const eventCount = Array.isArray(room.events) ? room.events.length : 0;
-  meta.textContent =
-    eventCount + " events " + amenitiesArray.length + " amenities";
+  //meta.textContent =
+  //  eventCount + " events " + amenitiesArray.length + " amenities";
 
   const tagsContainer = document.createElement("div");
   tagsContainer.className = "room-result-amenities";
@@ -193,10 +193,10 @@ function renderAvailableRooms(rooms = ROOMS) {
 //          ╭─────────────────────────────────────────────────────────╮
 //          │          Final Rendering and applying filters           │
 //          ╰─────────────────────────────────────────────────────────╯
+const searchInput = document.getElementById("search-box");
 
 function updateRoomResults() {
   // get the search query
-  const searchInput = document.getElementById("search");
   const query = searchInput ? searchInput.value : "";
 
   // if it's empty just render filtered rooms
@@ -210,14 +210,15 @@ function updateRoomResults() {
 
     // turn the fuse results into room list. this is where sorting happens
     const rooms = results.map((result) => result.item);
+    console.log(rooms)
     renderAvailableRooms(rooms);
   }
 }
 
 // Add document event listeners for updating on interaction
 document.addEventListener("DOMContentLoadeed", updateRoomResults);
-document.addEventListener("click", updateRoomResults);
 document.addEventListener("input", updateRoomResults);
+searchInput.addEventListener('keydown', updateRoomResults)
 
 // update initial results
 updateRoomResults();

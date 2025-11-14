@@ -31,6 +31,8 @@ function applyFilters(filters = FILTERS, rooms = ROOMS)
  * @param {Array} [rooms=ROOMS]         - Rooms array to search in.
  * @returns {Array} Fuse.js search results.
  */
+
+searchbar = document.getElementById('search-box');
 function searchData(query, filters = FILTERS, rooms = ROOMS) 
 {
   // Apply hard filters first (if any)

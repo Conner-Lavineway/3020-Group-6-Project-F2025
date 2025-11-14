@@ -69,11 +69,6 @@ body
     background-color: var(--dropdown-bg-color);
 }
 
-#search-btn:hover
-{
-    background-color: var(--dropdown-hover-color);
-}
-
 #search-btn input[type=image]
 {
     float: right;
