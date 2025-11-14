@@ -1,12 +1,12 @@
 @import "root.css";
 
-html, body
-{ 
-    height: 100%;
-    width: 100%;
+html, body 
+{
+  height: 100%;
+  width: 100%;
 }
 
-body
+body 
 {
     font-family: var(--main-font);
     font-size: var(--main-font-size);
@@ -42,7 +42,7 @@ body
 
 #search-box:focus
 {
-    outline: none;
+  outline: none;
 }
 
 #search-box
@@ -97,31 +97,32 @@ body
     color: var(--main-font-color);
 }
 
-@media (max-width: 1180px)
+@media (max-width: 1180px) 
 {
-    .dropbutton
-    {
-        padding-right: var(--header-font-size);
-    }
+  .dropbutton 
+  {
+    padding-right: var(--header-font-size);
+  }
 }
 
 .dropbutton:hover, .dropbutton:focus 
 {
-    background-color: var(--dropdown-hover-color);
+  background-color: var(--dropdown-hover-color);
 }
 
 .dropdown-box 
 {
-    display: none;
-    position: absolute;
-    z-index: 100;
-    background-color: var(--main-bg-color);
-    border-radius: var(--main-border-radius);
-    border-color: var(--dropdown-hover-color);
-    border-width: var(--main-border-size);
-    border-style: none;
-    box-shadow:var(--glow);
-    width: 25%;
+  display: none;
+  position: absolute;
+  z-index: 100;
+  background-color: var(--main-bg-color);
+  border-radius: var(--main-border-radius);
+  border-color: var(--dropdown-hover-color);
+  border-width: var(--main-border-size);
+  border-style: none;
+  box-shadow: var(--glow);
+  min-width: 25%;
+  max-width: fit-content;
 }
 
 .dropdown-box .event-header 
@@ -133,78 +134,78 @@ body
 
 .dropbutton:hover, .dropbutton:focus 
 {
-    background-color: var(--dropdown-hover-color);
+  background-color: var(--dropdown-hover-color);
 }
 
 #events-dropdown:hover .dropdown-box 
 {
-    display: block;
+  display: block;
 }
 
-#events-dropdown
+#events-dropdown 
 {
-    grid-area: events;  
+  grid-area: events;
 }
 
-#events
+#events 
 {
-    max-height: 60%;
-    overflow-y: auto;
-    right: 1%;
+  max-height: 60%;
+  overflow-y: auto;
+  right: 1%;
 }
 
-.event
+.event 
 {
-    margin-top:2%;
-    margin-bottom:2%;
-    padding:1%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding: 1%;
 }
 
-.event-header
+.event-header 
 {
-    text-align: left;
-    font-size: var(--header-font-size);
-    padding: 2% 5% 5% 5%;
+  text-align: left;
+  font-size: var(--header-font-size);
+  padding: 2% 5% 5% 5%;
 }
 
-.event-details
+.event-details 
 {
-    text-align: center;
-    transform: translateX(5%);
-    font-size: var(--main-font-size);
-    max-width: 90%;
-    padding-bottom: 5%;
-    border-bottom: solid 2px var(--container-bg-color);
+  text-align: center;
+  transform: translateX(5%);
+  font-size: var(--main-font-size);
+  max-width: 90%;
+  padding-bottom: 5%;
+  border-bottom: solid 2px var(--dropcontent-hover-color);
 }
 
-#filter-dropdown
+#filter-dropdown 
 {
-    grid-area: filter;
+  grid-area: filter;
 }
 
-#filter-dropdown:hover .dropdown-box
+#filter-dropdown:hover .dropdown-box 
 {
-    display: block;
+  display: block;
 }
 
-#filters
+#filters 
 {
-    padding: 1%;
-    max-height: 80%;
-    overflow-y: auto;
+  padding: 1%;
+  max-height: 80%;
+  overflow-y: auto;
 }
 
-.filter
+.filter 
 {
-    margin: 1%;
+  margin: 1%;
 }
 
-.filter-header
+.filter-header 
 {
-    font-size: var(--header-font-size);
+  font-size: var(--header-font-size);
 }
 
-.filter-details
+.filter-details 
 {
     overflow-wrap: break-word;
     margin-bottom: 5%;
@@ -212,7 +213,7 @@ body
     border-bottom: solid 2px var(--container-bg-color);
 }
 
-.filterButton
+.filterButton 
 {
     background-color: var(--dropdown-bg-color);
     font-size: var(--main-font-size); 
@@ -224,47 +225,47 @@ body
     box-shadow: var(--box-shadow);
 }
 
-#sort-dropdown
+#sort-dropdown 
 {
-    grid-area: sort;
+  grid-area: sort;
 }
 
 #sort-dropdown:hover .dropdown-box 
 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1%;
-    width: fit-content;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1%;
+  width: fit-content;
 }
 
-#sorting
+#sorting 
 {
-    font-size: var(--main-font-size);
-    text-align: center;
-    border-radius: var(--main-border-radius);
+  font-size: var(--main-font-size);
+  text-align: center;
+  border-radius: var(--main-border-radius);
 }
 
-.sortButton
+.sortButton 
 {
-    font-size: var(--header-font-size);
-    background-color: var(--main-bg-color);
-    border-style: none;
-    min-width: max-content;
-    padding: 2%;
-    margin:1%;
+  font-size: var(--header-font-size);
+  background-color: var(--main-bg-color);
+  border-style: none;
+  min-width: max-content;
+  padding: 2%;
+  margin: 1%;
 }
 
-#relevance
+#relevance 
 {
-    border-radius: var(--main-border-radius) 0px 0px var(--main-border-radius);
+  border-radius: var(--main-border-radius) 0px 0px var(--main-border-radius);
 }
 
-#distance
+#distance 
 {
-    border-radius: 0px var(--main-border-radius) var(--main-border-radius) 0px;
+  border-radius: 0px var(--main-border-radius) var(--main-border-radius) 0px;
 }
 
-#side-bar
+#side-bar 
 {
     background-color: var(--sidebar-color);
     grid-area: sidebar;
@@ -278,94 +279,99 @@ body
     "occupied";
 }
 
-.scroll-container
-{      
-    padding-top: 2%;
-    overflow-y: auto;
+.scroll-container 
+{
+  padding-top: 2%;
+  overflow-y: auto;
+  border-radius: var(--main-border-radius);
+}
+
+#available-rooms, #occupied-rooms 
+{
+  padding: 2%;
+  font-size: var(--header-font-size);
+  text-align: center;
+  color: var(--header-font-color);
+  display: flex;
+  flex-direction: column;
+}
+
+#available-rooms 
+{
+  grid-area: available;
+  position: absolute;
+  height: 150%;
+  width: 95%;
+}
+
+#occupied-rooms 
+{
+  grid-area: occupied;
+  position: absolute;
+  height: 95%;
+  width: 95%;
+  bottom: 10%;
+}
+
+/* Temp widget, fill with actual data and change styling later*/
+.room-widget 
+{
+  width: 90%;
+  padding: 1%;
+  background-color: var(--dropcontent-hover-color);
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-radius: var(--main-border-radius);
+  cursor: pointer;
+}
+
+.room-widget:hover 
+{
+  box-shadow: var(--glow);
+}
+
+.room-details 
+{
+  display: block;
+  width: 95%;
+  overflow-wrap: break-word;
+}
+
+.room-tag 
+{
+  display: inline-block;
+  width: fit-content;
+  padding: 1% 2% 1% 2%;
+  border-radius: var(--main-border-radius);
+  border-style: none;
+  font-size: var(--main-font-size);
+  margin: 1%;
+  background-color: var(--dropdown-bg-color);
+}
+
+#map 
+{
+  border-radius: var(--main-border-radius) 0px 0px 0px;
+  grid-area: map;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.text-label
+{
+    margin-left: -8px;
+    margin-top: -8px;
+    color: var(--text-label-color);
+    min-width: fit-content;
+    min-height: fit-content;
+    padding: 2px 5px 2px 5px;
     border-radius: var(--main-border-radius);
-}
-
-#available-rooms, #occupied-rooms
-{
-    padding: 2%;
-    font-size: var(--header-font-size);
-    text-align: center;
-    color: var(--header-font-color);
-    display: flex;
-    flex-direction: column;
-}
-
-#room-title 
-{
-    font-size: var(--header-font-size);
-    text-align: center;
-    color: var(--header-font-color);
-    display: flex;
-    flex-direction: column;
-}
-
-#available-rooms
-{
-    grid-area: available;
-    position: absolute;
-    height: 85%;
-    width: 95%;
-}
-
-#occupied-rooms
-{
-    grid-area: occupied;
-    position: absolute;
-    height: 95%;
-    width: 95%;
-    bottom: 10%;
-}
-
-.room-widget
-{
-    width: 90%;
-    padding: 1%;
-    background-color: var(--container-bg-color);
-    margin-top: 5%;
-    margin-bottom: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    border-radius: var(--main-border-radius);
-    cursor: pointer;
     box-shadow: var(--box-shadow);
-}
-
-.room-widget:hover
-{
-    box-shadow: var(--glow);
-}
-
-.room-details
-{
-    display: block;
-    width: 95%;
-    overflow-wrap: break-word;
-}
-
-.room-tag
-{
-    display: inline-block;
-    width: fit-content;
-    padding: 1% 2% 1% 2%;
-    border-radius: var(--main-border-radius);
-    border-style: none;
-    font-size: var(--main-font-size);
-    margin: 1%;
-    background-color: var(--dropdown-bg-color);
-}
-
-#map
-{
-    border-radius: var(--main-border-radius) 0px 0px 0px;
-    grid-area: map;
-    top: 50%;
-    transform: translateY(-50%);
+    background-color: var(--text-label-background);
+    text-align: center;
 }
 
 /**Room Page**/
@@ -384,14 +390,16 @@ body
     color: var(--dropdown-hover-color);
 }
 
-.tableHeader {
-    border: 2px solid black;
-    border-collapse: collapse;
+.tableHeader 
+{
+  border: 2px solid black;
+  border-collapse: collapse;
 }
 
-.tableBody {
-    text-align: center;
-    height: 100%;
+.tableBody 
+{
+  text-align: center;
+  height: 100%;
 }
 
 .headerContainer {
@@ -417,11 +425,12 @@ body
     height: 100%;       
 }
 
-.container div {
-    /*border: 1px solid black;*/
-    padding-left: 1.5%;
-    padding-right: 1.5%;
-    text-align: center;
+.container div 
+{
+  /*border: 1px solid black;*/
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+  text-align: center;
 }
 
 .roundedBox {
@@ -434,8 +443,9 @@ body
     transition: box-shadow 0.3s ease-in-out;
 }
 
-.roundedBox:hover {
-    box-shadow: 0 0 8px var(--widget-bg-color);
+.roundedBox:hover 
+{
+  box-shadow: 0 0 8px var(--widget-bg-color);
 }
 
 .dibsButton {
@@ -451,33 +461,36 @@ body
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
 }
 
-.dibsButton:hover {
-    background-color: var(--dropdown-hover-color);
+.dibsButton:hover 
+{
+  background-color: var(--dropdown-hover-color);
 }
 
-.schedule {
-    display: grid;
-    grid-template-columns: 20% 1fr;
-    /*border: 2px solid black;*/
-    overflow: hidden;
-    background-color: var(--container-bg-color);
-    height: 100%;
+.schedule 
+{
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  /*border: 2px solid black;*/
+  overflow: hidden;
+  background-color: var(--container-bg-color);
+  height: 100%;
 }
 
-.time {
-    display: flex;
-    border-right: 2px solid var(--main-bg-color);
-    align-items: center;
-    justify-content: center;
-    
+.time 
+{
+  display: flex;
+  border-right: 2px solid var(--main-bg-color);
+  align-items: center;
+  justify-content: center;
 }
 
-.block {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    /*border-bottom: 1px solid #ccc;*/
+.block 
+{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /*border-bottom: 1px solid #ccc;*/
 }
 .available {
     background-color: var(--container-bg-color);
@@ -488,60 +501,262 @@ body
 }
 
 /*Needs to be at bottom to overwrite other styles*/
-.showEvents
+.showEvents 
 {
-    display: block;
+  display: block;
 }
 
-.showSort
+.showSort 
 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1%;
-    width: fit-content;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1%;
+  width: fit-content;
 }
 
-.showFilters
+.showFilters 
 {
-    display: block;
+  display: block;
 }
 
-.activeSort
+.activeSort 
 {
     background-color: var(--container-bg-color);
 }
 
-.activeFilter
+.activeFilter 
 {
     background-color: var(--dropdown-hover-color);
 }
 
-.last
+.last 
 {
-    border-bottom: none;
-    padding-bottom: 0%;
+  border-bottom: none;
+  padding-bottom: 0%;
 }
 
-.room-page
+.room-page 
 {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 7fr;
-    grid-template-areas: 
-    "header"
-    "title"
-    "content";
+  display: block;
+  height: 100%;
 }
 
-.text-label
+/*
+ *          ╭─────────────────────────────────────────────────────────╮
+ *          │                   Room Result Styling                   │
+ *          ╰─────────────────────────────────────────────────────────╯
+*/
+
+/* Compact search-result card */
+
+.room-result 
 {
-    margin-left: -8px;
-    margin-top: -8px;
-    color: var(--text-label-color);
-    min-width: fit-content;
-    min-height: fit-content;
-    padding: 2px 5px 2px 5px;
-    border-radius: var(--main-border-radius);
-    box-shadow: var(--box-shadow);
-    background-color: var(--text-label-background);
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.6rem 0.9rem;
+  margin-bottom: 0.5rem;
+
+  background-color: var(--container-bg-color);
+  border: var(--main-border-size) solid var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  box-shadow: var(--box-shadow);
+
+  font-family: var(--main-font);
+  font-size: 0.9rem;
+  color: var(--main-font-color);
+
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease-out,
+    transform 0.1s ease-out,
+    box-shadow 0.1s ease-out;
 }
+
+.room-result:hover 
+{
+  background-color: var(--widget-bg-color);
+  box-shadow: var(--glow);
+  transform: translateY(-1px);
+}
+
+.room-result-main 
+{
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.room-result-title 
+{
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--header-font-color);
+}
+
+.room-result-description 
+{
+  margin: 0;
+  font-size: 0.8rem;
+  color: #444;
+  /* keep it visually short even if the text is long */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.room-result-footer 
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.room-result-meta 
+{
+  font-size: 0.7rem;
+  color: #555;
+}
+
+.room-result-amenities 
+{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: flex-end;
+}
+
+.room-tag 
+{
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background-color: var(--dropdown-bg-color);
+  font-size: 0.65rem;
+  white-space: nowrap;
+}
+
+.room-tag-more 
+{
+  background-color: var(--dropdown-hover-color);
+}
+
+/*
+ *          ╭─────────────────────────────────────────────────────────╮
+ *          │               Availability Filter Styling               │
+ *          ╰─────────────────────────────────────────────────────────╯
+*/
+
+.availability-row 
+{
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.availability-row label 
+{
+  min-width: 2.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.availability-date,
+.availability-time 
+{
+  font-family: inherit;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--main-border-color);
+  background-color: var(--container-bg-color);
+  color: var(--main-font-color);
+  outline: none;
+  transition:
+    box-shadow 0.15s ease-out,
+    border-color 0.15s ease-out;
+}
+
+.availability-date:focus,
+.availability-time:focus 
+{
+  border-color: var(--dropdown-hover-color);
+  box-shadow: var(--glow);
+}
+
+/* Slider row */
+
+.availability-sliders 
+{
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.availability-range 
+{
+  position: relative;
+  width: 100%;
+  height: 24px;
+  padding: 8px 2px; /* top/bottom padding for thumb space */
+  box-sizing: border-box;
+}
+
+.availability-range-track 
+{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 6px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background-color: var(--dropcontent-hover-color);
+}
+
+/* Highlighted middle between thumbs */
+
+.availability-range-highlight 
+{
+  position: absolute;
+  top: 50%;
+  height: 6px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background-color: var(--dropdown-bg-color);
+  box-shadow: var(--glow);
+  pointer-events: none; /* let clicks go through to range container */
+}
+
+/* Thumbs */
+
+.availability-range-thumb 
+{
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: var(--widget-bg-color);
+  border: 1px solid var(--main-border-color);
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    transform 0.05s ease-out;
+}
+
+.availability-range-thumb:hover 
+{
+  background-color: var(--widget-hover-color);
+  box-shadow: var(--glow);
+}
+
+.availability-range-thumb:active 
+{
+  transform: translate(-50%, -50%) scale(0.96);
+}
+
