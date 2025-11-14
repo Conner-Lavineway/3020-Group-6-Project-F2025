@@ -28,13 +28,14 @@
 
     --glow: 0 0 10px var(--dropdown-bg-color);
 
-    --container-bg-color: #6B0F1A;
+    --container-bg-color: #8d1423;
 
     --text-label-color: black;
+    --text-label-background: white;
 }
 
 /*
-Other Colour Palletes:
+Conners pallets
 Midnight Tones:
     bg: #31081F
     text: #DCE0D9

@@ -17,21 +17,17 @@ map.setMaxBounds([
 
 map.setMinZoom(16);
 map.setMaxZoom(19);
-var myTextLabel = L.divIcon({
-        className: 'text-labels',   // Set class for CSS styling
-        html: 'A Text Label'
+var textLabel = L.divIcon(
+    {
+        className: 'text-label',   // Set class for CSS styling
+        html: 'test'
     });
-
-var pin = L.icon({
-    iconUrl: 'Assets/Images/pin.png',
-
-    iconSize:     [50, 50], // size of the icon
-    iconAnchor:   [25, 47], // point of the icon which will correspond to marker's location
-});
+Quad = [49.808803, -97.13208]
+L.marker(Quad, {icon:textLabel}).addTo(map);
 
 function onMapClick(e) {
-    L.marker(e.latlng, {icon:pin}).addTo(map);
-    L.marker(e.latlng, {icon:myTextLabel}).addTo(map)
+    L.marker(e.latlng, {icon:textLabel}).addTo(map)
+    labels = document.getElementsByClassName('text-label');
 }
 
 function highlightLayer(layerID) {
