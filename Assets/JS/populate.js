@@ -102,7 +102,7 @@ for (const event of EVENTS) {
  *     <p class="room-result-description">Short description…</p>
  *   </div>
  *   <div class="room-result-footer">
- *     <span class="room-result-meta">4 events · 1 amenity</span>
+ *     <span class="room-result-meta">4 events \n\n1 amenity</span>
  *     <div class="room-result-amenities">
  *       <span class="room-tag">Ritual Circle</span>
  *       <!-- +N more if needed -->
@@ -146,7 +146,7 @@ function createRoomResultElement(room) {
   meta.className = "room-result-meta";
   const eventCount = Array.isArray(room.events) ? room.events.length : 0;
   meta.textContent =
-    eventCount + " events · " + amenitiesArray.length + " amenities";
+    eventCount + " events " + amenitiesArray.length + " amenities";
 
   const tagsContainer = document.createElement("div");
   tagsContainer.className = "room-result-amenities";

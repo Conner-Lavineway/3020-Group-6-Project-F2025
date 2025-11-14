@@ -625,6 +625,8 @@ function extractEvents(date = new Date(), rooms = ROOMS) {
     const eventList = room.events;
     for (const event of eventList) {
       const startTime = new Date(event.startTime);
+      // add the room name + numbe to the title
+      event.title += ": " + room.buildingName + " " + room.roomNumber;
 
       // check year, month, day
       const sameDay =

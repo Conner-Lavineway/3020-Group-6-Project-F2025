@@ -170,7 +170,7 @@ class AvailabilityFilter extends FilterComponent {
     startTimeInput.step = 900; // 15 minutes
 
     const separator = document.createElement("span");
-    separator.textContent = " – ";
+    separator.textContent = " - ";
 
     const endTimeInput = document.createElement("input");
     endTimeInput.type = "time";

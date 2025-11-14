@@ -5,7 +5,8 @@
  * @param {Array} filters - An array of class filterComponents
  * @returns {Array} A new array containing only rooms that pass all filters.
  */
-function applyFilters(filters = FILTERS, rooms = ROOMS) {
+function applyFilters(filters = FILTERS, rooms = ROOMS) 
+{
   // Start with the full list of rooms
   let result = rooms;
 
@@ -30,7 +31,8 @@ function applyFilters(filters = FILTERS, rooms = ROOMS) {
  * @param {Array} [rooms=ROOMS]         - Rooms array to search in.
  * @returns {Array} Fuse.js search results.
  */
-function searchData(query, filters = FILTERS, rooms = ROOMS) {
+function searchData(query, filters = FILTERS, rooms = ROOMS) 
+{
   // Apply hard filters first (if any)
   const filteredRooms = applyFilters(filters, rooms);
 
