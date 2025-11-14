@@ -20,7 +20,6 @@ body
     grid-template-areas: 
     "header header header"
     "sidebar map map";
-    gap: var(--grid-gap);
     grid-auto-flow: row;
     justify-items: stretch;
     align-items: stretch;
