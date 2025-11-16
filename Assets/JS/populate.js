@@ -23,6 +23,8 @@ const AVAILABILITY_FILTER = new AvailabilityFilter();
 dropdown.appendChild(AVAILABILITY_FILTER.createElement());
 FILTERS.push(AVAILABILITY_FILTER);
 
+
+
 //          ╭─────────────────────────────────────────────────────────╮
 //          │                     Event Handling                      │
 //          ╰─────────────────────────────────────────────────────────╯
@@ -210,7 +212,7 @@ function updateRoomResults() {
 
     // turn the fuse results into room list. this is where sorting happens
     const rooms = results.map((result) => result.item);
-    console.log(rooms)
+    updateNumbers(rooms);
     renderAvailableRooms(rooms);
   }
 }
@@ -218,7 +220,10 @@ function updateRoomResults() {
 // Add document event listeners for updating on interaction
 document.addEventListener("DOMContentLoadeed", updateRoomResults);
 document.addEventListener("input", updateRoomResults);
+document.addEventListener("click", updateRoomResults);
 searchInput.addEventListener('keydown', updateRoomResults)
 
 // update initial results
 updateRoomResults();
+//update map
+updateNumbers(ROOMS);

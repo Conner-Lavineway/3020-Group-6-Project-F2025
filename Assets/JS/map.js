@@ -17,21 +17,90 @@ map.setMaxBounds([
 
 map.setMinZoom(16);
 map.setMaxZoom(19);
-var textLabel = L.divIcon(
+
+var buildingCoords = [
+    [49.808631, -97.133646], //EITC
+    [49.808043, -97.130245], //DRAKE
+    [49.809773, -97.131039], //ISBISTER
+    [49.811337, -97.131318]]; //UNI COLLEGE
+
+for(i = 0; i < buildingCoords.length; i++)
+{
+    var markerClass;
+    switch(i)
     {
-        className: 'text-label',   // Set class for CSS styling
-        html: 'test'
+        case 0:
+            markerClass = 'text-label EITC';
+        break;
+        case 1:
+            markerClass = 'text-label Drake-Centre';
+        break;
+        case 2:
+            markerClass = 'text-label Isbister-Building';
+        break;
+        case 3:
+            markerClass = 'text-label University-College';
+        break;
+        default:
+        break;
+    }
+    var textLabel = L.divIcon(
+    {
+        className: markerClass,   // Set class for CSS styling
+        html: 'Err loading rooms'
     });
-Quad = [49.808803, -97.13208]
-L.marker(Quad, {icon:textLabel}).addTo(map);
+    L.marker(buildingCoords[i], {icon:textLabel}).addTo(map);
 
-function onMapClick(e) {
-    L.marker(e.latlng, {icon:textLabel}).addTo(map)
-    labels = document.getElementsByClassName('text-label');
 }
 
-function highlightLayer(layerID) {
-    map._layers['name'+LayerID].setStyle(highlight);
-}
+var labels = document.getElementsByClassName('text-label');
 
-map.on('click', onMapClick);
+function updateNumbers(rooms)
+{
+    let nameNums = [0, 0, 0, 0];
+    for(var i = 0; i < rooms.length; i++)
+    {
+        console.log('Assigning Numbers')
+        switch(rooms[i].buildingName)
+        {
+            case 'EITC':
+                nameNums[0]++;
+            break;
+            case 'Drake Centre':
+                nameNums[1]++;
+            break;
+            case 'Isbister Building':
+                nameNums[2]++;
+            break;
+            case 'University College':
+                nameNums[3]++;
+            break;
+            default:
+            break;
+        }
+    }
+    console.log(nameNums);
+    console.log(rooms);
+
+    for(var i = 0; i < labels.length; i++)
+    {
+        console.log(labels[i]);
+        if(labels[i].classList.contains('EITC'))
+        {
+            labels[i].innerHTML = nameNums[0];
+        }
+        else if(labels[i].classList.contains('Drake-Centre'))
+        {
+            labels[i].innerHTML = nameNums[1];
+
+        }
+        else if(labels[i].classList.contains('Isbister-Building'))
+        {
+            labels[i].innerHTML = nameNums[2];
+        }
+        else
+        {
+            labels[i].innerHTML = nameNums[3];
+        }
+    }
+}
