@@ -48,12 +48,17 @@ body
 #search-box
 {
   display: block;
-    grid-area: bar;
-    font-size: var(--main-font-size);
-    border-radius: var(--main-border-radius);
-    border-style: var(--main-border-size) solid var(--main-border-color);
-    font-size: var(--header-font-size); 
-    background-color: var(--dropdown-bg-color);
+  grid-area: bar;
+  font-size: var(--main-font-size);
+  border-radius: var(--main-border-radius);
+  border-style: var(--main-border-size) solid var(--main-border-color);
+  font-size: var(--header-font-size); 
+  background-color: var(--dropdown-bg-color);
+}
+
+#search-box::placeholder
+{
+  color: rgba(15, 15, 15, 0.5);
 }
 
 #search-btn
@@ -361,7 +366,7 @@ body
 
 .text-label .activeFilter
 {
-  background-color: var(--dropdown-bg-color);
+  background-color: var(--dropdown-hover-color);
   box-shadow: var(--glow);
 }
 
