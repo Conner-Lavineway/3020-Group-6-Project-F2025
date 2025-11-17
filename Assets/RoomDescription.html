@@ -16,7 +16,7 @@
 			</div>
 			<div class="headerContainer">
 				<div>
-					<button class="backButton" style="text-align:left; padding-left: 10%"> << </button>
+					<button id="backButton" style="text-align:left; padding-left: 10%"> << </button>
 				</div>
 				<div>
 					<h1 id="roomTitle" style="text-align:center">EITC 320</h1>
@@ -30,13 +30,13 @@
 				<div style="padding-left: 3%">
 					<div class="schedule roundedBox" id="schedule"></div>
 				</div>
-				
-				<div>
-					<img class="roundedBox" src="Images/classroom1.jfif" style="max-width: 100%;" >
 
-					<div  class="roundedBox" style="text-align: left" >
+				<div>
+					<img class="roundedBox" src="Images/classroom1.jfif" style="max-width: 100%;">
+
+					<div class="roundedBox" style="text-align: left">
 						<h3 style="border-bottom: 1px solid #8c8c8c">Description</h3>
-						<p id ="description"></p>
+						<p id="description"></p>
 					</div>
 				</div>
 				<div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding-right: 3%">
@@ -62,13 +62,14 @@
 		</div>
 
 
-		<script src="JS/RoomDescription.js"></script>
+
 		<script src="JS/dropdown.js"></script>
-        <!--Load data-->
-        <script src="Data/Filters.js"></script>
-        <script src="Data/Events.js"></script>
-        <script src="Data/Dibs_Prototype_Data.js"></script>
-        <!--Do stuff with it-->
-        <script src="JS/populate.js"></script>
+		<!--Load data-->
+		<script src="Data/Filters.js"></script>
+		<script src="Data/Events.js"></script>
+		<script src="Data/Dibs_Prototype_Data.js"></script>
+		<!--Do stuff with it-->
+		<script src="JS/populate.js"></script>
+		<script src="JS/RoomDescription.js"></script>
 	</body>
 </html>

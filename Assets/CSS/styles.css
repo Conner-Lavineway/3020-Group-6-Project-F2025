@@ -341,7 +341,7 @@ body
 
 /**Room Page**/
 
-.backButton 
+#backButton 
 {
   color: black;
   border: none;
@@ -352,7 +352,7 @@ body
   margin-top: 0.67em;
 }
 
-.backButton:hover 
+#backButton:hover 
 {
   color: dimgray;
 }

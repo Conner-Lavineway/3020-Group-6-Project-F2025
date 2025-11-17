@@ -171,6 +171,13 @@ function createRoomResultElement(room) {
   footer.appendChild(tagsContainer);
   card.appendChild(footer);
 
+    card.addEventListener("click", function () {
+        localStorage.setItem("buildingName", room.buildingName);
+        localStorage.setItem("roomNumber", room.roomNumber);
+        window.location.href = "Assets/RoomDescription.html";
+
+    });
+
   return card;
 }
 
