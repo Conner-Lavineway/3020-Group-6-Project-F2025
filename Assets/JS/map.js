@@ -1,6 +1,6 @@
-const key = 'n5fcPKvJWw4kPlY87b89'
-const tile = '019a1752-72aa-797d-a3c7-b3c094cf97e3'
-const map = L.map('map').setView([49.808773, -97.13208],17);
+const key = "n5fcPKvJWw4kPlY87b89"
+const tile = "019a1752-72aa-797d-a3c7-b3c094cf97e3"
+const map = L.map("map").setView([49.808773, -97.13208],17);
 
     const mtLayer = L.maptiler.maptilerLayer({
     apiKey: key,
@@ -18,9 +18,9 @@ map.setMaxBounds([
 map.setMinZoom(16);
 map.setMaxZoom(19);
 
+const ACTIVEICONS = [];
 
-
-var labels = document.getElementsByClassName('text-label');
+var labels = document.getElementsByClassName("text-label");
 
 function updateNumbers(rooms)
 {
@@ -29,16 +29,16 @@ function updateNumbers(rooms)
     {
         switch(rooms[i].buildingName)
         {
-            case 'EITC':
+            case "EITC":
                 nameNums[0]++;
             break;
-            case 'Drake Centre':
+            case "Drake Centre":
                 nameNums[1]++;
             break;
-            case 'Isbister Building':
+            case "Isbister Building":
                 nameNums[2]++;
             break;
-            case 'University College':
+            case "University College":
                 nameNums[3]++;
             break;
             default:
@@ -48,20 +48,60 @@ function updateNumbers(rooms)
 
     for(var i = 0; i < labels.length; i++)
     {
-        if(labels[i].classList.contains('EITC'))
+        if(labels[i].classList.contains("EITC"))
         {
+            if(ACTIVEICONS.includes("EITC"))
+            {
+                //if the filter needs to be active activate it
+                labels[i].classList.add("activeFilter");
+            }
+            else
+            {
+                //otherwise remove it
+                labels[i].classList.remove("activeFilter");
+            }
             labels[i].innerHTML = nameNums[0];
         }
-        else if(labels[i].classList.contains('Drake-Centre'))
+        else if(labels[i].classList.contains("Drake-Centre"))
         {
+            if(ACTIVEICONS.includes("Drake Centre"))
+            {
+                //if the filter needs to be active activate it
+                labels[i].classList.add("activeFilter");
+            }
+            else
+            {
+                //otherwise remove it
+                labels[i].classList.remove("activeFilter");
+            }
             labels[i].innerHTML = nameNums[1];
         }
-        else if(labels[i].classList.contains('Isbister-Building'))
+        else if(labels[i].classList.contains("Isbister-Building"))
         {
+            if(ACTIVEICONS.includes("Isbister Building"))
+            {
+                //if the filter needs to be active activate it
+                labels[i].classList.add("activeFilter");
+            }
+            else
+            {
+                //otherwise remove it
+                labels[i].classList.remove("activeFilter");
+            }
             labels[i].innerHTML = nameNums[2];
         }
         else
         {
+            if(ACTIVEICONS.includes("University College"))
+            {
+                //if the filter needs to be active activate it
+                labels[i].classList.add("activeFilter");
+            }
+            else
+            {
+                //otherwise remove it
+                labels[i].classList.remove("activeFilter");
+            }
             labels[i].innerHTML = nameNums[3];
         }
     }

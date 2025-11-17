@@ -86,17 +86,27 @@ class BuildingFilter extends FilterComponent {
       }
 
       // Toggle selection on click
-      button.addEventListener("click", () => {
+      button.addEventListener("click", () => 
+      {
+        //find all filters with the same class as earlier
         var filters = document.getElementsByClassName(subClass);
-        console.log(filters);
+        //check it for keywords
         if(this.selectedKeywords.has(keyword))
         {
+
           for(var i = 0; i < filters.length; i++)
           {
+            //this will target only the buttons because the markers are assholes
             if(filters[i].id == keyword)
             {
               filters[i].classList.remove("activeFilter");
             }
+          }
+          //remove the filter from the active filters array that is used to load the icons
+          var index = ACTIVEICONS.indexOf(keyword);
+          if(index !== -1)
+          {
+            ACTIVEICONS.splice(index, 1);
           }
           this.selectedKeywords.delete(keyword);
         }
@@ -104,15 +114,16 @@ class BuildingFilter extends FilterComponent {
         {
           for(var i = 0; i < filters.length; i++)
           {
+            //this will target only the buttons because the markers are assholes
             if(filters[i].id == keyword)
             {
               filters[i].classList.add("activeFilter");
             }
           }
+          //add the fitler to the active filters array used to load the icons
+          ACTIVEICONS.push(keyword);
           this.selectedKeywords.add(keyword);
         }
-        console.log(filters);
-        console.log(this.selectedKeywords);
       });
 
       details.appendChild(button);
@@ -130,10 +141,15 @@ class BuildingFilter extends FilterComponent {
     [49.809773, -97.131039], //ISBISTER
     [49.811337, -97.131318]]; //UNI COLLEGE
     var markers = [];
+
     this.availableKeywords.forEach(keyword => 
     {
-      var subClass = keyword.replace(" ", "-");
+      var subClass = keyword.replace(" ", "-"); //js cant find classes that have spaces this is needed for map icon loading
+      //set the class name
+      let markerClass = "text-label " + subClass;
+
       let x = -1;
+      //select the position on the map to render the icon
       switch(keyword)
       {
         case "EITC":
@@ -149,8 +165,8 @@ class BuildingFilter extends FilterComponent {
           x = 3;
           break;
       }
-      let markerClass = "text-label " + subClass;
 
+      //make a icon with the right class name
       var textLabel = L.divIcon(
       {
           className: markerClass,   // Set class for CSS styling
@@ -158,28 +174,37 @@ class BuildingFilter extends FilterComponent {
           html: "Err loading rooms"
       });
       
+      //place the marker
       var marker = L.marker(buildingCoords[x], {icon:textLabel});
 
+      //if this filter is active add it to the class list
       if (this.selectedKeywords.has(keyword)) 
       {
         marker.classList.add("activeFilter");
-        console.log(keyword);
       }
 
-
+      //add the marker to the map with a onclick function
       marker.addTo(map).addEventListener("click", () =>
       {
+        //find all filters with the same class as earlier
         var filters = document.getElementsByClassName(subClass);
-        console.log(subClass);
-        console.log(filters);
+        //check it for keywords
         if(this.selectedKeywords.has(keyword))
         {
+
           for(var i = 0; i < filters.length; i++)
           {
+            //this will target only the buttons because the markers are assholes
             if(filters[i].id == keyword)
             {
-              filters[i]._icon.classList.remove("activeFilter");
+              filters[i].classList.remove("activeFilter");
             }
+          }
+          //remove the filter from the active filters array that is used to load the icons
+          var index = ACTIVEICONS.indexOf(keyword);
+          if(index !== -1)
+          {
+            ACTIVEICONS.splice(index, 1);
           }
           this.selectedKeywords.delete(keyword);
         }
@@ -187,19 +212,22 @@ class BuildingFilter extends FilterComponent {
         {
           for(var i = 0; i < filters.length; i++)
           {
+            //this will target only the buttons because the markers are assholes
             if(filters[i].id == keyword)
             {
               filters[i].classList.add("activeFilter");
             }
           }
+          //add the fitler to the active filters array used to load the icons
+          ACTIVEICONS.push(keyword);
           this.selectedKeywords.add(keyword);
         }
       });
-
+      //push em
       this._buttonByKeyword.set(keyword, marker);
       markers.push(marker);
     });
-
+    //output the array of markers
     return markers;
   };
 
