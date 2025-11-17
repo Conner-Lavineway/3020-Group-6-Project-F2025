@@ -134,11 +134,6 @@ body
   background-color: var(--dropdown-hover-color);
 }
 
-#events-dropdown:hover .dropdown-box 
-{
-  display: block;
-}
-
 #events-dropdown 
 {
   grid-area: events;
@@ -178,11 +173,6 @@ body
 #filter-dropdown 
 {
   grid-area: filter;
-}
-
-#filter-dropdown:hover .dropdown-box 
-{
-  display: block;
 }
 
 #filters 
@@ -225,14 +215,6 @@ body
 #sort-dropdown 
 {
   grid-area: sort;
-}
-
-#sort-dropdown:hover .dropdown-box 
-{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1%;
-  width: fit-content;
 }
 
 #sorting 
@@ -369,6 +351,18 @@ body
     box-shadow: var(--box-shadow);
     background-color: var(--text-label-background);
     text-align: center;
+}
+
+.text-label:hover
+{
+  background-color: var(--dropdown-bg-color);
+  box-shadow: var(--glow);
+}
+
+.text-label .activeFilter
+{
+  background-color: var(--dropdown-bg-color);
+  box-shadow: var(--glow);
 }
 
 /**Room Page**/

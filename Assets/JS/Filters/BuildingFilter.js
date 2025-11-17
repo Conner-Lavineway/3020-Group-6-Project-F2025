@@ -71,10 +71,12 @@ class BuildingFilter extends FilterComponent {
     details.className = "filter-details dropdown-content";
     wrapper.appendChild(details);
 
+
     // Create one button per available building name
     this.availableKeywords.forEach((keyword) => {
+      let subClass = keyword.replace(" ", "-");
       const button = document.createElement("button");
-      button.className = "filterButton dropdown-content";
+      button.className = "filterButton dropdown-content " + subClass;
       button.id = keyword;
       button.textContent = keyword;
 
@@ -85,13 +87,32 @@ class BuildingFilter extends FilterComponent {
 
       // Toggle selection on click
       button.addEventListener("click", () => {
-        if (this.selectedKeywords.has(keyword)) {
+        var filters = document.getElementsByClassName(subClass);
+        console.log(filters);
+        if(this.selectedKeywords.has(keyword))
+        {
+          for(var i = 0; i < filters.length; i++)
+          {
+            if(filters[i].id == keyword)
+            {
+              filters[i].classList.remove("activeFilter");
+            }
+          }
           this.selectedKeywords.delete(keyword);
-          button.classList.remove("activeFilter");
-        } else {
-          this.selectedKeywords.add(keyword);
-          button.classList.add("activeFilter");
         }
+        else
+        {
+          for(var i = 0; i < filters.length; i++)
+          {
+            if(filters[i].id == keyword)
+            {
+              filters[i].classList.add("activeFilter");
+            }
+          }
+          this.selectedKeywords.add(keyword);
+        }
+        console.log(filters);
+        console.log(this.selectedKeywords);
       });
 
       details.appendChild(button);
@@ -100,6 +121,87 @@ class BuildingFilter extends FilterComponent {
 
     return wrapper;
   }
+
+  createMapElement()
+  {
+    var buildingCoords = [
+    [49.808631, -97.133646], //EITC
+    [49.808043, -97.130245], //DRAKE
+    [49.809773, -97.131039], //ISBISTER
+    [49.811337, -97.131318]]; //UNI COLLEGE
+    var markers = [];
+    this.availableKeywords.forEach(keyword => 
+    {
+      var subClass = keyword.replace(" ", "-");
+      let x = -1;
+      switch(keyword)
+      {
+        case "EITC":
+          x = 0;
+          break;
+        case "Drake Centre":
+          x = 1;
+          break;
+        case "Isbister Building":
+          x = 2;
+          break;
+        case "University College":
+          x = 3;
+          break;
+      }
+      let markerClass = "text-label " + subClass;
+
+      var textLabel = L.divIcon(
+      {
+          className: markerClass,   // Set class for CSS styling
+          id: keyword, //to find it later
+          html: "Err loading rooms"
+      });
+      
+      var marker = L.marker(buildingCoords[x], {icon:textLabel});
+
+      if (this.selectedKeywords.has(keyword)) 
+      {
+        marker.classList.add("activeFilter");
+        console.log(keyword);
+      }
+
+
+      marker.addTo(map).addEventListener("click", () =>
+      {
+        var filters = document.getElementsByClassName(subClass);
+        console.log(subClass);
+        console.log(filters);
+        if(this.selectedKeywords.has(keyword))
+        {
+          for(var i = 0; i < filters.length; i++)
+          {
+            if(filters[i].id == keyword)
+            {
+              filters[i]._icon.classList.remove("activeFilter");
+            }
+          }
+          this.selectedKeywords.delete(keyword);
+        }
+        else
+        {
+          for(var i = 0; i < filters.length; i++)
+          {
+            if(filters[i].id == keyword)
+            {
+              filters[i].classList.add("activeFilter");
+            }
+          }
+          this.selectedKeywords.add(keyword);
+        }
+      });
+
+      this._buttonByKeyword.set(keyword, marker);
+      markers.push(marker);
+    });
+
+    return markers;
+  };
 
   /**
    * Determine whether a given room passes this building filter.

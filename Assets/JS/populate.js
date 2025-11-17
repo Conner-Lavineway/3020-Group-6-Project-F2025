@@ -16,8 +16,8 @@ FILTERS.push(AMENITY_FILTER);
 // add the building filter
 const BUILDING_FILTER = new BuildingFilter(BUILDINGS);
 dropdown.appendChild(BUILDING_FILTER.createElement());
+BUILDING_FILTER.createMapElement();
 FILTERS.push(BUILDING_FILTER);
-
 // add availability filter
 const AVAILABILITY_FILTER = new AvailabilityFilter();
 dropdown.appendChild(AVAILABILITY_FILTER.createElement());
@@ -190,6 +190,7 @@ function renderAvailableRooms(rooms = ROOMS) {
     const card = createRoomResultElement(room);
     container.appendChild(card);
   });
+  updateNumbers(rooms); 
 }
 
 //          ╭─────────────────────────────────────────────────────────╮
@@ -212,7 +213,6 @@ function updateRoomResults() {
 
     // turn the fuse results into room list. this is where sorting happens
     const rooms = results.map((result) => result.item);
-    updateNumbers(rooms);
     renderAvailableRooms(rooms);
   }
 }

@@ -14,7 +14,7 @@ function applyFilters(filters = FILTERS, rooms = ROOMS)
   for (const filter of filters) {
     result = result.filter((room) => filter.matches(room));
   }
-
+  
   // Return the rooms that passed every filter
   return result;
 }

@@ -18,40 +18,7 @@ map.setMaxBounds([
 map.setMinZoom(16);
 map.setMaxZoom(19);
 
-var buildingCoords = [
-    [49.808631, -97.133646], //EITC
-    [49.808043, -97.130245], //DRAKE
-    [49.809773, -97.131039], //ISBISTER
-    [49.811337, -97.131318]]; //UNI COLLEGE
 
-for(i = 0; i < buildingCoords.length; i++)
-{
-    var markerClass;
-    switch(i)
-    {
-        case 0:
-            markerClass = 'text-label EITC';
-        break;
-        case 1:
-            markerClass = 'text-label Drake-Centre';
-        break;
-        case 2:
-            markerClass = 'text-label Isbister-Building';
-        break;
-        case 3:
-            markerClass = 'text-label University-College';
-        break;
-        default:
-        break;
-    }
-    var textLabel = L.divIcon(
-    {
-        className: markerClass,   // Set class for CSS styling
-        html: 'Err loading rooms'
-    });
-    L.marker(buildingCoords[i], {icon:textLabel}).addTo(map);
-
-}
 
 var labels = document.getElementsByClassName('text-label');
 
@@ -60,7 +27,6 @@ function updateNumbers(rooms)
     let nameNums = [0, 0, 0, 0];
     for(var i = 0; i < rooms.length; i++)
     {
-        console.log('Assigning Numbers')
         switch(rooms[i].buildingName)
         {
             case 'EITC':
@@ -79,12 +45,9 @@ function updateNumbers(rooms)
             break;
         }
     }
-    console.log(nameNums);
-    console.log(rooms);
 
     for(var i = 0; i < labels.length; i++)
     {
-        console.log(labels[i]);
         if(labels[i].classList.contains('EITC'))
         {
             labels[i].innerHTML = nameNums[0];
@@ -92,7 +55,6 @@ function updateNumbers(rooms)
         else if(labels[i].classList.contains('Drake-Centre'))
         {
             labels[i].innerHTML = nameNums[1];
-
         }
         else if(labels[i].classList.contains('Isbister-Building'))
         {
