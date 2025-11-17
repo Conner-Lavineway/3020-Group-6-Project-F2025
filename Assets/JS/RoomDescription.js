@@ -47,7 +47,7 @@ scheduleData.forEach(({ time, status }) => {
 
 });
 
-document.getElementById("roomTitle").textContent = currentRoom.buildingName + " " + currentRoom.roomNumber;
+document.getElementById("room-title").textContent = currentRoom.buildingName + " " + currentRoom.roomNumber;
 
 document.getElementById("description").textContent = currentRoom.roomDescription;
 

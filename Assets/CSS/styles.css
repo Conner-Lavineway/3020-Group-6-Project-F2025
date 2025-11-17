@@ -27,17 +27,17 @@ body
 
 /**Homepage**/
 
-#search-bar 
-{
-  grid-area: header;
-  display: grid;
-  grid-template-columns: 2fr 2fr 3fr 0.5fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas:
-    "bar bar space empty empty"
-    "filter sort space events events";
-  gap: var(--grid-gap);
-  padding: 1%;
+#search-bar {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 2fr 2fr 3fr 0.5fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "bar bar space empty empty"
+        "filter sort space events events";
+    gap: var(--grid-gap);
+    padding: 1%;
+    border-bottom: 1px solid #a1a1a1;
 }
 
 #search-bar input[type="text"] 
@@ -292,6 +292,14 @@ body
   bottom: 10%;
 }
 
+#room-title {
+    font-size: var(--header-font-size);
+    text-align: center;
+    color: var(--header-font-color);
+    display: flex;
+    flex-direction: column;
+}
+
 /* Temp widget, fill with actual data and change styling later*/
 .room-widget 
 {
@@ -450,6 +458,13 @@ body
   display: flex;
   align-items: center;
   /*border-bottom: 1px solid #ccc;*/
+}
+.available {
+    background-color: var(--container-bg-color);
+}
+
+.event {
+    background-color: var(--widget-bg-color);
 }
 
 /*Needs to be at bottom to overwrite other styles*/
