@@ -60,8 +60,9 @@ const amenities = currentRoom.amenities;
 const amenitiesList = document.getElementById("amenities");
 
 amenities.forEach(item => {
-    const li = document.createElement("li");
+    const li = document.createElement("p");
     li.textContent = item;
+    li.setAttribute("class", "room-description-amenities");
     amenitiesList.appendChild(li);
 });
 
