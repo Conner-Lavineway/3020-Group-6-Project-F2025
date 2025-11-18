@@ -23,8 +23,6 @@ const AVAILABILITY_FILTER = new AvailabilityFilter();
 dropdown.appendChild(AVAILABILITY_FILTER.createElement());
 FILTERS.push(AVAILABILITY_FILTER);
 
-
-
 //          ╭─────────────────────────────────────────────────────────╮
 //          │                     Event Handling                      │
 //          ╰─────────────────────────────────────────────────────────╯
@@ -54,40 +52,40 @@ FILTERS.push(AVAILABILITY_FILTER);
  * @param {string} event.endTime - ISO 8601 end time string.
  */
 function addEventToDropdown(event) {
-  const container = document.getElementById("events");
-  if (!container) return;
+    const container = document.getElementById("events");
+    if (!container) return;
 
-  const start = new Date(event.startTime);
-  const end = new Date(event.endTime);
+    const start = new Date(event.startTime);
+    const end = new Date(event.endTime);
 
-  const opts = { hour: "numeric", minute: "2-digit" };
-  const timeText =
-    start.toLocaleTimeString([], opts) +
-    " - " +
-    end.toLocaleTimeString([], opts);
+    const opts = { hour: "numeric", minute: "2-digit" };
+    const timeText =
+        start.toLocaleTimeString([], opts) +
+        " - " +
+        end.toLocaleTimeString([], opts);
 
-  const eventDiv = document.createElement("div");
-  eventDiv.className = "event dropdown-content";
+    const eventDiv = document.createElement("div");
+    eventDiv.className = "event dropdown-content";
 
-  const headerDiv = document.createElement("div");
-  headerDiv.className = "event-header dropdown-content";
-  headerDiv.textContent = event.title;
+    const headerDiv = document.createElement("div");
+    headerDiv.className = "event-header dropdown-content";
+    headerDiv.textContent = event.title;
 
-  const detailsDiv = document.createElement("div");
-  detailsDiv.className = "event-details dropdown-content";
-  detailsDiv.textContent = timeText;
+    const detailsDiv = document.createElement("div");
+    detailsDiv.className = "event-details dropdown-content";
+    detailsDiv.textContent = timeText;
 
-  eventDiv.appendChild(headerDiv);
-  eventDiv.appendChild(detailsDiv);
-  container.appendChild(eventDiv);
+    eventDiv.appendChild(headerDiv);
+    eventDiv.appendChild(detailsDiv);
+    container.appendChild(eventDiv);
 }
 
 // Add all events
 for (const event of EVENTS) {
-  // skip itf its a lecture
-  if (event.tags.includes("lecture")) continue;
+    // skip itf its a lecture
+    if (event.tags.includes("lecture")) continue;
 
-  addEventToDropdown(event);
+    addEventToDropdown(event);
 }
 
 //          ╭─────────────────────────────────────────────────────────╮
@@ -116,81 +114,87 @@ for (const event of EVENTS) {
  * @returns {HTMLElement} The constructed room result element.
  */
 function createRoomResultElement(room) {
-  const card = document.createElement("article");
-  card.className = "room-result";
+    const card = document.createElement("article");
+    card.className = "room-result";
 
-  // Main info (title + short description)
-  const main = document.createElement("div");
-  main.className = "room-result-main";
+    // Main info (title + short description)
+    const main = document.createElement("div");
+    main.className = "room-result-main";
 
-  const title = document.createElement("h3");
-  title.className = "room-result-title";
-  title.textContent = room.buildingName + " " + room.roomNumber;
+    const title = document.createElement("h3");
+    title.className = "room-result-title";
+    title.textContent = room.buildingName + " " + room.roomNumber;
 
-  const desc = document.createElement("p");
-  desc.className = "room-result-description";
-  desc.textContent = room.roomDescription || "";
+    const desc = document.createElement("p");
+    desc.className = "room-result-description";
+    desc.textContent = room.roomDescription || "";
 
-  main.appendChild(title);
-  main.appendChild(desc);
-  card.appendChild(main);
+    main.appendChild(title);
+    main.appendChild(desc);
+    card.appendChild(main);
 
-  // Footer: tiny meta + a few amenities tags
-  const footer = document.createElement("div");
-  footer.className = "room-result-footer";
+    // Footer: tiny meta + a few amenities tags
+    const footer = document.createElement("div");
+    footer.className = "room-result-footer";
 
-  const amenitiesIterable = room.amenities || [];
-  const amenitiesArray = Array.isArray(amenitiesIterable)
-    ? amenitiesIterable
-    : Array.from(amenitiesIterable);
+    const amenitiesIterable = room.amenities || [];
+    const amenitiesArray = Array.isArray(amenitiesIterable)
+        ? amenitiesIterable
+        : Array.from(amenitiesIterable);
 
-  const meta = document.createElement("span");
-  meta.className = "room-result-meta";
-  const eventCount = Array.isArray(room.events) ? room.events.length : 0;
-  //meta.textContent =
-  //  eventCount + " events " + amenitiesArray.length + " amenities";
+    const meta = document.createElement("span");
+    meta.className = "room-result-meta";
+    const eventCount = Array.isArray(room.events) ? room.events.length : 0;
+    //meta.textContent =
+    //  eventCount + " events " + amenitiesArray.length + " amenities";
 
-  const tagsContainer = document.createElement("div");
-  tagsContainer.className = "room-result-amenities";
+    const tagsContainer = document.createElement("div");
+    tagsContainer.className = "room-result-amenities";
 
-  const maxTagsToShow = 3;
-  amenitiesArray.slice(0, maxTagsToShow).forEach(function (amenity) {
-    const tag = document.createElement("span");
-    tag.className = "room-tag";
-    tag.textContent = amenity;
-    tagsContainer.appendChild(tag);
-  });
+    const maxTagsToShow = 3;
+    amenitiesArray.slice(0, maxTagsToShow).forEach(function (amenity) {
+        const tag = document.createElement("span");
+        tag.className = "room-tag";
+        tag.textContent = amenity;
+        tagsContainer.appendChild(tag);
+    });
 
-  if (amenitiesArray.length > maxTagsToShow) {
-    const remaining = amenitiesArray.length - maxTagsToShow;
-    const moreTag = document.createElement("span");
-    moreTag.className = "room-tag room-tag-more";
-    moreTag.textContent = "+" + remaining + " more";
-    tagsContainer.appendChild(moreTag);
-  }
+    if (amenitiesArray.length > maxTagsToShow) {
+        const remaining = amenitiesArray.length - maxTagsToShow;
+        const moreTag = document.createElement("span");
+        moreTag.className = "room-tag room-tag-more";
+        moreTag.textContent = "+" + remaining + " more";
+        tagsContainer.appendChild(moreTag);
+    }
 
-  footer.appendChild(meta);
-  footer.appendChild(tagsContainer);
-  card.appendChild(footer);
+    // add distance to footer
+    const distance = document.createElement("p");
+    desc.className = "room-result-distance";
+    distance.textContent = room.distanceFromUser + "m away";
 
-  return card;
+    footer.appendChild(meta);
+    footer.appendChild(tagsContainer);
+    footer.appendChild(distance);
+    card.appendChild(footer);
+
+    return card;
 }
 
 function renderAvailableRooms(rooms = ROOMS) {
-  // Find the scroll container inside #available-rooms
-  const container = document.querySelector(
-    "#available-rooms .scroll-container",
-  );
+    // Find the scroll container inside #available-rooms
+    const container = document.querySelector(
+        "#available-rooms .scroll-container"
+    );
 
-  // Clear old results
-  container.innerHTML = "";
+    // Clear old results
+    container.innerHTML = "";
 
-  // Add one concise card per room
-  rooms.forEach(function (room) {
-    const card = createRoomResultElement(room);
-    container.appendChild(card);
-  });
-  updateNumbers(rooms); 
+    // Add one concise card per room
+    rooms.forEach(function (room) {
+        const card = createRoomResultElement(room);
+        container.appendChild(card);
+    });
+    updateNumbers(rooms);
 }
 
 //          ╭─────────────────────────────────────────────────────────╮
@@ -199,29 +203,29 @@ function renderAvailableRooms(rooms = ROOMS) {
 const searchInput = document.getElementById("search-box");
 
 function updateRoomResults() {
-  // get the search query
-  const query = searchInput ? searchInput.value : "";
+    // get the search query
+    const query = searchInput ? searchInput.value : "";
 
-  // if it's empty just render filtered rooms
-  if (!query || query.trim() === "") {
-    renderAvailableRooms(applyFilters(FILTERS, ROOMS));
-  }
+    // if it's empty just render filtered rooms
+    if (!query || query.trim() === "") {
+        renderAvailableRooms(applyFilters(FILTERS, ROOMS));
+    }
 
-  // if there's a query, do a full search
-  else {
-    const results = searchData(query, FILTERS, ROOMS);
+    // if there's a query, do a full search
+    else {
+        const results = searchData(query, FILTERS, ROOMS);
 
-    // turn the fuse results into room list. this is where sorting happens
-    const rooms = results.map((result) => result.item);
-    renderAvailableRooms(rooms);
-  }
+        // turn the fuse results into room list. this is where sorting happens
+        const rooms = results.map((result) => result.item);
+        renderAvailableRooms(rooms);
+    }
 }
 
 // Add document event listeners for updating on interaction
 document.addEventListener("DOMContentLoadeed", updateRoomResults);
 document.addEventListener("input", updateRoomResults);
 document.addEventListener("click", updateRoomResults);
-searchInput.addEventListener('keydown', updateRoomResults)
+searchInput.addEventListener("keydown", updateRoomResults);
 
 // update initial results
 updateRoomResults();

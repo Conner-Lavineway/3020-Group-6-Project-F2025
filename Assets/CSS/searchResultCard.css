@@ -1,0 +1,87 @@
+@import 'root.css';
+
+.room-result {
+    font-family: var(--main-font);
+    color: var(--main-font-color);
+    background-color: var(--container-bg-color);
+    border-radius: var(--main-border-radius);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.room-result:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow);
+    border-color: var(--dropdown-hover-color);
+}
+
+/* Top section: title + description */
+.room-result-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.room-result-title {
+    color: var(--header-font-color);
+    margin: 0;
+}
+
+.room-result-distance {
+    font-size: 0.9rem;
+    margin: 0;
+    color: #444;
+}
+
+/* Footer section: meta + amenities + distance */
+.room-result-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+}
+
+.room-result-meta {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Amenities “tags” */
+.room-result-amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.room-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.55rem;
+    border-radius: 9999px;
+    background-color: var(--widget-bg-color);
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+.room-tag-more {
+    background-color: transparent;
+    border: 1px dashed var(--dropdown-hover-color);
+}
+
+/* Distance text in footer */
+.room-result-footer > p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #333;
+}
