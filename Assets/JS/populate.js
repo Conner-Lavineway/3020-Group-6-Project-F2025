@@ -203,22 +203,45 @@ function renderAvailableRooms(rooms = ROOMS) {
 const searchInput = document.getElementById("search-box");
 
 function updateRoomResults() {
+    // figure out if sort by distance button is active
+    const sortByDistance = document
+        .getElementById("distance")
+        .classList.contains("activeSort");
+
+    // Sort by distance if necessary
+    if (sortByDistance) {
+        ROOMS.sort((a, b) => a.distanceFromUser - b.distanceFromUser);
+    }
     // get the search query
     const query = searchInput ? searchInput.value : "";
 
     // if it's empty just render filtered rooms
     if (!query || query.trim() === "") {
         renderAvailableRooms(applyFilters(FILTERS, ROOMS));
+        return true;
     }
 
     // if there's a query, do a full search
     else {
-        const results = searchData(query, FILTERS, ROOMS);
+        var results = searchData(query, FILTERS, ROOMS);
 
-        // turn the fuse results into room list. this is where sorting happens
-        const rooms = results.map((result) => result.item);
+        // turn the fuse results into room list
+        if (sortByDistance) {
+            results = results.sort(
+                (a, b) => a.item.distanceFromUser - b.item.distanceFromUser
+            );
+        } else {
+            results = results.sort((a, b) => a.score - b.score);
+        }
+
+        rooms = results.map((result) => result.item);
         renderAvailableRooms(rooms);
+        return true;
     }
+}
+
+function sortByDistance(a, b) {
+    return a.item.distanceFromUser - b.item.distanceFromUser;
 }
 
 // Add document event listeners for updating on interaction
