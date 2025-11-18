@@ -117,6 +117,10 @@ function createRoomResultElement(room) {
     const card = document.createElement("article");
     card.className = "room-result";
 
+    // assign room-id
+    const roomID = room.buildingName.replace(/\s+/g, "-") + room.roomNumber;
+    card.setAttribute("room-id", roomID);
+
     // Main info (title + short description)
     const main = document.createElement("div");
     main.className = "room-result-main";
@@ -176,6 +180,18 @@ function createRoomResultElement(room) {
     footer.appendChild(tagsContainer);
     footer.appendChild(distance);
     card.appendChild(footer);
+
+    // add event listener to open room description on click
+    card.addEventListener("click", (event) => {
+        const baseUrl = new URL(".", window.location.href).href;
+        const url = baseUrl + "Assets/RoomDescription.html" + "#" + roomID;
+
+        if (event.ctrlKey || event.metaKey) {
+            window.open(url + "?room=" + roomID, "_blank");
+        } else {
+            window.location.href = url;
+        }
+    });
 
     return card;
 }
