@@ -194,6 +194,7 @@ function renderAvailableRooms(rooms = ROOMS) {
         const card = createRoomResultElement(room);
         container.appendChild(card);
     });
+
     updateNumbers(rooms);
 }
 

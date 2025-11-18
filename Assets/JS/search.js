@@ -5,18 +5,17 @@
  * @param {Array} filters - An array of class filterComponents
  * @returns {Array} A new array containing only rooms that pass all filters.
  */
-function applyFilters(filters = FILTERS, rooms = ROOMS) 
-{
-  // Start with the full list of rooms
-  let result = rooms;
+function applyFilters(filters = FILTERS, rooms = ROOMS) {
+    // Start with the full list of rooms
+    let result = rooms;
 
-  // Sequentially apply each filter function
-  for (const filter of filters) {
-    result = result.filter((room) => filter.matches(room));
-  }
-  
-  // Return the rooms that passed every filter
-  return result;
+    // Sequentially apply each filter function
+    for (const filter of filters) {
+        result = result.filter((room) => filter.matches(room));
+    }
+
+    // Return the rooms that passed every filter
+    return result;
 }
 
 /**
@@ -32,30 +31,29 @@ function applyFilters(filters = FILTERS, rooms = ROOMS)
  * @returns {Array} Fuse.js search results.
  */
 
-searchbar = document.getElementById('search-box');
-function searchData(query, filters = FILTERS, rooms = ROOMS) 
-{
-  // Apply hard filters first (if any)
-  const filteredRooms = applyFilters(filters, rooms);
+searchbar = document.getElementById("search-box");
+function searchData(query, filters = FILTERS, rooms = ROOMS) {
+    // Apply hard filters first (if any)
+    const filteredRooms = applyFilters(filters, rooms);
 
-  // Configure Fuse options
-  const fuseOptions = {
-    isCaseSensitive: false,
-    includeScore: true,
-    includeMatches: false, // set true if you want highlighting
-    shouldSort: true,
-    minMatchCharLength: 2,
-    ignoreLocation: true,
-    keys: [
-      { name: "buildingName", weight: 0.5 },
-      { name: "roomNumber", weight: 0.5 },
-      { name: "roomDescription", weight: 0.1 },
-      { name: "amenities", weight: 0.3 },
-    ],
-  };
+    // Configure Fuse options
+    const fuseOptions = {
+        isCaseSensitive: false,
+        includeScore: true,
+        includeMatches: false, // set true if you want highlighting
+        shouldSort: true,
+        minMatchCharLength: 1,
+        ignoreLocation: true,
+        keys: [
+            { name: "buildingName", weight: 0.5 },
+            { name: "roomNumber", weight: 0.5 },
+            { name: "roomDescription", weight: 0.1 },
+            { name: "amenities", weight: 0.3 },
+        ],
+    };
 
-  const fuse = new Fuse(filteredRooms, fuseOptions);
+    const fuse = new Fuse(filteredRooms, fuseOptions);
 
-  // Return search results from Fuse.js
-  return fuse.search(query);
+    // Return search results from Fuse.js
+    return fuse.search(query);
 }
