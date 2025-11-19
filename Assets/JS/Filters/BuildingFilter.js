@@ -124,7 +124,7 @@ class BuildingFilter extends FilterComponent {
 
     createMapElement() {
         const buildingCoords = {
-            EITC: [49.808631, -97.133646],
+            "EITC": [49.808631, -97.133646],
             "Drake Centre": [49.808043, -97.130245],
             "Isbister Building": [49.809773, -97.131039],
             "University College": [49.811337, -97.131318],

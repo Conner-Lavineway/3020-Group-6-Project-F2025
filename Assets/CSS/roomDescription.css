@@ -225,6 +225,7 @@ body.room-page {
 .time-label {
     transform: translateY(-50%); /* align label with grid line */
     padding-right: 0.25rem;
+    margin-top: 10%;
 }
 
 .schedule-track {

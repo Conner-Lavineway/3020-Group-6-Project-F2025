@@ -576,3 +576,12 @@ body {
 .availability-range-thumb:active {
     transform: translate(-50%, -50%) scale(0.96);
 }
+
+.person
+{
+    border-radius: 50%;
+    background-color: blue;
+    border: 3px white solid;
+    min-width: 5px;
+    min-height: 5px;
+}

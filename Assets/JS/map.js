@@ -106,3 +106,13 @@ function updateNumbers(rooms)
         }
     }
 }
+
+
+var personPos = [49.809375, -97.134458];
+
+var person = L.divIcon({
+    className: "person",
+    html: " "
+});
+
+L.marker(personPos, {icon: person}).addTo(map);

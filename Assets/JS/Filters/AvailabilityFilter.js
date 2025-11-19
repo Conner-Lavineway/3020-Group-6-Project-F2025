@@ -137,7 +137,7 @@ class AvailabilityFilter extends FilterComponent {
 
         const header = document.createElement("div");
         header.className = "filter-header dropdown-content";
-        header.textContent = "Availability:";
+        header.textContent = "Available Between:";
         wrapper.appendChild(header);
 
         const details = document.createElement("div");
@@ -169,7 +169,7 @@ class AvailabilityFilter extends FilterComponent {
 
         const startTimeInput = document.createElement("input");
         startTimeInput.type = "time";
-        startTimeInput.className = "availability-time availability-time-start";
+        startTimeInput.className = "availability-time availability-time-start dropdown-content";
         startTimeInput.min = "06:00";
         startTimeInput.max = "24:00";
         startTimeInput.step = 900; // 15 minutes
@@ -179,7 +179,7 @@ class AvailabilityFilter extends FilterComponent {
 
         const endTimeInput = document.createElement("input");
         endTimeInput.type = "time";
-        endTimeInput.className = "availability-time availability-time-end";
+        endTimeInput.className = "availability-time availability-time-end dropdown-content";
         endTimeInput.min = "06:00";
         endTimeInput.max = "24:00";
         endTimeInput.step = 900;
@@ -192,7 +192,7 @@ class AvailabilityFilter extends FilterComponent {
 
         // Row 3: Custom double-thumb slider
         const rowSliders = document.createElement("div");
-        rowSliders.className = "availability-row availability-sliders";
+        rowSliders.className = "availability-row availability-sliders dropdown-content";
 
         const range = document.createElement("div");
         range.className = "availability-range";
@@ -205,11 +205,11 @@ class AvailabilityFilter extends FilterComponent {
 
         const thumbStart = document.createElement("div");
         thumbStart.className =
-            "availability-range-thumb availability-range-thumb-start";
+            "availability-range-thumb availability-range-thumb-start dropdown-content";
 
         const thumbEnd = document.createElement("div");
         thumbEnd.className =
-            "availability-range-thumb availability-range-thumb-end";
+            "availability-range-thumb availability-range-thumb-end dropdown-content";
 
         range.appendChild(track);
         range.appendChild(highlight);

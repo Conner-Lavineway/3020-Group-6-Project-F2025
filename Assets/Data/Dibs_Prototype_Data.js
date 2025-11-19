@@ -690,10 +690,10 @@ const BUILDINGS = extractbuildingNames();
 
 // Assign a random distanceFromUser to each room for testing purposes
 const distMap = {
-    EITC: 100,
-    "Drake Centre": 500,
-    "University College": 500,
-    "Isbister Building": 300,
+    "EITC": 200,
+    "Drake Centre": 650,
+    "University College": 550,
+    "Isbister Building": 450,
 };
 for (const room of ROOMS) {
     const baseDist = distMap[room.buildingName] || 400;
