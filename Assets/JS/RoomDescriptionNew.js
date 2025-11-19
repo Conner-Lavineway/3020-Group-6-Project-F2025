@@ -55,6 +55,12 @@ function addEventToDayView(
 
     const eventEl = document.createElement("div");
     eventEl.className = "schedule-event";
+
+    // check for hard Occupied flag
+    if (event.hardOccupancy) {
+        eventEl.classList.add("hard-occupied");
+    }
+
     eventEl.style.setProperty("--start", startPercent);
     eventEl.style.setProperty("--duration", durationPercent);
 
@@ -76,7 +82,7 @@ function formatTimeRange(start, end) {
     const opts = { hour: "numeric", minute: "2-digit" };
     const s = start.toLocaleTimeString([], opts);
     const e = end.toLocaleTimeString([], opts);
-    return `${s} – ${e}`;
+    return `${s} -- ${e}`;
 }
 
 /**
@@ -117,7 +123,6 @@ function minutesFromHHMM(hhmm) {
     return h * 60 + (m || 0);
 }
 
-
 for (const event of currentRoom.events) {
     addEventToDayView(event);
     addEventToDropdown(event);
@@ -125,14 +130,16 @@ for (const event of currentRoom.events) {
 updateScheduleNowLine(minutesFromDate(new Date()));
 
 //Rest of stuff
-document.getElementById("room-title").textContent = currentRoom.buildingName + " " + currentRoom.roomNumber;
-document.getElementById("description").textContent = currentRoom.roomDescription;
+document.getElementById("room-title").textContent =
+    currentRoom.buildingName + " " + currentRoom.roomNumber;
+document.getElementById("description").textContent =
+    currentRoom.roomDescription;
 document.getElementById("building").textContent = currentRoom.buildingName;
 document.getElementById("room").textContent = currentRoom.roomNumber;
 const amenities = currentRoom.amenities;
 const amenitiesList = document.getElementById("amenities");
 
-amenities.forEach(item => {
+amenities.forEach((item) => {
     const li = document.createElement("p");
     li.textContent = item;
     li.setAttribute("class", "room-description-amenities");
@@ -144,7 +151,7 @@ const popup = document.getElementById("dibsPopup");
 const closePopup = document.getElementById("closePopup");
 
 dibsButton.addEventListener("click", function () {
-    popup.style.display = "flex"; 
+    popup.style.display = "flex";
 });
 
 closePopup.addEventListener("click", function () {
@@ -152,13 +159,53 @@ closePopup.addEventListener("click", function () {
     goHome();
 });
 
-
 const backButton = document.getElementById("backButton");
 backButton.addEventListener("click", function () {
     goHome();
-})
+});
 
 function goHome() {
     const parentUrl = new URL("./..", window.location.href).href;
     window.location.href = parentUrl + "/index.html";
 }
+
+//  Gray out dibs button
+
+// get hardOccupied events
+const hardOccupiedEvents = currentRoom.events.filter(
+    (event) => event.hardOccupancy
+);
+
+// check if any hardOccupied events are happening now
+var occupiedNow = false;
+const currentTime = new Date();
+// assume it 2025-11-13 for testing
+currentTime.setFullYear(2025, 10, 13);
+
+for (const event of hardOccupiedEvents) {
+    if (
+        currentTime >= new Date(event.startTime) &&
+        currentTime <= new Date(event.endTime)
+    ) {
+        occupiedNow = true;
+    }
+}
+
+// if occupiedNow is true, gray out dibs button
+if (occupiedNow) {
+    errorPopup = document.getElementById("dibsErrorPopup");
+    const disButton = document.getElementById("dibsButton").cloneNode(true);
+    disButton.classList.add("disabled-button");
+    disButton.addEventListener("click", function () {
+        errorPopup.style.display = "flex";
+    });
+
+    document.getElementById("dibsButton").replaceWith(disButton);
+    // make the close button for error popup work
+    document
+        .getElementById("closeErrorPopup")
+        .addEventListener("click", function () {
+            errorPopup.style.display = "none"; // maybe another problem
+        });
+}
+

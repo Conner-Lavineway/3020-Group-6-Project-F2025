@@ -183,7 +183,8 @@ function createRoomResultElement(room) {
     // add event listener to open room description on click
     card.addEventListener("click", (event) => {
         const baseUrl = new URL(".", window.location.href).href;
-        const url = baseUrl + "Assets/RoomDescriptionNew.html" + "?id=" + room.id;
+        const url =
+            baseUrl + "Assets/RoomDescriptionNew.html" + "?id=" + room.id;
 
         if (event.ctrlKey || event.metaKey) {
             window.open(url);
