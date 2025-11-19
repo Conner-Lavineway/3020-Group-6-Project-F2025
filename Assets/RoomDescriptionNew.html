@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RoomDescriptionNew</title>
+    <link rel="stylesheet" href="CSS/roomDescriptionNew.css">
+</head>
+<body class="room-page">
+    <div>
+        <div>
+            <div id="search-bar">
+                <div id="logo"></div>
+                <input type="text" id="search-box" placeholder="Search..." style="visibility: hidden">
+                <div id="search-btn" style="visibility: hidden">
+                    <input type="image" src="Images/icons8-search.svg">
+                </div>
+                <div hidden id="filter-dropdown">
+                    <button class="dropbutton">Filter</button>
+                    <div id="filters" class="dropdown-box"></div>
+                </div>
+
+                <div hidden id="sort-dropdown">
+                    <button class="dropbutton">Sort</button>
+                    <div id="sorting" class="dropdown-box">
+                        <button class="sortButton dropdown-content" id="relevance">Relevance</button>
+                        <button class="sortButton dropdown-content" id="distance">Distance</button>
+                    </div>
+                </div>
+
+                <div id="events-dropdown">
+                    <button onclick="showEvent()" class="dropbutton">Events Today</button>
+                    <div id="events" class="dropdown-box"></div>
+                </div>
+
+            </div>
+            <div class="headerContainer">
+                <div>
+                    <button id="backButton" style="text-align:left; padding-left: 10%"> << </button>
+                </div>
+                <div>
+                    <p id="room-title">EITC 320</p>
+                </div>
+                <div></div>
+
+            </div>
+        </div>
+        <div class="container">
+            <div style="padding-left: 3%">  
+                <div class="schedule roundedBox" id="schedule">
+                    <div class="schedule-time-column">
+                        <div class="time-label">6:00</div>
+                        <div class="time-label">8:00</div>
+                        <div class="time-label">10:00</div>
+                        <div class="time-label">12:00</div>
+                        <div class="time-label">14:00</div>
+                        <div class="time-label">16:00</div>
+                        <div class="time-label">18:00</div>
+                        <div class="time-label">20:00</div>
+                        <div class="time-label">22:00</div>
+                        <div class="time-label">24:00</div>
+                    </div>
+
+                    <div class="schedule-track">
+                        <div class="schedule-now" id="schedule-now"></div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div>
+                <img class="roundedBox" src="Images/classroom1.jfif" style="max-width: 100%;">
+
+                <div class="roundedBox" style="text-align: left">
+                    <p style="border-bottom: 1px solid #8c8c8c">Description</p>
+                    <p id="description"></p>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding-right: 3%">
+                <div class="roundedBox">
+                    <div style="text-align: left; display: flex; border-bottom: 1px solid #8c8c8c;">
+                        <p>Building:&nbsp;</p>
+                        <p id="building">EITC</p>
+                    </div>
+                    <div style="text-align: left; display: flex; border-bottom: 1px solid #8c8c8c">
+                        <p>Room:&nbsp;</p>
+                        <p id="room"></p>
+                    </div>
+                    <div style="text-align: left; border-bottom: 1px solid #8c8c8c">
+                        <p>Amenities:</p>
+                        <p id="amenities"></p>
+                    </div>
+                </div>
+                <div style="text-align: right">
+                    <button class="dibsButton">DIBS</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="JS/dropdown.js"></script>
+    <script src="Data/Dibs_Prototype_Data.js"></script>
+    <script src="JS/populate.js"></script>
+    <script src="JS/RoomDescriptionNew.js"></script>
+</body>
+</html>
