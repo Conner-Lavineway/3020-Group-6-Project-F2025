@@ -139,9 +139,26 @@ amenities.forEach(item => {
     amenitiesList.appendChild(li);
 });
 
+const dibsButton = document.getElementById("dibsButton");
+const popup = document.getElementById("dibsPopup");
+const closePopup = document.getElementById("closePopup");
+
+dibsButton.addEventListener("click", function () {
+    popup.style.display = "flex"; 
+});
+
+closePopup.addEventListener("click", function () {
+    popup.style.display = "none";
+    goHome();
+});
+
 
 const backButton = document.getElementById("backButton");
 backButton.addEventListener("click", function () {
+    goHome();
+})
+
+function goHome() {
     const parentUrl = new URL("./..", window.location.href).href;
     window.location.href = parentUrl + "/index.html";
-})
+}
