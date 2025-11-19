@@ -5,6 +5,8 @@ const currentRoom = ROOMS.find((r) => {
     return r.id === roomID;
 });
 
+document.title = currentRoom.buildingName + " " + currentRoom.roomNumber;
+
 // Day runs from 06:00 to 24:00 (midnight).
 const DAY_START_HOUR = 6;
 const DAY_END_HOUR = 24;
@@ -42,7 +44,7 @@ function addEventToDayView(
     let startMinutes = minutesSinceMidnight(startDate);
     let endMinutes = minutesSinceMidnight(endDate);
 
-    // Clamp to the visible window (06:00–24:00)
+    // Clamp to the visible window (06:00ï¿½24:00)
     startMinutes = clamp(startMinutes, startDayMinutes, endDayMinutes);
     endMinutes = clamp(endMinutes, startDayMinutes, endDayMinutes);
 
@@ -99,7 +101,7 @@ function updateScheduleNowLine(minutesSinceMidnight) {
     const endDayMinutes = DAY_END_HOUR * 60;
     const daySpanMinutes = endDayMinutes - startDayMinutes;
 
-    // Clamp to visible window (06:00–24:00)
+    // Clamp to visible window (06:00ï¿½24:00)
     const clamped = Math.min(
         endDayMinutes,
         Math.max(startDayMinutes, minutesSinceMidnight)

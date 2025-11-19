@@ -58,7 +58,7 @@ function addEventToDropdown(event) {
     const start = new Date(event.startTime);
     const end = new Date(event.endTime);
 
-    const opts = { hour: "numeric", minute: "2-digit" };
+    const opts = { hour: "numeric", minute: "2-digit", hour12: "true"};
     const timeText =
         start.toLocaleTimeString([], opts) +
         " - " +

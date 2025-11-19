@@ -1,6 +1,6 @@
 const key = "n5fcPKvJWw4kPlY87b89"
 const tile = "019a1752-72aa-797d-a3c7-b3c094cf97e3"
-const map = L.map("map").setView([49.808773, -97.13208],17);
+const map = L.map("map").setView([49.809375, -97.134458],17);
 
     const mtLayer = L.maptiler.maptilerLayer({
     apiKey: key,
@@ -60,7 +60,7 @@ function updateNumbers(rooms)
                 //otherwise remove it
                 labels[i].classList.remove("activeFilter");
             }
-            labels[i].innerHTML = nameNums[0];
+            labels[i].innerHTML = "EITC: " + nameNums[0];
         }
         else if(labels[i].classList.contains("Drake-Centre"))
         {
@@ -74,7 +74,7 @@ function updateNumbers(rooms)
                 //otherwise remove it
                 labels[i].classList.remove("activeFilter");
             }
-            labels[i].innerHTML = nameNums[1];
+            labels[i].innerHTML = "Drake Centre: " + nameNums[1];
         }
         else if(labels[i].classList.contains("Isbister-Building"))
         {
@@ -88,7 +88,7 @@ function updateNumbers(rooms)
                 //otherwise remove it
                 labels[i].classList.remove("activeFilter");
             }
-            labels[i].innerHTML = nameNums[2];
+            labels[i].innerHTML = "Isbister Building: " + nameNums[2];
         }
         else
         {
@@ -102,7 +102,7 @@ function updateNumbers(rooms)
                 //otherwise remove it
                 labels[i].classList.remove("activeFilter");
             }
-            labels[i].innerHTML = nameNums[3];
+            labels[i].innerHTML = "University College: " + nameNums[3];
         }
     }
 }
