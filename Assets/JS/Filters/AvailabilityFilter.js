@@ -42,7 +42,7 @@ class AvailabilityFilter extends FilterComponent {
         this._thumbEndEl = null;
 
         // deactivated by default
-        this.isActive = false;
+        this.isActive = true;
     }
 
     /**
@@ -169,7 +169,8 @@ class AvailabilityFilter extends FilterComponent {
 
         const startTimeInput = document.createElement("input");
         startTimeInput.type = "time";
-        startTimeInput.className = "availability-time availability-time-start dropdown-content";
+        startTimeInput.className =
+            "availability-time availability-time-start dropdown-content";
         startTimeInput.min = "06:00";
         startTimeInput.max = "24:00";
         startTimeInput.step = 900; // 15 minutes
@@ -179,7 +180,8 @@ class AvailabilityFilter extends FilterComponent {
 
         const endTimeInput = document.createElement("input");
         endTimeInput.type = "time";
-        endTimeInput.className = "availability-time availability-time-end dropdown-content";
+        endTimeInput.className =
+            "availability-time availability-time-end dropdown-content";
         endTimeInput.min = "06:00";
         endTimeInput.max = "24:00";
         endTimeInput.step = 900;
@@ -192,7 +194,8 @@ class AvailabilityFilter extends FilterComponent {
 
         // Row 3: Custom double-thumb slider
         const rowSliders = document.createElement("div");
-        rowSliders.className = "availability-row availability-sliders dropdown-content";
+        rowSliders.className =
+            "availability-row availability-sliders dropdown-content";
 
         const range = document.createElement("div");
         range.className = "availability-range";
@@ -253,7 +256,7 @@ class AvailabilityFilter extends FilterComponent {
         });
 
         endTimeInput.addEventListener("change", () => {
-            const mins = this.timeStringToMinutes(endTimeInput.value);
+            const mins = this.timeStrinToMinutes(endTimeInput.value);
             if (mins !== null) {
                 this.endMinutes = mins;
                 if (this.endMinutes < this.startMinutes) {
@@ -264,7 +267,7 @@ class AvailabilityFilter extends FilterComponent {
             }
         });
 
-        // Double-thumb slider dragging logic
+        // Double-thumb slider draging logic
         let activeThumb = null;
 
         const onPointerMove = (event) => {

@@ -42,7 +42,7 @@ function addEventToDayView(
     let startMinutes = minutesSinceMidnight(startDate);
     let endMinutes = minutesSinceMidnight(endDate);
 
-    // Clamp to the visible window (06:00�24:00)
+    // Clamp to the visible window (06:0024:00)
     startMinutes = clamp(startMinutes, startDayMinutes, endDayMinutes);
     endMinutes = clamp(endMinutes, startDayMinutes, endDayMinutes);
 
@@ -99,7 +99,7 @@ function updateScheduleNowLine(minutesSinceMidnight) {
     const endDayMinutes = DAY_END_HOUR * 60;
     const daySpanMinutes = endDayMinutes - startDayMinutes;
 
-    // Clamp to visible window (06:00�24:00)
+    // Clamp to visible window (06:0024:00)
     const clamped = Math.min(
         endDayMinutes,
         Math.max(startDayMinutes, minutesSinceMidnight)
@@ -207,5 +207,52 @@ if (occupiedNow) {
         .addEventListener("click", function () {
             errorPopup.style.display = "none"; // maybe another problem
         });
+}
+
+// ╭─────────────────────────────────────────────────────────╮
+// │ Dibbs Information                                       │
+// ╰─────────────────────────────────────────────────────────╯
+/**
+ * Render occupancy ("number of dibs") next to the schedule.
+ *
+ * arr[i] is the number of people in the room at:
+ *   time = 6:00 + (i * 60 minutes)
+ * So:
+ *   arr[0] -> 6:00
+ *   arr[1] -> 7:00
+ *   arr[2] -> 8:00
+ */
+function renderOccupancyColumn(arr) {
+    const col = document.getElementById("schedule-dibs");
+    if (!col) return;
+
+    if (!Array.isArray(arr)) {
+        console.warn("renderOccupancyColumn: expected an array");
+        return;
+    }
+
+    // Clear previous content
+    col.innerHTML = "";
+
+    // Optional header
+    const header = document.createElement("div");
+    header.className = "dibs-header";
+    header.textContent = "Number of Dibs";
+    col.appendChild(header);
+
+    // For each full hour from 6 to 23
+    for (let hour = START_HOUR; hour < END_HOUR; hour++) {
+        const index = hour - START_HOUR;
+        const value = arr[index] ?? 0;
+
+        const row = document.createElement("div");
+        row.className = "dibs-row";
+        row.textContent = value;
+
+        // store the hour in data attribute (good for tooltips / debugging)
+        row.dataset.hour = hour; // e.g. "6", "7", ...
+
+        col.appendChild(row);
+    }
 }
 
