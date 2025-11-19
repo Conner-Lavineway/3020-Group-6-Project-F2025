@@ -61,7 +61,7 @@
     height: 6px;
     transform: translateY(-50%);
     border-radius: 999px;
-    background-color: var(--dropdown-bg-color);
+    background-color: var(--container-bg-color);
 }
 
 /* Highlighted middle between thumbs */
@@ -72,9 +72,9 @@
     height: 6px;
     transform: translateY(-50%);
     border-radius: 999px;
-    background-color: var(--container-bg-color);
     box-shadow: var(--glow);
     pointer-events: none; /* let clicks go through to range container */
+    background-color: var(--dropdown-bg-color);
 }
 
 /* Thumbs */
