@@ -1,0 +1,509 @@
+@import "root.css";
+
+body.room-page {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--main-font);
+    font-size: var(--main-font-size);
+    color: var(--main-font-color);
+    background-color: var(--main-bg-color);
+
+    /* Override the homepage grid: use simple column layout */
+    display: flex;
+    flex-direction: column;
+}
+
+/* ─────────────────────────────────────────────────────────
+ * Header layout
+ * ───────────────────────────────────────────────────────── */
+
+.headerContainer {
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* left: back, center: title, right: events */
+    grid-template-areas: "back title events";
+    align-items: center;
+    column-gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--main-header-bg-color);
+    box-shadow: var(--box-shadow);
+}
+
+/* Back button (left) */
+#back-button {
+    grid-area: back;
+    justify-self: flex-start;
+
+    color: var(--main-font-color);
+    border: none;
+    cursor: pointer;
+    font-size: var(--header-font-size);
+    background-color: transparent;
+    padding: 0;
+    transition: color 0.2s ease-in-out;
+}
+
+#back-button:hover,
+#back-button:focus-visible {
+    color: var(--dropdown-hover-color);
+}
+
+/* Room title (center) */
+.room-title-wrapper {
+    grid-area: title;
+    text-align: center;
+}
+
+#room-title,
+.room-title {
+    margin: 0;
+    font-size: var(--header-font-size);
+    color: var(--header-font-color);
+}
+
+/* Events dropdown (right) */
+#events-dropdown {
+    grid-area: events;
+    justify-self: flex-end;
+}
+#back-button:hover,
+#back-button:focus-visible {
+    color: var(--dropdown-hover-color);
+}
+
+/* Room title (center) */
+.room-title-wrapper {
+    grid-area: title;
+    text-align: center;
+}
+
+#room-title,
+.room-title {
+    margin: 0;
+    font-size: var(--header-font-size);
+    color: var(--header-font-color);
+}
+
+.dropbutton {
+    cursor: pointer;
+    border-radius: var(--main-border-radius);
+    border: none;
+    padding: 0.35rem 0.75rem;
+    background-color: var(--dropdown-bg-color);
+    color: var(--main-font-color);
+    font-size: var(--main-font-size);
+    box-shadow: var(--box-shadow);
+    transition:
+        background-color 0.2s ease-in-out,
+        box-shadow 0.2s ease-in-out,
+        transform 0.1s ease-in-out;
+}
+
+.dropbutton:hover,
+.dropbutton:focus-visible {
+    background-color: var(--dropdown-hover-color);
+    box-shadow: var(--glow);
+    transform: translateY(-1px);
+}
+
+/* Optional: stack nicely on small screens */
+@media (max-width: 700px) {
+    .headerContainer {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "back events"
+            "title title";
+        row-gap: 0.5rem;
+    }
+
+    .room-title-wrapper {
+        text-align: center;
+    }
+}
+/* ──────────────────────────────────────────────────────────────────────────
+ *  Main layout (three columns: schedule | image+description | meta+DIBS)
+ * ──────────────────────────────────────────────────────────────────────────
+ */
+
+.container {
+    /* Take remaining vertical space under the header */
+    flex: 1;
+    display: grid;
+    grid-template-columns: 25% 40% 35%;
+    gap: 1.5rem;
+    padding: 1.5rem 3%;
+    box-sizing: border-box;
+}
+
+/* Generic padding + centering for direct children */
+.container > div,
+.schedule-column,
+.room-main-column,
+.room-meta-column {
+    padding: 0 1.5%;
+    text-align: center;
+}
+
+/* Left column (schedule) – use on the wrapper div or section */
+.schedule-column {
+    display: flex;
+}
+
+/* Middle column (image + description) */
+.room-main-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Right column (meta + DIBS) */
+#room-meta-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 3%;
+}
+
+/* Meta card should sit above the button */
+#room-meta {
+    order: 1;
+}
+
+/* DIBS button container: always below & centered */
+.room-cta {
+    order: 2;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center; /* centers the button horizontally */
+    text-align: center; /* just in case */
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+ *  Reusable box styling
+ * ──────────────────────────────────────────────────────────────────────────
+ */
+
+.roundedBox {
+    border-radius: var(--main-border-radius);
+    background-color: var(--container-bg-color);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    width: 90%;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+ *  Schedule block
+ * ──────────────────────────────────────────────────────────────────────────
+ */
+
+.schedule {
+    display: grid;
+    grid-template-columns: 60px 1fr; /* left: labels, right: events */
+    column-gap: 0.75rem;
+
+    /* make it scrollable */
+    max-height: 500px; /* tweak this to taste */
+    overflow-y: auto;
+
+    padding: 0.75rem 0.75rem 0.75rem 0;
+    background-color: var(--container-bg-color);
+    border-radius: var(--main-border-radius);
+    box-shadow: var(--box-shadow);
+    box-sizing: border-box;
+    min-width: 300px;
+}
+
+/* Left column: time labels (8:00, 9:00, 10:00, …) */
+.schedule-time-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* spread labels over full height */
+    align-items: flex-end;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+.time-label {
+    transform: translateY(-50%); /* align label with grid line */
+    padding-right: 0.25rem;
+}
+
+.schedule-track {
+    position: relative;
+    border-radius: calc(var(--main-border-radius) - 4px);
+    /* let contents scroll with the parent */
+    min-height: 700px; /* tall enough for 6–24h; adjust as needed */
+    background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.06) 0,
+        rgba(0, 0, 0, 0.06) 1px,
+        transparent 1px,
+        transparent 40px
+    );
+}
+
+.schedule-now {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--dropdown-hover-color);
+    box-shadow: 0 0 4px var(--dropdown-hover-color);
+    pointer-events: none; /* don't block clicks on events */
+    z-index: 1;
+}
+
+/* Base event block – positioned by CSS variables:
+ *   --start    : percentage from top (0–100) where event starts
+ *   --duration : percentage of track height the event occupies
+ */
+.schedule-event {
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    top: calc(var(--start) * 1%);
+    height: calc(var(--duration) * 1%);
+
+    border-radius: 8px;
+    background-color: var(--widget-bg-color);
+    color: var(--main-font-color);
+    font-size: 0.8rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.25rem 0.4rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+/* Inner text styles for events */
+.schedule-event-title {
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.schedule-event-time {
+    opacity: 0.9;
+    font-size: 0.7rem;
+}
+
+/* Optional modifier if you want to show "free blocks" too */
+.schedule-event--free {
+    background-color: rgba(0, 0, 0, 0.04);
+    box-shadow: none;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+ *  Room image + description
+ * ──────────────────────────────────────────────────────────────────────────
+ */
+
+.room-image {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.room-image-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Description box inside middle column */
+.room-description {
+    text-align: left;
+    padding: 1rem 1.25rem;
+    margin-top: 2rem;
+}
+
+.room-description-title {
+    margin: 0 0 0.75rem 0;
+    font-size: var(--h3-size);
+    border-bottom: 1px solid #8c8c8c;
+    padding-bottom: 0.25rem;
+}
+
+/* Description text is filled by JS via #description */
+#description {
+    margin: 0.25rem 0 0 0;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+ *  Room meta (building, room, amenities) + DIBS
+ * ──────────────────────────────────────────────────────────────────────────
+ */
+
+.room-meta {
+    text-align: left;
+    padding: 1rem 1.25rem;
+}
+
+/* Rows for Building / Room */
+.room-meta-row {
+    display: flex;
+    border-bottom: 1px solid #8c8c8c;
+    padding: 0.25rem 0;
+}
+
+.room-meta-row p {
+    margin: 0;
+}
+
+/* Amenities list */
+.room-meta-amenities {
+    border-bottom: 1px solid #8c8c8c;
+    padding: 0.5rem 0 0.75rem 0;
+}
+
+.room-meta-amenities p {
+    margin: 0 0 0.25rem 0;
+    text-align: left;
+}
+
+#amenities {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+/* DIBS button container (bottom-right) */
+.room-cta {
+    text-align: right;
+    margin-top: 1rem;
+}
+
+/* DIBS button itself (reusing old class name) */
+.dibsButton {
+    background-color: var(--dropdown-bg-color);
+    border: none;
+    border-radius: 25px;
+    color: var(--main-font-color);
+    padding: 0.8rem 2.5rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease-in-out,
+        box-shadow 0.2s ease-in-out,
+        transform 0.1s ease-in-out;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+}
+
+.dibsButton:hover {
+    background-color: var(--dropdown-hover-color);
+    box-shadow: var(--glow);
+    transform: translateY(-1px);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+ *  Events dropdown tweaks (reusing existing .dropbutton styles)
+ * ──────────────────────────────────────────────────────────────────────────
+ */
+
+.dropbutton {
+    background-image: url(https://img.icons8.com/?size=100&id=gn7BG2TZ2vtF&format=png&color=000000);
+    background-repeat: no-repeat;
+    background-position: right 4% top 50%;
+    background-size: var(--header-font-size);
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    background-color: var(--dropdown-bg-color);
+    font-size: var(--main-font-size);
+    border-radius: var(--main-border-radius);
+    border-style: none;
+    box-shadow: var(--box-shadow);
+    color: var(--main-font-color);
+}
+
+@media (max-width: 1180px) {
+    .dropbutton {
+        padding-right: var(--header-font-size);
+    }
+}
+
+.dropbutton:hover,
+.dropbutton:focus {
+    background-color: var(--dropdown-hover-color);
+}
+
+.dropdown-box {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    background-color: var(--main-bg-color);
+    border-radius: var(--main-border-radius);
+    border-color: var(--dropdown-hover-color);
+    border-width: var(--main-border-size);
+    border-style: none;
+    box-shadow: var(--glow);
+    width: 25%;
+    max-width: fit-content;
+}
+
+.dropdown-box .event-header {
+    color: var(--main-font-color);
+    text-decoration: none;
+    display: block;
+}
+
+.dropbutton:hover,
+.dropbutton:focus {
+    background-color: var(--dropdown-hover-color);
+}
+
+#events-dropdown {
+    grid-area: events;
+}
+
+#events {
+    max-height: 60%;
+    overflow-y: auto;
+    right: 1%;
+}
+
+.event {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 1%;
+}
+
+.event-header {
+    text-align: left;
+    font-size: var(--header-font-size);
+    padding: 2% 5% 5% 5%;
+}
+
+.event-details {
+    text-align: center;
+    transform: translateX(5%);
+    font-size: var(--main-font-size);
+    max-width: 90%;
+    padding-bottom: 5%;
+    border-bottom: solid 2px var(--dropdown-bg-color);
+}
+
+/*Needs to be at bottom to overwrite other styles*/
+.showEvents {
+    display: block;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+ *  Utilities
+ * ──────────────────────────────────────────────────────────────────────────
+ */
+
+/* For hidden headings (accessibility) */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

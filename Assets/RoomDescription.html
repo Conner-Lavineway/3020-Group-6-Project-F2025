@@ -1,91 +1,147 @@
-<!DOCTYPE html>
-<html>
-	<head>                
-		<title>RoomDescription</title>
-		<link rel="stylesheet" href="CSS/styles.css">
-	</head>
-	<body class="room-page">
-        <div id="search-bar">
-            <div id="logo"></div>
-            <input type="text" id="search-box" placeholder="Search..." style="visibility: hidden;">
-            <div id="search-btn" style="visibility: hidden;">
-                <input type="image" src="./Images/icons8-search.svg">
-            </div>
-            <div id="filter-dropdown" style="visibility: hidden;">
-                <button onclick="showFilter()" class="dropbutton">Filter</button>
-                <div id="filters" class="dropdown-box">                    </div>
-            </div>
-            
-            <div id="sort-dropdown" style="visibility: hidden;">
-                <button onclick="showSort()" class="dropbutton">Sort</button>
-                <div id="sorting" class="dropdown-box">
-                    <button onclick="sortFilter()" class="sortButton dropdown-content" id="relevance">Relevance</button>
-                    <button onclick="sortFilter()" class="sortButton dropdown-content" id="distance">Distance</button>
-                </div>
-            </div>
-            
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Basic document metadata -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Room Description</title>
+
+        <!-- Main stylesheet for this page -->
+        <!-- <link rel="stylesheet" href="CSS/styles.css" /> -->
+        <link rel="stylesheet" href="CSS/roomDescription.css" />
+    </head>
+
+    <!--
+    The .room-page class is for page-level styling (background, layout, etc.)
+  -->
+    <body class="room-page">
+        <!--
+      HEADER
+      - Contains: Events dropdown, Back button, Room title
+    -->
+        <header class="headerContainer">
+            <!-- Events dropdown (top-left) -->
             <div id="events-dropdown">
-                <button onclick="showEvent()" class="dropbutton">Events Today</button>
+                <button onclick="showEvent()" class="dropbutton">
+                    Events Today
+                </button>
                 <div id="events" class="dropdown-box"></div>
             </div>
-            
-        </div>
 
-		</div>
-		<div class="headerContainer">
-			<div>
-				<button class="backButton" style="text-align:left; padding-left: 10%"> << </button>
-			</div>
-			<div style="text-align: center;">
-				<p id="room-title">EITC 320</p>
-			</div>
-			<div></div>
+            <!-- Back button (top-center/left depending on CSS layout) -->
+            <button
+                type="button"
+                class="backButton"
+                id="back-button"
+                aria-label="Back to search results"
+            >
+                &laquo; Back
+            </button>
 
-		</div>
-		<div class="container">
+            <!-- Room title (top-center) -->
+            <div class="room-title-wrapper">
+                <!-- JS will set this to something like "EITC 320" -->
+                <h1 id="room-title" id="room-title">EITC 320</h1>
+            </div>
+        </header>
 
+        <main class="container">
+            <!-- COLUMN 1: Schedule -->
 
-				<div style="padding-left: 3%">
-					<div class="schedule roundedBox" id="schedule"></div>
-				</div>
-				
-				<div>
-					<img class="roundedBox" src="Images/classroom1.jfif" style="max-width: 100%;" >
+            <div class="schedule roundedBox" id="schedule">
+                <div class="schedule-time-column">
+                    <div class="time-label">6:00</div>
+                    <div class="time-label">8:00</div>
+                    <div class="time-label">10:00</div>
+                    <div class="time-label">12:00</div>
+                    <div class="time-label">14:00</div>
+                    <div class="time-label">16:00</div>
+                    <div class="time-label">18:00</div>
+                    <div class="time-label">20:00</div>
+                    <div class="time-label">22:00</div>
+                    <div class="time-label">24:00</div>
+                </div>
 
-					<div  class="roundedBox" style="text-align: left" >
-						<h3 style="border-bottom: 1px solid #8c8c8c">Description</h3>
-						<p id ="description"></p>
-					</div>
-				</div>
-				<div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding-right: 3%">
-					<div class="roundedBox">
-						<div style="text-align: left; display: flex; border-bottom: 1px solid #8c8c8c;">
-							<p><b>Building:&nbsp;</b></p>
-							<p id="building">EITC</p>
-						</div>
-						<div style="text-align: left; display: flex; border-bottom: 1px solid #8c8c8c">
-							<p><b>Room:&nbsp;</b></p>
-							<p id="room"></p>
-						</div>
-						<div style="text-align: left; border-bottom: 1px solid #8c8c8c">
-							<p><b>Amenities:</b></p>
-							<ul id="amenities"></ul>
-						</div>
-					</div>
-					<div style="text-align: right">
-						<button class="dibsButton">DIBS</button>
-					</div>
-				</div>
-			</div>
+                <div class="schedule-track">
+                    <!-- Current time line -->
+                    <div class="schedule-now" id="schedule-now"></div>
 
+                    <!-- JS will inject .schedule-event blocks here -->
+                    <!-- existing events here are fine -->
+                </div>
+            </div>
 
-		<script src="JS/RoomDescription.js"></script>
-		<script src="JS/dropdown.js"></script>
-        <!--Load data-->
-        <script src="Data/Filters.js"></script>
-        <script src="Data/Events.js"></script>
+            <!--
+        COLUMN 2: Image + Description
+      -->
+            <section id="room-main-column">
+                <!-- Room image -->
+                <figure class="room-image roundedBox">
+                    <!--
+            Replace src with the actual image for this room.
+            JS can swap this out if needed.
+          -->
+                    <img
+                        src="Images/classroom1.jfif"
+                        alt="Classroom view for this room"
+                        class="room-image-img"
+                    />
+                </figure>
+
+                <!-- Room description box -->
+                <section
+                    class="room-description roundedBox"
+                    aria-labelledby="description-heading"
+                >
+                    <h3 id="description-heading" class="room-description-title">
+                        Description
+                    </h3>
+                    <!-- JS fills in the description for this room -->
+                    <p id="description"></p>
+                </section>
+            </section>
+
+            <!--
+        COLUMN 3: Metadata + Amenities + DIBS button
+      -->
+            <aside id="room-meta-column">
+                <section class="roundedBox" id="room-meta">
+                    <!-- Building name row -->
+                    <div class="room-meta-row">
+                        <p><strong>Building:&nbsp;</strong></p>
+                        <!-- JS updates this with the room's building -->
+                        <p id="building">EITC</p>
+                    </div>
+
+                    <!-- Room number row -->
+                    <div class="room-meta-row">
+                        <p><strong>Room:&nbsp;</strong></p>
+                        <!-- JS updates this with the room number -->
+                        <p id="room"></p>
+                    </div>
+
+                    <!-- Amenities list -->
+                    <div class="room-meta-amenities">
+                        <p><strong>Amenities:</strong></p>
+                        <!-- JS will populate this <ul> with <li> items for each amenity -->
+                        <ul id="amenities"></ul>
+                    </div>
+                </section>
+
+                <!-- DIBS call-to-action -->
+                <div class="room-cta">
+                    <!-- JS can attach a click handler to actually perform the booking -->
+                    <button type="button" class="dibsButton">DIBS</button>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Load data (rooms, events, filters) -->
         <script src="Data/Dibs_Prototype_Data.js"></script>
-        <!--Do stuff with it-->
+        <script src="JS/dropdown.js"></script>
         <script src="JS/populate.js"></script>
-	</body>
+        <script src="JS/RoomDescription.js"></script>
+    </body>
 </html>
+

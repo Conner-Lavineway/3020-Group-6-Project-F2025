@@ -636,9 +636,6 @@ function extractEvents(date = new Date(), rooms = ROOMS) {
         const eventList = room.events;
         for (const event of eventList) {
             const startTime = new Date(event.startTime);
-            // add the room name + numbe to the title
-            event.title += ": " + room.buildingName + " " + room.roomNumber;
-
             // check year, month, day
             const sameDay =
                 startTime.getFullYear() === date.getFullYear() &&
@@ -702,4 +699,10 @@ for (const room of ROOMS) {
     const baseDist = distMap[room.buildingName] || 400;
     // add some variance
     room.distanceFromUser = baseDist + Math.floor(Math.random() * 100);
+}
+
+// Assign ID to each room for easier serching
+for (const room of ROOMS) {
+    room.id =
+        room.buildingName.toLowerCase().replace(/\s+/g, "-") + room.roomNumber;
 }

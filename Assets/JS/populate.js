@@ -118,8 +118,7 @@ function createRoomResultElement(room) {
     card.className = "room-result";
 
     // assign room-id
-    const roomID = room.buildingName.replace(/\s+/g, "-") + room.roomNumber;
-    card.setAttribute("room-id", roomID);
+    card.setAttribute("room-id", room.id);
 
     // Main info (title + short description)
     const main = document.createElement("div");
@@ -184,10 +183,10 @@ function createRoomResultElement(room) {
     // add event listener to open room description on click
     card.addEventListener("click", (event) => {
         const baseUrl = new URL(".", window.location.href).href;
-        const url = baseUrl + "Assets/RoomDescription.html" + "#" + roomID;
+        const url = baseUrl + "Assets/RoomDescription.html" + "?id=" + room.id;
 
         if (event.ctrlKey || event.metaKey) {
-            window.open(url + "?room=" + roomID, "_blank");
+            window.open(url);
         } else {
             window.location.href = url;
         }
