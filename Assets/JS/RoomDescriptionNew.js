@@ -112,7 +112,9 @@ function updateScheduleNowLine(minutesSinceMidnight) {
     nowEl.style.top = offsetPercent + "%";
 }
 
-/* Optional helpers */
+// ╭─────────────────────────────────────────────────────────╮
+// │ Optional helpers                                        │
+// ╰─────────────────────────────────────────────────────────╯
 
 // From a Date object:
 function minutesFromDate(date) {
@@ -171,7 +173,9 @@ function goHome() {
     window.location.href = parentUrl + "/index.html";
 }
 
-//  Gray out dibs button
+// ╭─────────────────────────────────────────────────────────╮
+// │ Gray out dibs button                                    │
+// ╰─────────────────────────────────────────────────────────╯
 
 // get hardOccupied events
 const hardOccupiedEvents = currentRoom.events.filter(
@@ -236,19 +240,25 @@ function renderOccupancyColumn(arr) {
     // Clear previous content
     col.innerHTML = "";
 
-    // Optional header
-    const header = document.createElement("div");
-    header.className = "dibs-header";
-    header.textContent = "Number of Dibs";
-    col.appendChild(header);
-
     // For each full hour from 6 to 23
     for (let hour = START_HOUR; hour < END_HOUR; hour++) {
         const index = hour - START_HOUR;
-        const value = arr[index] ?? 0;
+        var value = arr[index] ?? 0;
 
         const row = document.createElement("div");
         row.className = "dibs-row";
+
+        // check if a hard occupancy event is happening at this hour
+        for (const event in hardOccupiedEvents) {
+            if (
+                hour >=
+                    new Date(hardOccupiedEvents[event].startTime).getHours() &&
+                hour < new Date(hardOccupiedEvents[event].endTime).getHours()
+            ) {
+                value = "X";
+            }
+        }
+
         row.textContent = value;
 
         // store the hour in data attribute (good for tooltips / debugging)
@@ -258,3 +268,5 @@ function renderOccupancyColumn(arr) {
     }
 }
 
+// render occupancy data for the current room
+renderOccupancyColumn(currentRoom.occupancy);

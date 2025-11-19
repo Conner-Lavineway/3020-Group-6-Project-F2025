@@ -66,6 +66,18 @@
             <div class="container">
                 <div style="padding-left: 3%">
                     <div class="schedule roundedBox" id="schedule">
+                        <!-- Header row -->
+                        <div class="schedule-header schedule-header--time">
+                            Time
+                        </div>
+                        <div class="schedule-header schedule-header--events">
+                            Events
+                        </div>
+                        <div class="schedule-header schedule-header--dibs">
+                            Number of Dibs
+                        </div>
+
+                        <!-- Time column -->
                         <div class="schedule-time-column">
                             <div class="time-label">6:00 AM</div>
                             <div class="time-label">8:00 AM</div>
@@ -79,10 +91,11 @@
                             <div class="time-label">11:59 PM</div>
                         </div>
 
+                        <!-- Events track -->
                         <div class="schedule-track">
                             <div class="schedule-now" id="schedule-now"></div>
                         </div>
-
+                        <!-- Occupancy / dibs column -->
                         <div
                             class="schedule-dibs-column"
                             id="schedule-dibs"
@@ -173,4 +186,3 @@
         <script src="JS/RoomDescriptionNew.js"></script>
     </body>
 </html>
-

@@ -274,9 +274,12 @@ body {
 */
 .schedule {
     display: grid;
-    /*grid-template-columns: 60px 1fr;*/ /* left: labels, right: events */
-    grid-template-columns: 15% 1fr;
+    /* time | events | dibs  */
+    grid-template-columns: 15% 1fr minmax(90px, 18%);
+    /* header row + body row */
+    grid-template-rows: auto 1fr;
     column-gap: 0.75rem;
+    row-gap: 0.5rem;
 
     max-height: 66vh;
     overflow-y: auto;
@@ -288,50 +291,128 @@ body {
     min-width: 30%;
 }
 
-/* Left column: time labels (8:00, 9:00, 10:00, …) */
-.schedule-time-column {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* spread labels over full height */
-    align-items: flex-end;
-    font-size: 0.75rem;
-    color: #555;
-}
+/* ───── Shared background guide lines (1 per HOUR from 6–24) ───── */
 
-.time-label {
-    transform: translateY(-50%); /* align label with grid line */
-    padding-right: 0.25rem;
-    margin-top: 10%;
-}
-
-.schedule-track {
+.schedule-time-column,
+.schedule-track,
+.schedule-dibs-column {
     position: relative;
-    border-radius: calc(var(--main-border-radius) - 4px);
-    /* let contents scroll with the parent */
-    min-height: 700px; /* tall enough for 6–24h; adjust as needed */
-    background-image: repeating-linear-gradient(
+    background-image: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0.06) 0,
         rgba(0, 0, 0, 0.06) 1px,
         transparent 1px,
-        transparent 40px
+        transparent 100%
     );
+    /* 18 hourly slots - 18 stripes */
+    background-size: 100% calc(100% / 18);
+    background-repeat: repeat-y;
 }
 
+/* ───── Header row ───── */
+
+.schedule-header {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #444;
+    align-self: flex-end;
+}
+
+.schedule-header--time {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: right;
+    padding-right: 0.25rem;
+}
+
+.schedule-header--events {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.schedule-header--dibs {
+    grid-column: 3;
+    grid-row: 1;
+    text-align: left;
+    padding-left: 0.25rem;
+}
+
+/* ───── Left column: time labels, snapped to hour rows ───── */
+
+.schedule-time-column {
+    grid-column: 1;
+    grid-row: 2;
+
+    display: grid;
+    /* 18 hour rows: 6,7,...,23 */
+    grid-template-rows: repeat(18, 1fr);
+    align-items: center;
+    font-size: 0.75rem;
+    color: #555;
+    padding-right: 0.25rem;
+}
+
+/* Position each time label on the right rows (2-hour increments) */
+.schedule-time-column .time-label {
+    margin: 0;
+}
+.schedule-time-column .time-label:nth-child(1) {
+    grid-row: 1;
+}
+.schedule-time-column .time-label:nth-child(2) {
+    grid-row: 3;
+}
+.schedule-time-column .time-label:nth-child(3) {
+    grid-row: 5;
+}
+.schedule-time-column .time-label:nth-child(4) {
+    grid-row: 7;
+}
+.schedule-time-column .time-label:nth-child(5) {
+    grid-row: 9;
+}
+.schedule-time-column .time-label:nth-child(6) {
+    grid-row: 11;
+}
+.schedule-time-column .time-label:nth-child(7) {
+    grid-row: 13;
+}
+.schedule-time-column .time-label:nth-child(8) {
+    grid-row: 15;
+}
+.schedule-time-column .time-label:nth-child(9) {
+    grid-row: 17;
+}
+.schedule-time-column .time-label:nth-child(10) {
+    grid-row: 18;
+}
+
+/* ───── Middle column: track, using the same 18 rows for height ───── */
+
+.schedule-track {
+    grid-column: 2;
+    grid-row: 2;
+
+    position: relative;
+    border-radius: calc(var(--main-border-radius) - 4px);
+    min-height: 700px; /* controls total height; others match this */
+}
+
+/* Now line uses same 0–100% vertical scale as events */
 .schedule-now {
     position: absolute;
     left: 0;
     right: 0;
     height: 2px;
-    background-color: var(--dropdown-hover-color);
+    background-color: var(--highlight-color);
     box-shadow: 0 0 4px var(--dropdown-hover-color);
-    pointer-events: none; /* don't block clicks on events */
+    pointer-events: none;
     z-index: 1;
 }
 
-/* Base event block – positioned by CSS variables:
- *   --start    : percentage from top (0–100) where event starts
- *   --duration : percentage of track height the event occupies
+/* Events – your existing percentage math still works:
+ * --start    = (hoursFrom6 / 18) * 100
+ * --duration = (eventHours / 18) * 100
  */
 .schedule-event {
     position: absolute;
@@ -351,7 +432,6 @@ body {
     overflow: hidden;
 }
 
-/* Inner text styles for events */
 .schedule-event-title {
     font-weight: 600;
     margin-bottom: 0.1rem;
@@ -365,7 +445,6 @@ body {
     font-size: 0.7rem;
 }
 
-/* Optional modifier if you want to show "free blocks" too */
 .schedule-event--free {
     background-color: rgba(0, 0, 0, 0.04);
     box-shadow: none;
@@ -373,6 +452,25 @@ body {
 
 .hard-occupied {
     background-color: var(--attention-color);
+}
+
+/* ───── Right column: "Number of Dibs" / occupancy ───── */
+
+.schedule-dibs-column {
+    grid-column: 3;
+    grid-row: 2;
+
+    display: grid;
+    grid-template-rows: repeat(18, 1fr); /* 6–23 hours */
+    align-items: center;
+    font-size: 0.75rem;
+    color: #555;
+    padding-left: 0.25rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dibs-row {
+    margin: 0;
 }
 
 /*
@@ -445,4 +543,3 @@ body {
 .popup-error {
     border: 2px solid var(--attention-color);
 }
-
