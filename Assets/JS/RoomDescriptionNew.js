@@ -122,6 +122,8 @@ for (const event of currentRoom.events) {
     addEventToDayView(event);
     addEventToDropdown(event);
 }
+updateScheduleNowLine(minutesFromDate(new Date()));
+
 //Rest of stuff
 document.getElementById("room-title").textContent = currentRoom.buildingName + " " + currentRoom.roomNumber;
 document.getElementById("description").textContent = currentRoom.roomDescription;
