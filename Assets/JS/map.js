@@ -1,10 +1,22 @@
 const key = "n5fcPKvJWw4kPlY87b89"
 const tile = "019a1752-72aa-797d-a3c7-b3c094cf97e3"
+
+/*Versions to try:
+    base-v4
+    streets-v4
+    hybrid
+    streets
+    winter-v2
+    landscape-v4
+
+Custom Map:
+    019a1752-72aa-797d-a3c7-b3c094cf97e3
+*/
 const map = L.map("map").setView([49.809375, -97.134458],17);
 
     const mtLayer = L.maptiler.maptilerLayer({
     apiKey: key,
-    style: L.maptiler.$tile, //optional
+    style: "https://api.maptiler.com/maps/" + tile + "/style.json?key=" + key, //optional
     }).addTo(map);
 
 map.setMaxBounds([
@@ -102,7 +114,7 @@ function updateNumbers(rooms)
                 //otherwise remove it
                 labels[i].classList.remove("activeFilter");
             }
-            labels[i].innerHTML = "University College: " + nameNums[3];
+            labels[i].innerHTML = "University College: " +nameNums[3];
         }
     }
 }
