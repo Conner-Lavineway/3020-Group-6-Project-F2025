@@ -56,6 +56,8 @@ body {
 
 #events-dropdown {
     grid-area: events;
+    width: 90%;
+    height: 50pt;
 }
 
 #events {
@@ -141,7 +143,10 @@ body {
     transition-duration: 0.4s;
     font-size: var(--header-font-size);
     background-color: var(--main-bg-color);
-    margin-top: 0.67em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 #backButton:hover {
@@ -160,7 +165,7 @@ body {
 
 .headerContainer {
     display: grid;
-    grid-template-columns: 10% 80% 10%;
+    grid-template-columns: 20% 60% 20%;
 }
 
 .container {
@@ -227,10 +232,6 @@ body {
 
 .available {
     background-color: var(--container-bg-color);
-}
-
-.event {
-    background-color: var(--widget-bg-color);
 }
 
 /*Needs to be at bottom to overwrite other styles*/
@@ -410,8 +411,8 @@ body {
     z-index: 1;
 }
 
-/* Events – your existing percentage math still works:
- * --start    = (hoursFrom6 / 18) * 100
+/* events – your existing percentage math still works:
+ * --start    = (hoursfrom6 / 18) * 100
  * --duration = (eventHours / 18) * 100
  */
 .schedule-event {

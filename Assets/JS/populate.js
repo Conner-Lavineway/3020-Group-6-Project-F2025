@@ -210,8 +210,6 @@ function renderAvailableRooms(rooms = ROOMS) {
         const card = createRoomResultElement(room);
         container.appendChild(card);
     });
-
-    updateNumbers(rooms);
 }
 
 //          ╭─────────────────────────────────────────────────────────╮
@@ -220,6 +218,9 @@ function renderAvailableRooms(rooms = ROOMS) {
 const searchInput = document.getElementById("search-box");
 
 function updateRoomResults() {
+    // make a FILTERS copy without the building filter for map numbers
+    const FILTERSWithoutBuilding = FILTERS.filter((f) => f !== BUILDING_FILTER);
+
     // figure out if sort by distance button is active
     const sortByDistance = document
         .getElementById("distance")
@@ -235,6 +236,10 @@ function updateRoomResults() {
     // if it's empty just render filtered rooms
     if (!query || query.trim() === "") {
         renderAvailableRooms(applyFilters(FILTERS, ROOMS));
+
+        //update map numbers without the building filter
+        updateNumbers(applyFilters(FILTERSWithoutBuilding, ROOMS));
+
         return true;
     }
 
@@ -253,6 +258,11 @@ function updateRoomResults() {
 
         rooms = results.map((result) => result.item);
         renderAvailableRooms(rooms);
+
+        // update map numbers without the building filter
+        updateNumbers(
+            searchData(query, FILTERSWithoutBuilding, ROOMS).map((r) => r.item)
+        );
         return true;
     }
 }
@@ -270,4 +280,3 @@ searchInput.addEventListener("keydown", updateRoomResults);
 // update initial results
 updateRoomResults();
 //update map
-updateNumbers(ROOMS);

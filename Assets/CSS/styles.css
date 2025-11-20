@@ -47,9 +47,8 @@ body {
     align-items: stretch;
 }
 
-@media (max-width: 1600px)
-{
-    body{
+@media (max-width: 1600px) {
+    body {
         grid-template-columns: 1fr 2fr;
     }
 }
@@ -309,7 +308,7 @@ body {
     margin-top: -8px;
     color: var(--text-label-color);
     min-width: 60px;
-    min-height: fit-content;
+    min-height: fit-content !important;
     padding: 2px 5px 2px 5px;
     border-radius: var(--main-border-radius);
     box-shadow: var(--box-shadow);
@@ -327,7 +326,12 @@ body {
     background-color: var(--dropdown-hover-color);
     box-shadow: var(--glow);
 }
-
+.leaflet-marker-icon.text-label {
+    width: auto !important;
+    height: auto !important;
+    padding: 2px 6px;
+    line-height: 1.2;
+}
 /**Room Page**/
 
 .backButton {
@@ -487,4 +491,3 @@ body {
     min-width: 5px;
     min-height: 5px;
 }
-

@@ -8,59 +8,54 @@
         <div>
             <div>
                 <div id="search-bar">
-                    <div id="logo"></div>
-                    <input
-                        type="text"
-                        id="search-box"
-                        placeholder="Search..."
-                        style="visibility: hidden"
-                    />
-                    <div id="search-btn" style="visibility: hidden">
-                        <input type="image" src="Images/icons8-search.svg" />
-                    </div>
-                    <div hidden id="filter-dropdown">
-                        <button class="dropbutton">Filter</button>
-                        <div id="filters" class="dropdown-box"></div>
-                    </div>
-
-                    <div hidden id="sort-dropdown">
-                        <button class="dropbutton">Sort</button>
-                        <div id="sorting" class="dropdown-box">
-                            <button
-                                class="sortButton dropdown-content"
-                                id="relevance"
-                            >
-                                Relevance
-                            </button>
-                            <button
-                                class="sortButton dropdown-content"
-                                id="distance"
-                            >
-                                Distance
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="events-dropdown">
-                        <button onclick="showEvent()" class="dropbutton">
-                            Events Today
-                        </button>
-                        <div id="events" class="dropdown-box"></div>
-                    </div>
+                    <!-- <div id="logo"></div> -->
+                    <!-- <input -->
+                    <!--     type="text" -->
+                    <!--     id="search-box" -->
+                    <!--     placeholder="Search..." -->
+                    <!--     style="visibility: hidden" -->
+                    <!-- /> -->
+                    <!-- <div id="search-btn" style="visibility: hidden"> -->
+                    <!--     <input type="image" src="Images/icons8-search.svg" /> -->
+                    <!-- </div> -->
+                    <!-- <div hidden id="filter-dropdown"> -->
+                    <!--     <button class="dropbutton">Filter</button> -->
+                    <!--     <div id="filters" class="dropdown-box"></div> -->
+                    <!-- </div> -->
+                    <!---->
+                    <!-- <div hidden id="sort-dropdown"> -->
+                    <!--     <button class="dropbutton">Sort</button> -->
+                    <!--     <div id="sorting" class="dropdown-box"> -->
+                    <!--         <button -->
+                    <!--             class="sortButton dropdown-content" -->
+                    <!--             id="relevance" -->
+                    <!--         > -->
+                    <!--             Relevance -->
+                    <!--         </button> -->
+                    <!--         <button -->
+                    <!--             class="sortButton dropdown-content" -->
+                    <!--             id="distance" -->
+                    <!--         > -->
+                    <!--             Distance -->
+                    <!--         </button> -->
+                    <!--     </div> -->
+                    <!-- </div> -->
                 </div>
                 <div class="headerContainer">
-                    <div>
-                        <button
-                            id="backButton"
-                            style="text-align: left; padding-left: 10%"
-                        >
-                            <<
-                        </button>
+                    <div style="align-items: center; display: flex">
+                        <button id="backButton"><< Home</button>
                     </div>
                     <div>
                         <p id="room-title">EITC 320</p>
                     </div>
-                    <div></div>
+                    <div style="align-items: center; display: flex">
+                        <div id="events-dropdown">
+                            <button onclick="showEvent()" class="dropbutton">
+                                Events Today
+                            </button>
+                            <div id="events" class="dropdown-box"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="container">
