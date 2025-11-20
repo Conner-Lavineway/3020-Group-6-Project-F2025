@@ -482,7 +482,7 @@ body {
 }
 
 .activeSort {
-    background-color: var(--container-bg-color);
+    background-color: var(--highlight-color);
 }
 
 .activeFilter {
