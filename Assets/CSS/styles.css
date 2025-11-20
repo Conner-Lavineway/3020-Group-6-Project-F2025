@@ -47,6 +47,13 @@ body {
     align-items: stretch;
 }
 
+@media (max-width: 1600px)
+{
+    body{
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
 /**Homepage**/
 
 #search-bar {
