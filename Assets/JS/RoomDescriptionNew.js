@@ -81,7 +81,7 @@ function addEventToDayView(
 }
 
 function formatTimeRange(start, end) {
-    const opts = { hour: "numeric", minute: "2-digit" };
+    const opts = { hour: "numeric", minute: "2-digit", hour12: "true"};
     const s = start.toLocaleTimeString([], opts);
     const e = end.toLocaleTimeString([], opts);
     return `${s} -- ${e}`;
