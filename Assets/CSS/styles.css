@@ -301,13 +301,14 @@ body {
     margin-left: -8px;
     margin-top: -8px;
     color: var(--text-label-color);
-    min-width: fit-content;
+    min-width: 60px;
     min-height: fit-content;
     padding: 2px 5px 2px 5px;
     border-radius: var(--main-border-radius);
     box-shadow: var(--box-shadow);
     background-color: var(--text-label-background);
     text-align: center;
+    align-items: center;
 }
 
 .text-label:hover {

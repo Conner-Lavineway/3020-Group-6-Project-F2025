@@ -1,5 +1,5 @@
-const key = "n5fcPKvJWw4kPlY87b89"
-const tile = "019a1752-72aa-797d-a3c7-b3c094cf97e3"
+const key = "n5fcPKvJWw4kPlY87b89";
+const tile = "019a1752-72aa-797d-a3c7-b3c094cf97e3";
 
 /*Versions to try:
     base-v4
