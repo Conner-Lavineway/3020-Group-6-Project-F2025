@@ -19,8 +19,8 @@ class AvailabilityFilter extends FilterComponent {
     constructor() {
         super("availability");
 
-        // Selected date in "YYYY-MM-DD" or default to today
-        this.selectedDate = "2025-11-13"; // Example fixed date for testing
+        // Selected date in "YYYY-MM-DD" or null if no date chosen yet
+        this.selectedDate = "2025-11-13"; // Example date
 
         // Time range in minutes from midnight, clamped to [06:00, 24:00]
         this.MIN_MINUTES = 6 * 60; // 06:00
@@ -42,7 +42,24 @@ class AvailabilityFilter extends FilterComponent {
         this._thumbEndEl = null;
 
         // deactivated by default
-        this.isActive = true;
+        this.isActive = false;
+    }
+
+    /**
+     * Clear selected date/time and deactivate this filter.
+     */
+    reset() {
+        this.selectedDate = null;
+        this.startMinutes = this.MIN_MINUTES;
+        this.endMinutes = this.MIN_MINUTES;
+        this.isActive = false;
+
+        if (this.dateInput) {
+            this.dateInput.value = "";
+        }
+
+        this.updateTimeInputsFromState();
+        this.updateSliderUIFromState();
     }
 
     /**
@@ -95,6 +112,17 @@ class AvailabilityFilter extends FilterComponent {
      * Sync the time <input type="time"> fields from internal minutes.
      */
     updateTimeInputsFromState() {
+        // When the filter is inactive, show empty time fields.
+        if (!this.isActive) {
+            if (this.startTimeInput) {
+                this.startTimeInput.value = "";
+            }
+            if (this.endTimeInput) {
+                this.endTimeInput.value = "";
+            }
+            return;
+        }
+
         if (this.startTimeInput) {
             this.startTimeInput.value = this.minutesToTimeString(
                 this.startMinutes
@@ -104,7 +132,6 @@ class AvailabilityFilter extends FilterComponent {
             this.endTimeInput.value = this.minutesToTimeString(this.endMinutes);
         }
     }
-
     /**
      * Sync slider thumbs + highlight from internal minutes.
      */
@@ -137,7 +164,20 @@ class AvailabilityFilter extends FilterComponent {
 
         const header = document.createElement("div");
         header.className = "filter-header dropdown-content";
-        header.textContent = "Available Between:";
+
+        const titleSpan = document.createElement("span");
+        titleSpan.textContent = "Available Between:";
+
+        const resetBtn = document.createElement("button");
+        resetBtn.type = "button";
+        resetBtn.className = "filter-reset-button dropdown-content";
+        resetBtn.textContent = "Reset";
+        resetBtn.addEventListener("click", () => {
+            this.reset();
+        });
+
+        header.appendChild(titleSpan);
+        header.appendChild(resetBtn);
         wrapper.appendChild(header);
 
         const details = document.createElement("div");
@@ -237,9 +277,10 @@ class AvailabilityFilter extends FilterComponent {
 
         // --- Event wiring ---
 
-        // Date change -> update selectedDate
+        // Date change -> update selectedDate and mark filter active
         dateInput.addEventListener("change", () => {
             this.selectedDate = dateInput.value || null;
+            this.isActive = !!this.selectedDate;
         });
 
         // Time field changes -> update minutes, clamp, sync slider + other input
@@ -250,24 +291,26 @@ class AvailabilityFilter extends FilterComponent {
                 if (this.startMinutes > this.endMinutes) {
                     this.endMinutes = this.startMinutes;
                 }
+                this.isActive = true;
                 this.updateTimeInputsFromState();
                 this.updateSliderUIFromState();
             }
         });
 
         endTimeInput.addEventListener("change", () => {
-            const mins = this.timeStrinToMinutes(endTimeInput.value);
+            const mins = this.timeStringToMinutes(endTimeInput.value);
             if (mins !== null) {
                 this.endMinutes = mins;
                 if (this.endMinutes < this.startMinutes) {
                     this.startMinutes = this.endMinutes;
                 }
+                this.isActive = true;
                 this.updateTimeInputsFromState();
                 this.updateSliderUIFromState();
             }
         });
 
-        // Double-thumb slider draging logic
+        // Double-thumb slider dragging logic
         let activeThumb = null;
 
         const onPointerMove = (event) => {
@@ -291,6 +334,7 @@ class AvailabilityFilter extends FilterComponent {
                 this.endMinutes = Math.max(minutes, this.startMinutes);
             }
 
+            this.isActive = true;
             this.updateTimeInputsFromState();
             this.updateSliderUIFromState();
         };
@@ -332,9 +376,9 @@ class AvailabilityFilter extends FilterComponent {
             return true;
         }
 
-        // No date chosen -> default to today
+        // No date chosen -> no restriction
         if (!this.selectedDate) {
-            this.selectedDate = "2025-11-13"; // Example fixed date for testing
+            return true;
         }
 
         const [yearStr, monthStr, dayStr] = this.selectedDate.split("-");

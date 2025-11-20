@@ -225,6 +225,26 @@ body {
     box-shadow: var(--box-shadow);
 }
 
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-reset-button {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--dropdown-border-color, #ccc);
+    background: var(--container-bg-color, #f5f5f5);
+    cursor: pointer;
+}
+
+.filter-reset-button:hover {
+    background: var(--dropdown-hover-color, #e0e0e0);
+}
+
 #sort-dropdown {
     grid-area: sort;
 }

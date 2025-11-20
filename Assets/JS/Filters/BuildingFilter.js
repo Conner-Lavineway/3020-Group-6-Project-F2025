@@ -55,15 +55,31 @@ class BuildingFilter extends FilterComponent {
      *
      * Clicking a button toggles its building name in this.selectedKeywords.
      */
+
     createElement() {
         // Outer wrapper
         const wrapper = document.createElement("div");
         wrapper.className = "filter dropdown-content";
 
-        // Header label
+        // Header row (label + reset button)
         const header = document.createElement("div");
         header.className = "filter-header dropdown-content";
-        header.textContent = "Buildings:";
+
+        const titleSpan = document.createElement("span");
+        titleSpan.textContent = "Buildings:";
+
+        const resetBtn = document.createElement("button");
+        resetBtn.type = "button";
+        resetBtn.className = "filter-reset-button dropdown-content";
+        resetBtn.textContent = "Reset";
+
+        // Hook up to the reset()
+        resetBtn.addEventListener("click", () => {
+            this.reset();
+        });
+
+        header.appendChild(titleSpan);
+        header.appendChild(resetBtn);
         wrapper.appendChild(header);
 
         // Container for the buttons
@@ -109,7 +125,7 @@ class BuildingFilter extends FilterComponent {
                             filters[i].classList.add("activeFilter");
                         }
                     }
-                    //add the fitler to the active filters array used to load the icons
+                    //add the filter to the active filters array used to load the icons
                     ACTIVEICONS.push(keyword);
                     this.selectedKeywords.add(keyword);
                 }
@@ -124,7 +140,7 @@ class BuildingFilter extends FilterComponent {
 
     createMapElement() {
         const buildingCoords = {
-            "EITC": [49.808631, -97.133646],
+            EITC: [49.808631, -97.133646],
             "Drake Centre": [49.808043, -97.130245],
             "Isbister Building": [49.809773, -97.131039],
             "University College": [49.811337, -97.131318],
@@ -214,5 +230,39 @@ class BuildingFilter extends FilterComponent {
 
         // Room passes if its buildingName is one of the selected ones.
         return this.selectedKeywords.has(room.buildingName);
+    }
+
+    /**
+     * Reset this filter:
+     *  - clear all selected buildings
+     *  - remove their "activeFilter" state from buttons
+     *  - remove them from the global ACTIVEICONS array
+     */
+    reset() {
+        // Clear internal selection state
+        this.selectedKeywords.clear();
+
+        // Remove all building keywords from ACTIVEICONS (in case they were added)
+        this.availableKeywords.forEach((keyword) => {
+            let idx;
+            // remove *all* occurrences of this keyword from ACTIVEICONS
+            while ((idx = ACTIVEICONS.indexOf(keyword)) !== -1) {
+                ACTIVEICONS.splice(idx, 1);
+            }
+        });
+
+        // Update UI: remove "activeFilter" from all related buttons
+        this.availableKeywords.forEach((keyword) => {
+            const subClass = keyword.replace(" ", "-");
+            const filters = document.getElementsByClassName(subClass);
+
+            for (let i = 0; i < filters.length; i++) {
+                // This check keeps us targeting only the filter buttons,
+                // not the map markers that share the same class.
+                if (filters[i].id === keyword) {
+                    filters[i].classList.remove("activeFilter");
+                }
+            }
+        });
     }
 }
