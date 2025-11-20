@@ -635,8 +635,9 @@ function extractEvents(date = new Date(), rooms = ROOMS) {
     for (const room of rooms) {
         const eventList = room.events;
         for (const event of eventList) {
-            event.title = room.buildingName + " Room " + room.roomNumber + " - " + event.title;
-            const startTime = new Date(event.startTime);
+            const eventCopy = { ...event }; // shallow copy to avoid mutating original
+            eventCopy.title += ": " + room.buildingName + " " + room.roomNumber;
+            const startTime = new Date(eventCopy.startTime);
             // check year, month, day
             const sameDay =
                 startTime.getFullYear() === date.getFullYear() &&
@@ -644,7 +645,7 @@ function extractEvents(date = new Date(), rooms = ROOMS) {
                 startTime.getDate() === date.getDate();
 
             if (sameDay) {
-                extractedEvents.push(event);
+                extractedEvents.push(eventCopy);
             }
         }
     }
@@ -691,7 +692,7 @@ const BUILDINGS = extractbuildingNames();
 
 // Assign a random distanceFromUser to each room for testing purposes
 const distMap = {
-    "EITC": 200,
+    EITC: 200,
     "Drake Centre": 650,
     "University College": 550,
     "Isbister Building": 450,
@@ -707,3 +708,7 @@ for (const room of ROOMS) {
     room.id =
         room.buildingName.toLowerCase().replace(/\s+/g, "-") + room.roomNumber;
 }
+
+// for time stuff
+const START_HOUR = 6; // 6am
+const END_HOUR = 24; // 12pm
