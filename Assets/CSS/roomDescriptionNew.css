@@ -599,3 +599,14 @@ body {
 .tooltipstered:focus-visible::before {
     opacity: 1;
 }
+
+#room-title
+{
+    grid-area: space;
+}
+
+#backButton
+{
+    grid-area: bar;
+    float: left;
+}
