@@ -5,32 +5,27 @@
         <link rel="stylesheet" href="CSS/roomDescriptionNew.css" />
     </head>
     <body class="room-page">
-        <div>
-            <div>
-                <div id="search-bar">
-                    <div id="room-title">EITC 320</div>
-                    <button id="backButton"><< Home</button>
-                    <input type="text"
-                           id="search-box"
-                           placeholder="Search..."
-                           style="visibility: hidden" />
+        <div style="height: 100%;">
+            <div style="height: 11%;">
+                <div id="search-bar" style="height: 80%;">
+                    <div id="room-title">Drake Centre 128</div>
+                    <button id="backButton">&lt;&lt; Home</button>
+                    <input type="text" id="search-box" placeholder="Search..." style="visibility: hidden">
                     <div id="search-btn" style="visibility: hidden">
-                        <input type="image" src="Images/icons8-search.svg" />
+                        <input type="image" src="Images/icons8-search.svg">
                     </div>
-                    <div hidden id="filter-dropdown">
+                    <div hidden="" id="filter-dropdown">
                         <button class="dropbutton">Filter</button>
                         <div id="filters" class="dropdown-box"></div>
                     </div>
 
-                    <div hidden id="sort-dropdown">
+                    <div hidden="" id="sort-dropdown">
                         <button class="dropbutton">Sort</button>
                         <div id="sorting" class="dropdown-box">
-                            <button class="sortButton dropdown-content"
-                                    id="relevance">
+                            <button class="sortButton dropdown-content" id="relevance">
                                 Relevance
                             </button>
-                            <button class="sortButton dropdown-content"
-                                    id="distance">
+                            <button class="sortButton dropdown-content" id="distance">
                                 Distance
                             </button>
                         </div>
@@ -40,7 +35,7 @@
                         <button onclick="showEvent()" class="dropbutton">
                             Events Today
                         </button>
-                        <div id="events" class="dropdown-box"></div>
+                        <div id="events" class="dropdown-box"><div class="event dropdown-content"><div class="event-header dropdown-content">Lecture</div><div class="event-details dropdown-content">9:00 am - 11:00 am</div></div><div class="event dropdown-content"><div class="event-header dropdown-content">Study Group</div><div class="event-details dropdown-content">11:00 am - 2:00 pm</div></div><div class="event dropdown-content"><div class="event-header dropdown-content">Lecture</div><div class="event-details dropdown-content">2:00 pm - 5:00 pm</div></div></div>
                     </div>
                                       
 
