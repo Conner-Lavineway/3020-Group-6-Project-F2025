@@ -602,12 +602,12 @@ body {
 #room-title {
     position: relative;
     z-index: 99;
-    top: 5%;
+    top: 8%;
 }
 
 #backButton {
     position: absolute;
-    top: 5%;
+    top: 8%;
     z-index: 100;
     width:fit-content;
 }
