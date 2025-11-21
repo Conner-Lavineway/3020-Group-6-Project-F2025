@@ -558,7 +558,7 @@ body {
 .available-box {
     width: 14px;
     height: 14px;
-    background-color: var(--container-bg-color);
+    background-color: var(--available);
     border-radius: 3px;
     display: inline-block;
 }

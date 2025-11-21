@@ -19,8 +19,9 @@
     --dropdown-bg-color: rgb(233, 141, 60);
     --dropdown-hover-color: #ff671a;
 
+    --available: white;
     --dibsed: #dfb285;
-    --prev-dibsed: white;
+    --prev-dibsed: #ede0d4;
 
     --widget-bg-color: rgb(234, 156, 87);
     --widget-hover-color: #ff671a;

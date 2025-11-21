@@ -600,7 +600,7 @@ body {
 }
 
 #room-title {
-    bottom: 0;
+    bottom: 0px;
     z-index: 99;
     grid-area: header;
     width:fit-content;

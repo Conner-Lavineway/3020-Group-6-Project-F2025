@@ -3,7 +3,7 @@
 .room-result {
     font-family: var(--main-font);
     color: var(--main-font-color);
-    background-color: var(--container-bg-color);
+    background-color: var(--available);
     border-radius: var(--main-border-radius);
     border: 1px solid rgba(0, 0, 0, 0.12);
     padding: 0.75rem 1rem;
