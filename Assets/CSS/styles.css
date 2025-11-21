@@ -514,12 +514,13 @@ body {
     align-items: center;
     width: 100%;
     column-gap: 7px;
+    font-size: 14px;
+    margin-top: 8px;
 }
 .dibs-legend {
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-top: 8px;
     font-size: 14px;
     color: black;
 }
@@ -536,7 +537,6 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-top: 8px;
     font-size: 14px;
     color: black;
 }
@@ -551,7 +551,6 @@ body {
     display: inline-block;
     align-items: center;
     gap: 6px;
-    margin-top: 8px;
     font-size: 14px;
     color: var(--main-font-color);
 }
