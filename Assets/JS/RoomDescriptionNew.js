@@ -299,31 +299,38 @@ function renderOccupancyColumn(arr = currentRoom.occupancy) {
 
         let symbol;
         let tooltip;
+        let state;
 
         if (hasHardEvent) {
             // Unavailable: a hard-occupancy event is blocking this slot
-            symbol = "✕";
+            symbol = "X";
+            state = "unavailable";
             tooltip = "Unavailable (hard event in this time slot)";
         } else if (hasNormalEvent) {
             // There is an event, but it's not flagged as hard occupancy
             symbol = "?";
+            state = "uncertain";
             tooltip = "Event scheduled (availability uncertain)";
         } else if (!hasDibData) {
             // No occupancy data and no events
             symbol = "?";
+            state = "unknown";
             tooltip = "Not enough info to determine availability";
         } else if (dibCount > 0) {
             // Dibbed but not blocked by any event
-            symbol = "•";
+            symbol = "D";
+            state = "dibbed";
             tooltip = `Dibbed (active dibs: ${dibCount})`;
         } else {
             // No dibs, no events
-            symbol = "✓";
+            symbol = "A";
+            state = "available";
             tooltip = "Available (no dibs, no events)";
         }
 
         row.textContent = symbol;
         row.title = tooltip;
+        row.classList.add(`dibs-${state}`);
         row.setAttribute("aria-label", tooltip);
 
         // store the hour in data attribute (good for debugging / tooltips)

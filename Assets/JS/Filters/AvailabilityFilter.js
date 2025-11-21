@@ -43,6 +43,9 @@ class AvailabilityFilter extends FilterComponent {
 
         // deactivated by default
         this.isActive = false;
+
+        //
+        this.setNow();
     }
 
     /**
@@ -57,6 +60,22 @@ class AvailabilityFilter extends FilterComponent {
         if (this.dateInput) {
             this.dateInput.value = "";
         }
+
+        this.updateTimeInputsFromState();
+        this.updateSliderUIFromState();
+    }
+
+    setNow() {
+        const date = new Date();
+        date.setFullYear(2025, 10, 13); // Nov 13, 2025
+        this.selectedDate = date.toISOString().split("T")[0];
+        this.startMinutes = this.timeStringToMinutes(
+            date.getHours().toString().padStart(2, "0") +
+                ":" +
+                date.getMinutes().toString().padStart(2, "0")
+        );
+        this.endMinutes = this.startMinutes + 60; // 1 hour later
+        this.isActive = true;
 
         this.updateTimeInputsFromState();
         this.updateSliderUIFromState();
@@ -176,8 +195,17 @@ class AvailabilityFilter extends FilterComponent {
             this.reset();
         });
 
+        const nowBtn = document.createElement("button");
+        nowBtn.type = "button";
+        nowBtn.className = "filter-now-button dropdown-content";
+        nowBtn.textContent = "Now";
+        nowBtn.addEventListener("click", () => {
+            this.setNow();
+        });
+
         header.appendChild(titleSpan);
         header.appendChild(resetBtn);
+        header.appendChild(nowBtn);
         wrapper.appendChild(header);
 
         const details = document.createElement("div");

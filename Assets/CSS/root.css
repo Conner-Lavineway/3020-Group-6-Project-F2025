@@ -17,13 +17,13 @@
     --sidebar-color: #e6ccb2;
 
     --dropdown-bg-color: rgb(233, 141, 60);
-    --dropdown-hover-color: #ff942f;
+    --dropdown-hover-color: #ff671a;
 
     --dibsed: #dfb285;
     --prev-dibsed: white;
 
     --widget-bg-color: rgb(234, 156, 87);
-    --widget-hover-color: #ff942f;
+    --widget-hover-color: #ff671a;
 
     --grid-gap: 2px;
 
@@ -35,6 +35,11 @@
 
     --text-label-color: black;
     --text-label-background: #ede0d4;
+
+    --inactive-color: rgb(199, 199, 199);
+    --attention-color: #ff671a;
+
+    --highlight-color: var(--dropdown-hover-color);
 }
 
 /*

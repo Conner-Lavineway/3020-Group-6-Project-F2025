@@ -40,7 +40,6 @@ body {
     border-style: none;
     box-shadow: var(--glow);
     width: 25%;
-    max-width: fit-content;
     min-width: 270px;
 }
 
@@ -600,13 +599,39 @@ body {
     opacity: 1;
 }
 
-#room-title
-{
-    grid-area: space;
+#room-title {
+    position: absolute;
+    right: 52.5%;
+    top: 5%;
 }
 
-#backButton
-{
-    grid-area: bar;
-    float: left;
+#backButton {
+    position: absolute;
+    left: -45%;
+    top: 5%;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+Availability Symbols
+ * ──────────────────────────────────────────────────────────────────────────
+ */
+
+.dibs-available {
+    color: green;
+    font-weight: bold;
+}
+
+.dibs-unavailable {
+    color: red;
+    font-weight: bold;
+}
+
+.dibs-unknown {
+    color: orange;
+    font-weight: bold;
+}
+
+.dibs-dibbed {
+    color: blue;
+    font-weight: bold;
 }
