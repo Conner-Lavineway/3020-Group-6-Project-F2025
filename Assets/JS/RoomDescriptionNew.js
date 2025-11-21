@@ -312,7 +312,7 @@ function renderOccupancyColumn(arr = currentRoom.occupancy) {
             tooltip = `Dibbed (active dibs: ${dibCount})`;
         } else {
             // No dibs, no events
-            symbol = "✓";
+            symbol = "✔";
             tooltip = "Available (no dibs, no events)";
         }
 
