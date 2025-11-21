@@ -205,11 +205,13 @@ function renderAvailableRooms(rooms = ROOMS) {
     // Clear old results
     container.innerHTML = "";
 
-    const dibsRoomId = localStorage.getItem("dibsRoom");
-
-
+    const dibsByUser = localStorage.getItem("dibsRoom");
+    
     // Add one concise card per room
     rooms.forEach(function (room) {
+        var hour = new Date();
+        hour = hour.getHours();
+        const dibsRoomId = room.occupancy[hour - 6] != 0;
         const card = createRoomResultElement(room);
         if (dibsRoomId && room.id === dibsRoomId) {
             card.classList.add("dibsed");

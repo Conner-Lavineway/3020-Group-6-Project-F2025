@@ -511,7 +511,7 @@ body {
     background-color: var(--dropdown-bg-color);
     border: none;
     border-radius: 25px;
-    color: black;
+    color: var(--main-font-color);
     padding: 30px 65px;
     text-align: right;
     font-size: 40px;
@@ -528,7 +528,7 @@ body {
     background-color: var(--inactive-color);
     border: none;
     border-radius: 25px;
-    color: white;
+    color: var(--main-font-color);
     padding: 30px 65px;
     text-align: right;
     font-size: 40px;
@@ -600,8 +600,8 @@ body {
 }
 
 #room-title {
-    position: absolute;
-    right: 52.5%;
+    position: relative;
+    z-index: 100;
     top: 5%;
 }
 
