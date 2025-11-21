@@ -61,8 +61,8 @@ body {
     grid-template-columns: 2fr 2fr 3fr 0.5fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
-        "bar bar space empty empty"
-        "filter sort space events events";
+        "bar bar space events events"
+        "filter sort space empty empty";
     gap: var(--grid-gap);
     padding: 1%;
     background-color: var(--main-header-bg-color);

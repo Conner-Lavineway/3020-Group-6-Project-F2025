@@ -600,7 +600,8 @@ body {
 }
 
 #room-title {
-    bottom: 0px;
+    position: absolute;
+    justify-self: center;
     z-index: 99;
     grid-area: header;
     width:fit-content;
@@ -610,7 +611,6 @@ body {
 
 #backButton {
     position: absolute;
-    top: 8%;
     z-index: 100;
     width:fit-content;
 }
