@@ -599,13 +599,36 @@ body {
     opacity: 1;
 }
 
-#room-title
-{
+#room-title {
     grid-area: space;
 }
 
-#backButton
-{
+#backButton {
     grid-area: bar;
     left: 0;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+Availability Symbols
+ * ──────────────────────────────────────────────────────────────────────────
+ */
+
+.dibs-available {
+    color: green;
+    font-weight: bold;
+}
+
+.dibs-unavailable {
+    color: red;
+    font-weight: bold;
+}
+
+.dibs-unknown {
+    color: orange;
+    font-weight: bold;
+}
+
+.dibs-dibbed {
+    color: blue;
+    font-weight: bold;
 }
