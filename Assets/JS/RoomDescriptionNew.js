@@ -157,6 +157,13 @@ const closePopup = document.getElementById("closePopup");
 dibsButton.addEventListener("click", function () {
     popup.style.display = "flex";
     localStorage.setItem("dibsRoom", roomID);
+
+    // increment dibs
+    const currentTime = new Date().getHours();
+    // hours after 6 AM
+    const index = currentTime - 6;
+    currentRoom.occupancy[index] += 1;
+    renderOccupancyColumn();
 });
 
 closePopup.addEventListener("click", function () {
@@ -219,6 +226,7 @@ if (occupiedNow) {
 // ╭─────────────────────────────────────────────────────────╮
 // │ Dibbs Information                                       │
 // ╰─────────────────────────────────────────────────────────╯
+
 /**
  * Render occupancy ("number of dibs") next to the schedule.
  *
@@ -228,8 +236,14 @@ if (occupiedNow) {
  *   arr[0] -> 6:00
  *   arr[1] -> 7:00
  *   arr[2] -> 8:00
+ *
+ * Symbols:
+ *  - ✓ = available (no dibs, no events)
+ *  - • = dibbed  (dibs > 0, no event)
+ *  - ✕ = unavailable (hard-occupancy event at that hour)
+ *  - ? = not enough info (normal event, not hard-occupied)
  */
-function renderOccupancyColumn(arr) {
+function renderOccupancyColumn(arr = currentRoom.occupancy) {
     const col = document.getElementById("schedule-dibs");
     if (!col) return;
 
@@ -241,28 +255,72 @@ function renderOccupancyColumn(arr) {
     // Clear previous content
     col.innerHTML = "";
 
-    // For each full hour from 6 to 23
+    // For each full hour from START_HOUR to END_HOUR - 1
     for (let hour = START_HOUR; hour < END_HOUR; hour++) {
         const index = hour - START_HOUR;
-        var value = arr[index] ?? 0;
+        const dibRaw = arr[index];
 
         const row = document.createElement("div");
         row.className = "dibs-row";
 
-        // check if a hard occupancy event is happening at this hour
-        for (const event in hardOccupiedEvents) {
-            if (
-                hour >=
-                    new Date(hardOccupiedEvents[event].startTime).getHours() &&
-                hour < new Date(hardOccupiedEvents[event].endTime).getHours()
-            ) {
-                value = "X";
+        // Check events overlapping this hour
+        let hasHardEvent = false;
+        let hasNormalEvent = false;
+
+        // Assumes `hardOccupiedEvents` is a collection of event objects:
+        // { startTime, endTime, hardOccupancy: boolean }
+        for (const key in hardOccupiedEvents) {
+            const ev = hardOccupiedEvents[key];
+            if (!ev || !ev.startTime || !ev.endTime) continue;
+
+            const evStartHour = new Date(ev.startTime).getHours();
+            const evEndHour = new Date(ev.endTime).getHours();
+
+            const overlaps = hour >= evStartHour && hour < evEndHour;
+            if (!overlaps) continue;
+
+            if (ev.hardOccupancy === true) {
+                hasHardEvent = true;
+            } else {
+                hasNormalEvent = true;
             }
         }
 
-        row.textContent = value;
+        // Determine if we have reliable dibs data for this slot
+        const hasDibData =
+            typeof dibRaw === "number" && Number.isFinite(dibRaw);
+        const dibCount = hasDibData ? dibRaw : 0;
 
-        // store the hour in data attribute (good for tooltips / debugging)
+        let symbol;
+        let tooltip;
+
+        if (hasHardEvent) {
+            // Unavailable: a hard-occupancy event is blocking this slot
+            symbol = "✕";
+            tooltip = "Unavailable (hard event in this time slot)";
+        } else if (hasNormalEvent) {
+            // There is an event, but it's not flagged as hard occupancy
+            symbol = "?";
+            tooltip = "Event scheduled (availability uncertain)";
+        } else if (!hasDibData) {
+            // No occupancy data and no events
+            symbol = "?";
+            tooltip = "Not enough info to determine availability";
+        } else if (dibCount > 0) {
+            // Dibbed but not blocked by any event
+            symbol = "•";
+            tooltip = `Dibbed (active dibs: ${dibCount})`;
+        } else {
+            // No dibs, no events
+            symbol = "✓";
+            tooltip = "Available (no dibs, no events)";
+        }
+
+        row.textContent = symbol;
+        row.title = tooltip;
+        row.setAttribute("aria-label", tooltip);
+
+        // store the hour in data attribute (good for debugging / tooltips)
         row.dataset.hour = hour; // e.g. "6", "7", ...
 
         col.appendChild(row);
