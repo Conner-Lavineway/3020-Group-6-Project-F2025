@@ -207,13 +207,25 @@ function renderAvailableRooms(rooms = ROOMS) {
 
     const dibsRoomId = localStorage.getItem("dibsRoom");
 
+    const prevDibs = localStorage.getItem("prevDibs");
+    
 
     // Add one concise card per room
     rooms.forEach(function (room) {
         const card = createRoomResultElement(room);
+
         if (dibsRoomId && room.id === dibsRoomId) {
+
             card.classList.add("dibsed");
         }
+        else if (prevDibs) {
+            const prevArray = prevDibs.split(',');
+            if (prevArray.includes(room.id)) {
+                card.classList.add("prev-dibsed");
+            }
+        }
+            
+        
         container.appendChild(card);
     });
 }
