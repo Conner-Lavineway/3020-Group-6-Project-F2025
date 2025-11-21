@@ -480,7 +480,7 @@ body {
 }
 
 .activeSort {
-    background-color: var(--highlight-color);
+    background-color: var(--dropdown-hover-color);
 }
 
 .activeFilter {
