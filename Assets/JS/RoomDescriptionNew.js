@@ -81,7 +81,7 @@ function addEventToDayView(
 }
 
 function formatTimeRange(start, end) {
-    const opts = { hour: "numeric", minute: "2-digit", hour12: "true"};
+    const opts = { hour: "numeric", minute: "2-digit", hour12: "true" };
     const s = start.toLocaleTimeString([], opts);
     const e = end.toLocaleTimeString([], opts);
     return `${s} -- ${e}`;
@@ -160,7 +160,7 @@ dibsButton.addEventListener("click", function () {
 
 closePopup.addEventListener("click", function () {
     popup.style.display = "none";
-    goHome();
+    // goHome();
 });
 
 const backButton = document.getElementById("backButton");

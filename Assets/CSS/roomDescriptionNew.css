@@ -542,3 +542,59 @@ body {
 .popup-error {
     border: 2px solid var(--attention-color);
 }
+
+/*
+ *          ╭─────────────────────────────────────────────────────────╮
+ *          │                        Tooltips                         │
+ *          ╰─────────────────────────────────────────────────────────╯
+*/
+
+.tooltipstered {
+    position: relative;
+}
+
+/* The tooltip bubble */
+.tooltipstered::after {
+    content: attr(tooltip);
+    position: absolute;
+    left: 50%;
+    bottom: 125%; /* above the button */
+    transform: translateX(-50%);
+    text-align: left;
+
+    max-width: 26rem;
+    white-space: normal; /* allow multi-line */
+
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 10;
+}
+
+/* Small arrow */
+.tooltipstered::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 115%; /* just under the tooltipstered box */
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 10;
+}
+
+/* Show on hover and focus (mouse + keyboard) */
+.tooltipstered:hover::after,
+.tooltipstered:hover::before,
+.tooltipstered:focus-visible::after,
+.tooltipstered:focus-visible::before {
+    opacity: 1;
+}
