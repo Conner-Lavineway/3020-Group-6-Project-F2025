@@ -191,7 +191,7 @@ function createRoomResultElement(room) {
         } else {
             window.location.href = url;
         }
-    });
+    });    
 
     return card;
 }
@@ -205,9 +205,15 @@ function renderAvailableRooms(rooms = ROOMS) {
     // Clear old results
     container.innerHTML = "";
 
+    const dibsRoomId = localStorage.getItem("dibsRoom");
+
+
     // Add one concise card per room
     rooms.forEach(function (room) {
         const card = createRoomResultElement(room);
+        if (dibsRoomId && room.id === dibsRoomId) {
+            card.style.backgroundColor = "#a8a8a8";
+        }
         container.appendChild(card);
     });
 }

@@ -304,7 +304,7 @@ body {
 #available-rooms {
     grid-area: available;
     position: absolute;
-    height: 150%;
+    height: 160%;
     width: 95%;
 }
 
@@ -510,4 +510,21 @@ body {
     border: 3px white solid;
     min-width: 5px;
     min-height: 5px;
+}
+
+.dibs-legend {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 14px;
+    color: black;
+}
+
+.dibs-box {
+    width: 14px;
+    height: 14px;
+    background-color: #a8a8a8;
+    border-radius: 3px;
+    display: inline-block;
 }

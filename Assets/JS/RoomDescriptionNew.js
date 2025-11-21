@@ -156,6 +156,7 @@ const closePopup = document.getElementById("closePopup");
 
 dibsButton.addEventListener("click", function () {
     popup.style.display = "flex";
+    localStorage.setItem("dibsRoom", roomID);
 });
 
 closePopup.addEventListener("click", function () {
