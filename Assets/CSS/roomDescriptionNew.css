@@ -41,6 +41,7 @@ body {
     box-shadow: var(--glow);
     width: 25%;
     max-width: fit-content;
+    min-width: 270px;
 }
 
 .dropdown-box .event-header {
@@ -56,8 +57,8 @@ body {
 
 #events-dropdown {
     grid-area: events;
-    width: 38.5vh;
-    height: 35pt;
+    /*width: 38.5vh;
+    height: 35pt;*/
 }
 
 #events {

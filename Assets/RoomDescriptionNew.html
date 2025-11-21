@@ -7,39 +7,41 @@
     <body class="room-page">
         <div>
             <div>
-                <div id="search-bar">
-                    <!-- <div id="logo"></div> -->
-                    <!-- <input -->
-                    <!--     type="text" -->
-                    <!--     id="search-box" -->
-                    <!--     placeholder="Search..." -->
-                    <!--     style="visibility: hidden" -->
-                    <!-- /> -->
-                    <!-- <div id="search-btn" style="visibility: hidden"> -->
-                    <!--     <input type="image" src="Images/icons8-search.svg" /> -->
-                    <!-- </div> -->
-                    <!-- <div hidden id="filter-dropdown"> -->
-                    <!--     <button class="dropbutton">Filter</button> -->
-                    <!--     <div id="filters" class="dropdown-box"></div> -->
-                    <!-- </div> -->
-                    <!---->
-                    <!-- <div hidden id="sort-dropdown"> -->
-                    <!--     <button class="dropbutton">Sort</button> -->
-                    <!--     <div id="sorting" class="dropdown-box"> -->
-                    <!--         <button -->
-                    <!--             class="sortButton dropdown-content" -->
-                    <!--             id="relevance" -->
-                    <!--         > -->
-                    <!--             Relevance -->
-                    <!--         </button> -->
-                    <!--         <button -->
-                    <!--             class="sortButton dropdown-content" -->
-                    <!--             id="distance" -->
-                    <!--         > -->
-                    <!--             Distance -->
-                    <!--         </button> -->
-                    <!--     </div> -->
-                    <!-- </div> -->
+                <div id="search-bar" style="box-shadow: 0 4px 3px 0 rgb(128, 128, 128)">
+                    <div id="logo"></div>
+                    <input type="text"
+                           id="search-box"
+                           placeholder="Search..."
+                           style="visibility: hidden" />
+                    <div id="search-btn" style="visibility: hidden">
+                        <input type="image" src="Images/icons8-search.svg" />
+                    </div>
+                    <div hidden id="filter-dropdown">
+                        <button class="dropbutton">Filter</button>
+                        <div id="filters" class="dropdown-box"></div>
+                    </div>
+
+                    <div hidden id="sort-dropdown">
+                        <button class="dropbutton">Sort</button>
+                        <div id="sorting" class="dropdown-box">
+                            <button class="sortButton dropdown-content"
+                                    id="relevance">
+                                Relevance
+                            </button>
+                            <button class="sortButton dropdown-content"
+                                    id="distance">
+                                Distance
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="events-dropdown">
+                        <button onclick="showEvent()" class="dropbutton">
+                            Events Today
+                        </button>
+                        <div id="events" class="dropdown-box"></div>
+                    </div>
+                    
                 </div>
                 <div class="headerContainer" style="display: flex; align-items: center; justify-content: space-between; padding: 15px; padding-bottom: 15px; padding-top: 30px">
                     <div>
@@ -48,14 +50,7 @@
                     <div style="position: absolute; left: 50%; transform: translateX(-50%); text-align: center;">
                         <p id="room-title">EITC 320</p>
                     </div>
-                    <div>
-                        <div id="events-dropdown">
-                            <button onclick="showEvent()" class="dropbutton">
-                                Events Today
-                            </button>
-                            <div id="events" class="dropdown-box"></div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="container">
