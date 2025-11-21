@@ -600,12 +600,15 @@ body {
 }
 
 #room-title {
-    grid-area: space;
+    position: absolute;
+    right: 52.5%;
+    top: 5%;
 }
 
 #backButton {
-    grid-area: bar;
-    left: 0;
+    position: absolute;
+    left: -45%;
+    top: 5%;
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
