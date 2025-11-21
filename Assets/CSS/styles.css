@@ -473,7 +473,6 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1%;
-    width: fit-content;
 }
 
 .showFilters {
@@ -511,35 +510,27 @@ body {
     min-height: 5px;
 }
 
-.dibs-legend {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 8px;
-    font-size: 14px;
-    color: black;
-}
 
 .dibs-box {
-    width: 14px;
-    height: 14px;
+    width: var(--main-font-size);
+    height: var(--main-font-size);
     background-color: var(--dibsed);
     border-radius: 3px;
     display: inline-block;
 }
 
 .available-legend {
-    display: flex;
+    display: inline-block;
     align-items: center;
     gap: 6px;
     margin-top: 8px;
-    font-size: 14px;
-    color: black;
+    font-size: var(--main-font-size);
+    color: var(--main-font-color);
 }
 
 .available-box {
-    width: 14px;
-    height: 14px;
+    width: var(--main-font-size);
+    height: var(--main-font-size);
     background-color: var(--container-bg-color);
     border-radius: 3px;
     display: inline-block;
