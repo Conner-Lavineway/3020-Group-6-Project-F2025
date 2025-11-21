@@ -157,6 +157,12 @@ const closePopup = document.getElementById("closePopup");
 dibsButton.addEventListener("click", function () {
     popup.style.display = "flex";
     localStorage.setItem("dibsRoom", roomID);
+    
+    const previousDibs = localStorage.getItem("prevDibs") || "";
+    const previousDibsTemp = previousDibs + "," + roomID;
+
+    localStorage.setItem("prevDibs", previousDibsTemp);
+
 
     // increment dibs
     const currentTime = new Date().getHours();

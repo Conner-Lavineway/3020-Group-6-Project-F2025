@@ -509,28 +509,56 @@ body {
     min-width: 5px;
     min-height: 5px;
 }
-
+.legend-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    column-gap: 7px;
+}
+.dibs-legend {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 14px;
+    color: black;
+}
 
 .dibs-box {
-    width: var(--main-font-size);
-    height: var(--main-font-size);
+    width: 14px;
+    height: 14px;
     background-color: var(--dibsed);
     border-radius: 3px;
     display: inline-block;
 }
 
+.prev-dibs-legend {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 14px;
+    color: black;
+}
+.prev-dibs-box {
+    width: 14px;
+    height: 14px;
+    background-color: var(--prev-dibsed);
+    border-radius: 3px;
+    display: inline-block;
+}
 .available-legend {
     display: inline-block;
     align-items: center;
     gap: 6px;
     margin-top: 8px;
-    font-size: var(--main-font-size);
+    font-size: 14px;
     color: var(--main-font-color);
 }
 
 .available-box {
-    width: var(--main-font-size);
-    height: var(--main-font-size);
+    width: 14px;
+    height: 14px;
     background-color: var(--container-bg-color);
     border-radius: 3px;
     display: inline-block;
@@ -539,3 +567,8 @@ body {
 .dibsed{
     background-color: var(--dibsed);
 }
+
+.prev-dibsed {
+    background-color: var(--prev-dibsed);
+}
+

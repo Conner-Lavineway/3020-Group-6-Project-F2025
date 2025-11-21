@@ -508,7 +508,7 @@ body {
 }
 
 .dibsButton {
-    background-color: var(--dropdown-bg-color);
+    background-color: var(--widget-bg-color);
     border: none;
     border-radius: 25px;
     color: var(--main-font-color);
