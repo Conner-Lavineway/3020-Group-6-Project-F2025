@@ -276,7 +276,7 @@ body {
 .schedule {
     display: grid;
     /* time | events | dibs  */
-    grid-template-columns: 9% 1fr minmax(50px, 20%);
+    grid-template-columns: 10% 1fr minmax(50px, 20%);
     /* header row + body row */
     grid-template-rows: auto 1fr;
     column-gap: 0.75rem;

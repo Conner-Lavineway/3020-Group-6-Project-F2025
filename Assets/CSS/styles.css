@@ -524,7 +524,28 @@ body {
 .dibs-box {
     width: 14px;
     height: 14px;
-    background-color: #a8a8a8;
+    background-color: var(--dibsed);
     border-radius: 3px;
     display: inline-block;
+}
+
+.available-legend {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 14px;
+    color: black;
+}
+
+.available-box {
+    width: 14px;
+    height: 14px;
+    background-color: var(--container-bg-color);
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.dibsed{
+    background-color: var(--dibsed);
 }
