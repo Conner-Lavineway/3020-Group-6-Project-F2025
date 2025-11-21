@@ -56,8 +56,8 @@ body {
 
 #events-dropdown {
     grid-area: events;
-    width: 90%;
-    height: 50pt;
+    width: 38.5vh;
+    height: 35pt;
 }
 
 #events {
