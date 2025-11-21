@@ -212,7 +212,7 @@ function renderAvailableRooms(rooms = ROOMS) {
     rooms.forEach(function (room) {
         const card = createRoomResultElement(room);
         if (dibsRoomId && room.id === dibsRoomId) {
-            card.style.backgroundColor = "#a8a8a8";
+            card.classList.add("dibsed");
         }
         container.appendChild(card);
     });
