@@ -7,26 +7,75 @@
     --main-font-color: black;
 
     --header-font-size: 30px;
-    --header-font-color: rgb(0, 0, 0);
+    --header-font-color: black;
 
-    --main-bg-color: rgb(219, 219, 219);
+    --main-bg-color: #e6ccb2;
     --main-border-color: black;
     --main-border-size: 2px;
     --main-border-radius: 20px;
+    --main-header-bg-color: #e6ccb2;
+    --sidebar-color: #e6ccb2;
 
-    --dropdown-bg-color: rgb(234, 156, 87);
-    --dropdown-hover-color: #ea6d29;
+    --dropdown-bg-color: rgb(233, 141, 60);
+    --dropdown-hover-color: #ff671a;
+
+    --available: white;
+    --dibsed: #dfb285;
+    --prev-dibsed: #ede0d4;
 
     --widget-bg-color: rgb(234, 156, 87);
-    --widget-hover-color: #ea6d29;
+    --widget-hover-color: #ff671a;
 
     --grid-gap: 2px;
 
-    --dropcontent-hover-color: rgb(200, 200, 200);
-
-    --box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+    --box-shadow: 0 3px 6px 0 black;
 
     --glow: 0 0 10px var(--dropdown-hover-color);
 
-    --container-bg-color: rgb(250, 250, 250);
+    --container-bg-color: #ede0d4;
+
+    --text-label-color: black;
+    --text-label-background: #ede0d4;
+
+    --inactive-color: rgb(199, 199, 199);
+    --attention-color: #ff671a;
+
+    --highlight-color: var(--dropdown-hover-color);
 }
+
+/*
+Conners pallets
+Midnight Tones:
+    bg: #31081F
+    text: #DCE0D9
+    header: #31081F
+    container: #6B0F1A
+    widget: #6B0F1A
+    widget hover: #8d1423
+*/
+
+/*
+Ali's Pallets
+Tropical Sunrise:
+--main-font-color: black;
+--header-font-color: black;
+
+--main-bg-color: rgb(219, 219, 219);
+--main-border-color: black;
+--main-header-bg-color: rgb(219, 219, 219);
+--sidebar-color: rgb(219, 219, 219);
+
+--dropdown-bg-color: rgb(234, 156, 87);
+--dropdown-hover-color: #ea6d29;
+
+--widget-bg-color: rgb(234, 156, 87);
+--widget-hover-color: #ea6d29;
+
+
+--container-bg-color: rgb(200, 200, 200);
+
+
+--glow: 0 0 10px var(--dropdown-hover-color);
+
+--container-bg-color: rgb(250, 250, 250);
+*/

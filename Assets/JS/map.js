@@ -1,10 +1,22 @@
-const key = 'n5fcPKvJWw4kPlY87b89'
-const tile = '019a1752-72aa-797d-a3c7-b3c094cf97e3'
-const map = L.map('map').setView([49.808773, -97.13208],17);
+const key = "";
+const tile = "base-v4";
+
+/*Versions to try:
+    base-v4
+    streets-v4
+    hybrid
+    streets
+    winter-v2
+    landscape-v4
+
+Custom Map:
+    019a1752-72aa-797d-a3c7-b3c094cf97e3
+*/
+const map = L.map("map").setView([49.809375, -97.134458],17);
 
     const mtLayer = L.maptiler.maptilerLayer({
     apiKey: key,
-    style: L.maptiler.$tile, //optional
+    style: "https://api.maptiler.com/maps/" + tile + "/style.json?key=" + key, //optional
     }).addTo(map);
 
 map.setMaxBounds([
@@ -17,25 +29,102 @@ map.setMaxBounds([
 
 map.setMinZoom(16);
 map.setMaxZoom(19);
-var myTextLabel = L.divIcon({
-        className: 'text-labels',   // Set class for CSS styling
-        html: 'A Text Label'
-    });
 
-var pin = L.icon({
-    iconUrl: 'Assets/Images/pin.png',
+const ACTIVEICONS = [];
 
-    iconSize:     [50, 50], // size of the icon
-    iconAnchor:   [25, 47], // point of the icon which will correspond to marker's location
+var labels = document.getElementsByClassName("text-label");
+
+function updateNumbers(rooms)
+{
+    let nameNums = [0, 0, 0, 0];
+    for(var i = 0; i < rooms.length; i++)
+    {
+        switch(rooms[i].buildingName)
+        {
+            case "EITC":
+                nameNums[0]++;
+            break;
+            case "Drake Centre":
+                nameNums[1]++;
+            break;
+            case "Isbister Building":
+                nameNums[2]++;
+            break;
+            case "University College":
+                nameNums[3]++;
+            break;
+            default:
+            break;
+        }
+    }
+
+    for(var i = 0; i < labels.length; i++)
+    {
+        if(labels[i].classList.contains("EITC"))
+        {
+            if(ACTIVEICONS.includes("EITC"))
+            {
+                //if the filter needs to be active activate it
+                labels[i].classList.add("activeFilter");
+            }
+            else
+            {
+                //otherwise remove it
+                labels[i].classList.remove("activeFilter");
+            }
+            labels[i].innerHTML = "EITC: " + nameNums[0];
+        }
+        else if(labels[i].classList.contains("Drake-Centre"))
+        {
+            if(ACTIVEICONS.includes("Drake Centre"))
+            {
+                //if the filter needs to be active activate it
+                labels[i].classList.add("activeFilter");
+            }
+            else
+            {
+                //otherwise remove it
+                labels[i].classList.remove("activeFilter");
+            }
+            labels[i].innerHTML = "Drake Centre: " + nameNums[1];
+        }
+        else if(labels[i].classList.contains("Isbister-Building"))
+        {
+            if(ACTIVEICONS.includes("Isbister Building"))
+            {
+                //if the filter needs to be active activate it
+                labels[i].classList.add("activeFilter");
+            }
+            else
+            {
+                //otherwise remove it
+                labels[i].classList.remove("activeFilter");
+            }
+            labels[i].innerHTML = "Isbister Building: " + nameNums[2];
+        }
+        else
+        {
+            if(ACTIVEICONS.includes("University College"))
+            {
+                //if the filter needs to be active activate it
+                labels[i].classList.add("activeFilter");
+            }
+            else
+            {
+                //otherwise remove it
+                labels[i].classList.remove("activeFilter");
+            }
+            labels[i].innerHTML = "University College: " +nameNums[3];
+        }
+    }
+}
+
+
+var personPos = [49.809375, -97.134458];
+
+var person = L.divIcon({
+    className: "person",
+    html: " "
 });
 
-function onMapClick(e) {
-    L.marker(e.latlng, {icon:pin}).addTo(map);
-    L.marker(e.latlng, {icon:myTextLabel}).addTo(map)
-}
-
-function highlightLayer(layerID) {
-    map._layers['name'+LayerID].setStyle(highlight);
-}
-
-map.on('click', onMapClick);
+L.marker(personPos, {icon: person}).addTo(map);

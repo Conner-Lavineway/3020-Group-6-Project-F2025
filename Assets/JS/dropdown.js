@@ -6,11 +6,7 @@ function showEvent()
     for (i = 0; i < dropdowns.length; i++) 
     {
         var openDropdown = dropdowns[i];
-        if(openDropdown.classList.contains('showEvents')) 
-        {
-            openDropdown.classList.remove('showEvents');
-        }
-        else if(openDropdown.classList.contains('showSort')) 
+        if(openDropdown.classList.contains('showSort')) 
         {
             openDropdown.classList.remove('showSort');
         }
@@ -20,7 +16,14 @@ function showEvent()
         } 
     }  
 
-    document.getElementById("events").classList.toggle("showEvents");
+    if(document.getElementById("events").classList.contains('showEvents')) 
+    {
+        document.getElementById("events").classList.remove('showEvents');
+    }
+    else 
+    {
+        document.getElementById("events").classList.add("showEvents");
+    }
 }
 
 function showSort()
@@ -33,17 +36,20 @@ function showSort()
         {
             openDropdown.classList.remove('showEvents');
         }
-        else if(openDropdown.classList.contains('showSort')) 
-        {
-            openDropdown.classList.remove('showSort');
-        }
         else if(openDropdown.classList.contains('showFilters'))
         {
             openDropdown.classList.remove('showFilters');            
         } 
     }  
 
-    document.getElementById("sorting").classList.toggle("showSort");
+    if(document.getElementById("sorting").classList.contains('showSort')) 
+    {
+        document.getElementById("sorting").classList.remove('showSort');
+    }
+    else
+    {
+        document.getElementById("sorting").classList.add("showSort");
+    }
 }
 
 function showFilter()
@@ -52,21 +58,24 @@ function showFilter()
     for (i = 0; i < dropdowns.length; i++) 
     {
         var openDropdown = dropdowns[i];
-        if(openDropdown.classList.contains('showEvents')) 
-        {
-            openDropdown.classList.remove('showEvents');
-        }
-        else if(openDropdown.classList.contains('showSort')) 
+        if(openDropdown.classList.contains('showSort')) 
         {
             openDropdown.classList.remove('showSort');
         }
-        else if(openDropdown.classList.contains('showFilters'))
+        else if(openDropdown.classList.contains('showEvents'))
         {
-            openDropdown.classList.remove('showFilters'); 
+            openDropdown.classList.remove('showEvents'); 
         } 
     }  
-    
-    document.getElementById("filters").classList.toggle("showFilters");
+
+    if(document.getElementById("filters").classList.contains('showFilters')) 
+    {
+        document.getElementById("filters").classList.remove('showFilters');
+    }
+    else 
+    {
+        document.getElementById("filters").classList.add("showFilters");
+    }
 }
 
 function sortFilter()

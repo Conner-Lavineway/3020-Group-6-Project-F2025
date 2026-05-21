@@ -1,76 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
     <head>
         <!--Custom styles-->
-        <link rel="stylesheet" href="./Assets/CSS/styles.css">
+        <link rel="stylesheet" href="./Assets/CSS/styles.css" />
+        <link rel="stylesheet" href="./Assets/CSS/availabilityFilter.css" />
 
-
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
             integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-            crossorigin=""/>
+            crossorigin=""
+        />
         <!-- Make sure you put this AFTER Leaflet's CSS -->
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        <script
+            src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-            crossorigin=""></script>
-         <!--Maptiler Stuff-->
+            crossorigin=""
+        ></script>
+        <!--Maptiler Stuff-->
         <script src="https://cdn.maptiler.com/maptiler-sdk-js/v3.8.0/maptiler-sdk.umd.min.js"></script>
-        <link href="https://cdn.maptiler.com/maptiler-sdk-js/v3.8.0/maptiler-sdk.css" rel="stylesheet" />
+        <link
+            href="https://cdn.maptiler.com/maptiler-sdk-js/v3.8.0/maptiler-sdk.css"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.maptiler.com/leaflet-maptilersdk/v4.1.0/leaflet-maptilersdk.umd.min.js"></script>
         <script src="https://cdn.maptiler.com/leaflet-maptilersdk/v4.1.0/leaflet-maptilersdk.umd.min.js"></script>
 
-     
-        
-    <title>Map room</title>
+        <!-- Fuzzy searching -->
+        <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+        <title>Dibs</title>
     </head>
     <body>
         <div id="search-bar">
             <div id="logo"></div>
-            <input type="text" id="search" placeholder="Search...">
-            
-            <div id="filter-dropdown">
-                <button onclick="showFilter()" class="dropbutton">Filter</button>
-                <div id="filters" class="dropdown-box">                    </div>
+            <input type="text" id="search-box" placeholder="Search..." />
+            <div id="search-btn">
+                <input type="image" src="Assets/Images/icons8-search.svg" />
             </div>
-            
+
+            <div id="filter-dropdown">
+                <button onclick="showFilter()" class="dropbutton">
+                    Filter
+                </button>
+
+                <div id="filters" class="dropdown-box">
+                    <!-- Global filters header with "Reset all" -->
+                    <div class="filter dropdown-content">
+                        <div class="filter-header dropdown-content">
+                            <button
+                                type="button"
+                                id="reset-all-filters"
+                                class="filter-reset-button dropdown-content"
+                                style="width: 100%"
+                            >
+                                Reset all
+                            </button>
+                        </div>
+                    </div>
+                    <!-- JS will append the individual filter modules after this -->
+                </div>
+            </div>
+
             <div id="sort-dropdown">
                 <button onclick="showSort()" class="dropbutton">Sort</button>
                 <div id="sorting" class="dropdown-box">
-                    <button onclick="sortFilter()" class="sortButton dropdown-content" id="relevance">Relevance</button>
-                    <button onclick="sortFilter()" class="sortButton dropdown-content" id="distance">Distance</button>
+                    <button
+                        onclick="sortFilter()"
+                        class="sortButton dropdown-content activeSort"
+                        id="relevance"
+                    >
+                        Relevance
+                    </button>
+                    <button
+                        onclick="sortFilter()"
+                        class="sortButton dropdown-content"
+                        id="distance"
+                    >
+                        Distance
+                    </button>
                 </div>
             </div>
-            
+
             <div id="events-dropdown">
-                <button onclick="showEvent()" class="dropbutton">Events Today</button>
+                <button onclick="showEvent()" class="dropbutton">
+                    Events Today
+                </button>
                 <div id="events" class="dropdown-box"></div>
             </div>
-            
         </div>
 
         <div id="side-bar">
-            
             <!--Both filled with widgets to show scrolling, need to autopopulate from data when we get that-->
             <div id="available-rooms">
-                Available Rooms
+                Rooms
                 <div class="scroll-container"></div>
+                <div class="legend-row">
+                    Legend:
+                    <div class="available-legend">
+                        <span class="available-box"></span>
+                        <span class="available-text">Available</span>
+                    </div>
+                    <div class="dibs-legend">
+                        <span class="dibs-box"></span>
+                        <span class="dibs-text">Dibsed</span>
+                    </div>
+                    <div class="prev-dibs-legend">
+                        <span class="prev-dibs-box"></span>
+                        <span class="prev-dibs-text">Previously Dibsed</span>
+                    </div>
+                </div>
             </div>
-            <div id="occupied-rooms">
-                Dibbed Rooms
-                <div class="scroll-container"></div>
-            </div>
+            <!-- <div id="occupied-rooms">
+          Dibbed Rooms 
+          <div class="scroll-container"></div> 
+        </div> -->
         </div>
 
-
-            <div id="map"></div>    
-
+        <div id="map"></div>
 
         <!--Keep scripts at the bottom they need to be loaded after all the page elements-->
         <script src="./Assets/JS/map.js"></script>
         <script src="./Assets/JS/dropdown.js"></script>
         <!--Load data-->
-        <script src="./Assets/Data/Filters.js"></script>
-        <script src="./Assets/Data/Events.js"></script>
         <script src="./Assets/Data/Dibs_Prototype_Data.js"></script>
         <!--Do stuff with it-->
+
+        <!-- Load filters  -->
+        <script src="./Assets/JS/Filters/FilterComponent.js"></script>
+        <script src="./Assets/JS/Filters/AmenitiesFilter.js"></script>
+        <script src="./Assets/JS/Filters/BuildingFilter.js"></script>
+        <script src="./Assets/JS/Filters/AvailabilityFilter.js"></script>
+        <script src="./Assets/JS/search.js"></script>
         <script src="./Assets/JS/populate.js"></script>
     </body>
 </html>

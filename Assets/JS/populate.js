@@ -1,159 +1,302 @@
-//Filter Handling
-{
-    var filterDiv = document.getElementById('filters'); //grab holder div by its id
-    if(filterDiv != null)
-    {
-        var i, x;
+//          ╭─────────────────────────────────────────────────────────╮
+//          │               Search and Filter Handling                │
+//          ╰─────────────────────────────────────────────────────────╯
+
+// Kepp a list of all filters
+const FILTERS = [];
+
+// get the dropdown div
+const dropdown = document.getElementById("filters");
+
+// add the amenities filter
+const AMENITY_FILTER = new AmenitiesFilter(AMENITIES);
+dropdown.appendChild(AMENITY_FILTER.createElement());
+FILTERS.push(AMENITY_FILTER);
+
+// add the building filter
+const BUILDING_FILTER = new BuildingFilter(BUILDINGS);
+dropdown.appendChild(BUILDING_FILTER.createElement());
+BUILDING_FILTER.createMapElement();
+FILTERS.push(BUILDING_FILTER);
+// add availability filter
+const AVAILABILITY_FILTER = new AvailabilityFilter();
+dropdown.appendChild(AVAILABILITY_FILTER.createElement());
+FILTERS.push(AVAILABILITY_FILTER);
+
+//          ╭─────────────────────────────────────────────────────────╮
+//          │                     Event Handling                      │
+//          ╰─────────────────────────────────────────────────────────╯
+
+/**
+ * Add a single event to the "Events Today" dropdown.
+ *
+ * Expects this DOM structure:
+ * <div id="events-dropdown">
+ *   <button onclick="showEvent()" class="dropbutton">Events Today</button>
+ *   <div id="events" class="dropdown-box showEvents">
+ *     <!-- new events get appended here -->
+ *   </div>
+ * </div>
+ *
+ * The function creates:
+ * <div class="event dropdown-content">
+ *   <div class="event-header dropdown-content">TITLE</div>
+ *   <div class="event-details dropdown-content">START - END</div>
+ * </div>
+ *
+ * @param {Object} event - Event data to render.
+ * @param {string} event.title - Display title of the event.
+ * @param {string} event.id - Unique identifier (not used but available).
+ * @param {string[]} event.tags - Tags (not used but available).
+ * @param {string} event.startTime - ISO 8601 start time string.
+ * @param {string} event.endTime - ISO 8601 end time string.
+ */
+function addEventToDropdown(event) {
+    const container = document.getElementById("events");
+    if (!container) return;
+
+    const start = new Date(event.startTime);
+    const end = new Date(event.endTime);
+
+    const opts = { hour: "numeric", minute: "2-digit", hour12: "true" };
+    const timeText =
+        start.toLocaleTimeString([], opts) +
+        " - " +
+        end.toLocaleTimeString([], opts);
+
+    const eventDiv = document.createElement("div");
+    eventDiv.className = "event dropdown-content";
+
+    const headerDiv = document.createElement("div");
+    headerDiv.className = "event-header dropdown-content";
+    headerDiv.textContent = event.title;
+
+    const detailsDiv = document.createElement("div");
+    detailsDiv.className = "event-details dropdown-content";
+    detailsDiv.textContent = timeText;
+
+    eventDiv.appendChild(headerDiv);
+    eventDiv.appendChild(detailsDiv);
+    container.appendChild(eventDiv);
+}
+
+// Add all events
+for (const event of EVENTS) {
+    // skip itf its a lecture
+    if (event.tags.includes("lecture")) continue;
+
+    addEventToDropdown(event);
+}
+
+//          ╭─────────────────────────────────────────────────────────╮
+//          │                  Handle Room Rendering                  │
+//          ╰─────────────────────────────────────────────────────────╯
+
+/**
+ * Create a super concise DOM element for a room search result.
+ *
+ * Structure:
+ * <article class="room-result">
+ *   <div class="room-result-main">
+ *     <h3 class="room-result-title">University College 310</h3>
+ *     <p class="room-result-description">Short description…</p>
+ *   </div>
+ *   <div class="room-result-footer">
+ *     <span class="room-result-meta">4 events \n\n1 amenity</span>
+ *     <div class="room-result-amenities">
+ *       <span class="room-tag">Ritual Circle</span>
+ *       <!-- +N more if needed -->
+ *     </div>
+ *   </div>
+ * </article>
+ *
+ * @param {Object} room - The room object to represent.
+ * @returns {HTMLElement} The constructed room result element.
+ */
+function createRoomResultElement(room) {
+    const card = document.createElement("article");
+    card.className = "room-result";
+
+    // assign room-id
+    card.setAttribute("room-id", room.id);
+
+    // Main info (title + short description)
+    const main = document.createElement("div");
+    main.className = "room-result-main";
+
+    const title = document.createElement("h3");
+    title.className = "room-result-title";
+    title.textContent = room.buildingName + " " + room.roomNumber;
+
+    const desc = document.createElement("p");
+    desc.className = "room-result-description";
+    desc.textContent = room.roomDescription || "";
+
+    main.appendChild(title);
+    main.appendChild(desc);
+    card.appendChild(main);
+
+    // Footer: tiny meta + a few amenities tags
+    const footer = document.createElement("div");
+    footer.className = "room-result-footer";
+
+    const amenitiesIterable = room.amenities || [];
+    const amenitiesArray = Array.isArray(amenitiesIterable)
+        ? amenitiesIterable
+        : Array.from(amenitiesIterable);
+
+    const meta = document.createElement("span");
+    meta.className = "room-result-meta";
+    const eventCount = Array.isArray(room.events) ? room.events.length : 0;
+    //meta.textContent =
+    //  eventCount + " events " + amenitiesArray.length + " amenities";
+
+    const tagsContainer = document.createElement("div");
+    tagsContainer.className = "room-result-amenities";
+
+    const maxTagsToShow = 3;
+    amenitiesArray.slice(0, maxTagsToShow).forEach(function (amenity) {
+        const tag = document.createElement("span");
+        tag.className = "room-tag";
+        tag.textContent = amenity;
+        tagsContainer.appendChild(tag);
+    });
+
+    if (amenitiesArray.length > maxTagsToShow) {
+        const remaining = amenitiesArray.length - maxTagsToShow;
+        const moreTag = document.createElement("span");
+        moreTag.className = "room-tag room-tag-more";
+        moreTag.textContent = "+" + remaining + " more";
+        tagsContainer.appendChild(moreTag);
+    }
+
+    // add distance to footer
+    const distance = document.createElement("p");
+    desc.className = "room-result-distance";
+    distance.textContent = room.distanceFromUser + "m away";
+
+    footer.appendChild(meta);
+    footer.appendChild(tagsContainer);
+    footer.appendChild(distance);
+    card.appendChild(footer);
+
+    // add event listener to open room description on click
+    card.addEventListener("click", (event) => {
+        const baseUrl = new URL(".", window.location.href).href;
+        const url =
+            baseUrl + "Assets/RoomDescriptionNew.html" + "?id=" + room.id;
+
+        if (event.ctrlKey || event.metaKey) {
+            window.open(url);
+        } else {
+            window.location.href = url;
+        }
+    });    
+
+    return card;
+}
+
+function renderAvailableRooms(rooms = ROOMS) {
+    // Find the scroll container inside #available-rooms
+    const container = document.querySelector(
+        "#available-rooms .scroll-container"
+    );
+
+    // Clear old results
+    container.innerHTML = "";
+
+    const dibsRoomId = localStorage.getItem("dibsRoom");
+
+    const prevDibs = localStorage.getItem("prevDibs");
+    
+
+    // Add one concise card per room
+    rooms.forEach(function (room) {
+        var hour = new Date();
+        hour = hour.getHours();
+        const card = createRoomResultElement(room);
+
+        if (dibsRoomId && room.id === dibsRoomId) {
+
+            card.classList.add("dibsed");
+        }
+        else if (prevDibs) {
+            const prevArray = prevDibs.split(',');
+            if (prevArray.includes(room.id)) {
+                card.classList.add("prev-dibsed");
+            }
+        }
+            
         
-        for(x = 0; x < filterNames.length; x++)
-        {     
-            holderDiv = document.createElement('div');
-            holderDiv.className = 'filter dropdown-content';
-            
-            titleDiv = document.createElement('div');
-            titleDiv.className = 'filter-header dropdown-content';
-            titleDiv.innerHTML = filterNames[x];
-    
-            //create the detail holder div
-            detailDiv = document.createElement('div');
-            detailDiv.className = 'filter-details dropdown-content'
-            //append holder div to filters
-            filterDiv.appendChild(holderDiv);
-            
-            //append both divs to the holder div
-            holderDiv.appendChild(titleDiv);
-            holderDiv.appendChild(detailDiv);
-    
-            
-    
-            switch(x)
-            {
-                case 0:
-                    //create the buttons based on the array
-                    for(i = 0; i < filters.amenities.length; i++)
-                    {
-                        button = document.createElement('button'); //create button
-                        button.setAttribute('onclick', 'filterButton()'); //make sure it is clickable by adding the onclick function
-                        button.className = 'filterButton dropdown-content'; //give it the right classes
-                        button.id = filters.amenities[i]; //give it an id
-                        button.innerHTML = filters.amenities[i]; //display its name
-                        detailDiv.appendChild(button); //add to details
-                    }
-                break;
-                case 1:
-                    //create a select element
-                    select = document.createElement('select');
-                    select.className = 'building dropdown-content'
-                    select.id = 'building-select'
-                    detailDiv.appendChild(select);
-    
-                    defaultOption = document.createElement('option');
-                    defaultOption.className = 'dropdown-content';
-                    defaultOption.value = 'none';
-                    defaultOption.innerHTML = 'Any';
-                    select.appendChild(defaultOption);
-    
-                    for(i = 0; i < filters.building.length; i++)
-                    {
-                        option = document.createElement('option'); //create a select option
-                        option.className = 'dropdown-content'; //give it a class
-                        option.value = filters.building[i]; //set its value
-                        option.innerHTML = filters.building[i]; //set its text
-                        select.appendChild(option) //add it to the list
-                    }
-                break;
-                case 2:
-                    input = document.createElement('input'); //create input
-                    input.id = 'time';
-                    input.setAttribute('type', 'time'); //set it to type time
-                    input.setAttribute('min', '09:00'); //min time (9:00am is the earliest it will accept)
-                    input.setAttribute('max', '18:00'); //max time (6:00pm is the latest it will accept)
-                    input.setAttribute('step', '900'); //set step (15 min intervals)
-                    detailDiv.appendChild(input);
-                break;
-                default:
-                break;
-            }
-    
-            if(x === filterNames.length - 1)
-            {
-                detailDiv.className = 'filter-details dropdown-content last';
-            }
+        container.appendChild(card);
+    });
+}
+
+//          ╭─────────────────────────────────────────────────────────╮
+//          │          Final Rendering and applying filters           │
+//          ╰─────────────────────────────────────────────────────────╯
+const searchInput = document.getElementById("search-box");
+
+function updateRoomResults() {
+    // make a FILTERS copy without the building filter for map numbers
+    const FILTERSWithoutBuilding = FILTERS.filter((f) => f !== BUILDING_FILTER);
+
+    // figure out if sort by distance button is active
+    const sortByDistance = document
+        .getElementById("distance")
+        .classList.contains("activeSort");
+
+    // Sort by distance if necessary
+    if (sortByDistance) {
+        ROOMS.sort((a, b) => a.distanceFromUser - b.distanceFromUser);
+    }
+    // get the search query
+    const query = searchInput ? searchInput.value : "";
+
+    // if it's empty just render filtered rooms
+    if (!query || query.trim() === "") {
+        renderAvailableRooms(applyFilters(FILTERS, ROOMS));
+
+        //update map numbers without the building filter
+        updateNumbers(applyFilters(FILTERSWithoutBuilding, ROOMS));
+
+        return true;
+    }
+
+    // if there's a query, do a full search
+    else {
+        var results = searchData(query, FILTERS, ROOMS);
+
+        // turn the fuse results into room list
+        if (sortByDistance) {
+            results = results.sort(
+                (a, b) => a.item.distanceFromUser - b.item.distanceFromUser
+            );
+        } else {
+            results = results.sort((a, b) => a.score - b.score);
         }
+
+        rooms = results.map((result) => result.item);
+        renderAvailableRooms(rooms);
+
+        // update map numbers without the building filter
+        updateNumbers(
+            searchData(query, FILTERSWithoutBuilding, ROOMS).map((r) => r.item)
+        );
+        return true;
     }
 }
 
-//Event Handling
-{
-    var eventDiv = document.getElementById('events');
-    if(eventDiv != null)
-    {
-        var i;
-        for(i = 0; i < events.length; i++)
-        {
-            eventHolder = document.createElement('div');
-            eventHeader = document.createElement('div');
-            eventDetails = document.createElement('div');
-    
-            eventHolder.className = 'event dropdown-content';
-            eventHeader.className = 'event-header dropdown-content';
-            eventDetails.className = 'event-details dropdown-content';
-    
-            eventHeader.innerHTML = events[i][0];
-            eventDetails.innerHTML = events[i][1];
-    
-            eventHolder.appendChild(eventHeader);
-            eventHolder.appendChild(eventDetails);
-    
-            eventDiv.appendChild(eventHolder);
-    
-            if(i === events.length - 1)
-            {
-              eventDetails.className = 'event-details dropdown-content last';  
-            }
-        }
-    }
+function sortByDistance(a, b) {
+    return a.item.distanceFromUser - b.item.distanceFromUser;
 }
 
-//Room handling
-{
-    var availableDiv = document.getElementById('available-rooms').querySelector('.scroll-container');
-    var occupiedDiv = document.getElementById('occupied-rooms').querySelector('.scroll-container');
-    if(availableDiv != null && occupiedDiv != null)
-    {
-        var i;
-        for(i = 0; i < rooms.length; i++)
-        {   
-            roomWidget = document.createElement('div');
-            roomWidget.className = 'room-widget';
-            
-            roomHeader = document.createElement('div');
-            roomHeader.className = 'room-header';
-            timeFormat = rooms[i].scheduleData[0].time + ':00 - ' + rooms[i].scheduleData[1].time +':00';
-            roomHeader.innerHTML = rooms[i].buildingName + ' ' +  rooms[i].roomNumber + '<br>' + timeFormat;
-    
-            roomDetails = document.createElement('div');
-            roomDetails.className = 'room-details';
-            var x;
-            for(x = 0; x < rooms[i].roomDescription.length; x++)
-            {
-                roomTag = document.createElement('div');
-                roomTag.className = 'room-tag';
-                roomTag.innerHTML = rooms[i].roomDescription[x];
-                
-                roomDetails.appendChild(roomTag);
-            }
-            roomWidget.appendChild(roomHeader);
-            roomWidget.appendChild(roomDetails);
-    
-            if(rooms[i].occupied)
-            {
-                occupiedDiv.appendChild(roomWidget);
-            }
-            else
-            {
-                availableDiv.appendChild(roomWidget);
-            }
-        }    
-    }
-}
+// Add document event listeners for updating on interaction
+document.addEventListener("DOMContentLoadeed", updateRoomResults);
+document.addEventListener("input", updateRoomResults);
+document.addEventListener("click", updateRoomResults);
+searchInput.addEventListener("keydown", updateRoomResults);
+
+// update initial results
+updateRoomResults();
+//update map

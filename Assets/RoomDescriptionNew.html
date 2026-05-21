@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+    <head>
+        <title>RoomDescriptionNew</title>
+        <link rel="stylesheet" href="CSS/roomDescriptionNew.css" />
+    </head>
+    <body class="room-page">
+        <div style="height: 80%;">
+            <div style="height: 12%;">
+                <div id="search-bar" style="height: 80%;">
+                    <div id="room-title">Drake Centre 128</div>
+                    <button id="backButton">&lt;&lt; Home</button>
+                    <input type="text" id="search-box" placeholder="Search..." style="visibility: hidden">
+                    <div id="search-btn" style="visibility: hidden">
+                        <input type="image" src="Images/icons8-search.svg">
+                    </div>
+                    <div hidden="" id="filter-dropdown">
+                        <button class="dropbutton">Filter</button>
+                        <div id="filters" class="dropdown-box"></div>
+                    </div>
+
+                    <div hidden="" id="sort-dropdown">
+                        <button class="dropbutton">Sort</button>
+                        <div id="sorting" class="dropdown-box">
+                            <button class="sortButton dropdown-content" id="relevance">
+                                Relevance
+                            </button>
+                            <button class="sortButton dropdown-content" id="distance">
+                                Distance
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="events-dropdown">
+                        <button onclick="showEvent()" class="dropbutton">
+                            Events Today
+                        </button>
+                        <div id="events" class="dropdown-box"></div>
+                    </div>
+                                      
+
+                </div>
+                               
+            </div>
+         
+            <div class="container">
+
+                <div style="padding-left: 3%">
+                    <div class="schedule roundedBox" id="schedule">
+                        <!-- Header row -->
+                        <div class="schedule-header schedule-header--time">
+                            Time
+                        </div>
+                        <div class="schedule-header schedule-header--events">
+                            Events
+                        </div>
+                        <div class="schedule-header schedule-header--dibs">
+                            Availability
+                        </div>
+
+                        <!-- Time column -->
+                        <div class="schedule-time-column">
+                            <div class="time-label">6:00 AM</div>
+                            <div class="time-label">8:00 AM</div>
+                            <div class="time-label">10:00 AM</div>
+                            <div class="time-label">12:00 PM</div>
+                            <div class="time-label">2:00 PM</div>
+                            <div class="time-label">4:00 PM</div>
+                            <div class="time-label">6:00 PM</div>
+                            <div class="time-label">8:00 PM</div>
+                            <div class="time-label">10:00 PM</div>
+                            <div class="time-label">11:59 PM</div>
+                        </div>
+
+                        <!-- Events track -->
+                        <div class="schedule-track">
+                            <div class="schedule-now" id="schedule-now"></div>
+                        </div>
+                        <!-- Occupancy / dibs column -->
+                        <div
+                            class="schedule-dibs-column"
+                            id="schedule-dibs"
+                        ></div>
+                    </div>
+                </div>
+
+                <div>
+                    <img
+                        class="roundedBox"
+                        src="Images/classroom1.jfif"
+                        style="max-width: 100%"
+                    />
+
+                    <div class="roundedBox" style="text-align: left">
+                        <p style="border-bottom: 1px solid #8c8c8c">
+                            Description
+                        </p>
+                        <p id="description"></p>
+                    </div>
+                </div>
+                <div
+                    style="
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        height: 100%;
+                        padding-right: 3%;
+                    "
+                >
+                    <div class="roundedBox">
+                        <div
+                            style="
+                                text-align: left;
+                                display: flex;
+                                border-bottom: 1px solid #8c8c8c;
+                            "
+                        >
+                            <p>Building:&nbsp;</p>
+                            <p id="building">EITC</p>
+                        </div>
+                        <div
+                            style="
+                                text-align: left;
+                                display: flex;
+                                border-bottom: 1px solid #8c8c8c;
+                            "
+                        >
+                            <p>Room:&nbsp;</p>
+                            <p id="room"></p>
+                        </div>
+                        <div
+                            style="
+                                text-align: left;
+                                border-bottom: 1px solid #8c8c8c;
+                            "
+                        >
+                            <p>Amenities:</p>
+                            <p id="amenities"></p>
+                        </div>
+                    </div>
+                    <div style="text-align: right">
+                        <button
+                            id="dibsButton"
+                            class="dibsButton tooltipstered"
+                            tooltip="Click to let others know you are interested in being in this room for the next hour."
+                        >
+                            DIBS
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="dibsPopup" class="popup">
+            <div class="popup-content">
+                <p>Congratulations!</p>
+                <p>You have called Dibs on this room for the next hour.</p>
+                <button id="closePopup" class="popup-close">OK</button>
+            </div>
+        </div>
+
+        <div id="dibsErrorPopup" class="popup">
+            <div class="popup-content popup-error">
+                <p>Oops!</p>
+                <p id="dibsErrorText">Seems like the room is unavailable.</p>
+                <button id="closeErrorPopup" class="popup-close">OK</button>
+            </div>
+        </div>
+
+        <script src="JS/dropdown.js"></script>
+        <script src="Data/Dibs_Prototype_Data.js"></script>
+        <script src="JS/populate.js"></script>
+        <script src="JS/RoomDescriptionNew.js"></script>
+    </body>
+</html>
