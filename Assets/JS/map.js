@@ -1,4 +1,4 @@
-const key = 'n5fcPKvJWw4kPlY87b89'
+const key = ''
 const tile = '019a1752-72aa-797d-a3c7-b3c094cf97e3'
 const map = L.map('map').setView([49.808773, -97.13208],17);
 
