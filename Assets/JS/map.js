@@ -1,4 +1,4 @@
-const key = "n5fcPKvJWw4kPlY87b89";
+const key = "";
 const tile = "base-v4";
 
 /*Versions to try:
